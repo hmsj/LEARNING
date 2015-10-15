@@ -1371,7 +1371,7 @@
         <script src="js/plugins/parallax.min.js"></script>
         <script src="js/plugins/easign1.3.min.js"></script>
         <script src="js/plugins/moderniz.min.js"></script>
-        <script src="js/plugins/cubeportfolio.min.js"></script>
+        <!--<script src="js/plugins/cubeportfolio.min.js"></script>-->
         <script src="js/plugins/owlcarousel.min.js"></script>
         <script src="js/plugins/tweetie.min.js"></script>
         <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
