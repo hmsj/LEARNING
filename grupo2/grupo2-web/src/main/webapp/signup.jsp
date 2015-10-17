@@ -66,14 +66,21 @@
                         
                         <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
                             <div id="message"></div>
-                            <!-- Contact Form will be functional only on your server. Upload to your server when testing. -->
-                            <form method="post" action="" name="contactform" id="contactform">
+                            <form method="post" action="" name="signupform" id="signupform">
+                            	<label for="tipouser">Selecciona uno de los siguientes roles:</label><fieldset>
+                            		Alumno:<input name="tipouser" type="radio" id="tipouser" value="alumno" checked="checked">
+                            		Profesor<input name="tipouser" type="radio" id="tipouser" value="profesor">
+                            	</fieldset>
                                 <fieldset>
-                                        <input name="nombre" type="text" id="nombre" placeholder="Nombre"/> 
-                                        <input name="apellidos" type="text" id="apellidos" placeholder="Apellidos"/> 
-                                        <input name="username" type="text" id="username" placeholder="Nombre de usuario"/> 
-                                        <input name="email" type="email" id="email" placeholder="Email"/>
-                                        <input name="password" type="password" id="password" placeholder="Contraseña"/>  
+                                	<input name="nombre" type="text" id="nombre" placeholder="Nombre"/> 
+                                	<input name="apellidos" type="text" id="apellidos" placeholder="Apellidos"/> 
+                                	<input name="username" type="text" id="username" placeholder="Nombre de usuario"/> 
+                                	<input name="email" type="email" id="email" placeholder="Email"/>
+                                	<input name="password" type="password" id="password" placeholder="Contraseña"/>  
+                                </fieldset>
+                                <fieldset>
+                                	<label for="pagos">Permite el uso de sus datos para sus cobros</label>
+                                		<input name="paypal" type="checkbox" id="paypal">
                                 </fieldset>
                                 <input type="submit" class="submit" id="submit" value="CREAR USUARIO" />
                             </form>

@@ -68,7 +68,7 @@
                         <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
                             <div id="message"></div>
                             <!-- Contact Form will be functional only on your server. Upload to your server when testing. -->
-                            <form method="post" action="" name="contactform" id="contactform">
+                            <form method="post" action="" name="loginform" id="loginform">
                                 <fieldset>
                                         <input name="username" type="text" id="username" placeholder="Nombre de usuario"/> 
                                         <input name="password" type="password" id="password" placeholder="Contraseña"/>  
