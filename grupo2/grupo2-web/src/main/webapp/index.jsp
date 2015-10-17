@@ -30,8 +30,8 @@
 						<span class="icon-bar"></span>
 					    </button>
                         <a class="navbar-brand to-top" rel="home" href="#">
-                        	<img src="img/assets/logo-white.png" alt="Vossen" class="logo-big">
-                            <img src="img/assets/logo-dark.png" alt="Vossen" class="logo-small">
+                        	<img src="img/assets/logo-white.png" alt="Dokulearning" class="logo-big">
+                            <img src="img/assets/logo-dark.png" alt="Dokulearning" class="logo-small">
                         </a>
 					</div>
 
@@ -75,7 +75,7 @@
                         <ul>
                             <!-- SLIDE 1 -->
                             <li data-transition="fade" data-slotamount="7" data-masterspeed="2000" data-thumb="img/backgrounds/bg-home-fullscreen.jpg" data-delay="10000"  data-saveperformance="on" data-title="We Are Vossen">
-                                <img src="img/backgrounds/bg-home-fullscreen.jpg" alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+                                <img src="img/backgrounds/startup-photos-medium.jpg" alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
 
                                     <!-- Home Heading -->
                                     <div class="tp-caption sft"
@@ -90,7 +90,7 @@
                                         data-endelementdelay="0.1"
                                         data-endspeed="300"
                                         style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
-                                        <h2 class="home-heading op-1">We Are Vossen</h2>
+                                        <h2 class="home-heading op-1">DokuLearning</h2>
                                     </div>
                                     <!-- Home Subheading -->
                                     <div class="tp-caption home-subheading sft fadeout"
@@ -105,7 +105,7 @@
                                         data-endelementdelay="0.1"
                                         data-endspeed="300"
                                         style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
-                                        <div class="op-1">2015 · BRAND POSITIONING · IDENTITY DESIGN · VISUAL DESIGN</div>
+                                        <div class="op-1">2015 · TU PORTAL DE E-LEARNING</div>
                                     </div>
                                     <!-- Home Button -->
                                     <div class="tp-caption home-button sft fadeout"
@@ -120,7 +120,7 @@
                                         data-endelementdelay="0.1"
                                         data-endspeed="300"
                                         style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
-                                        <div class="op-1"><a href="#features" class="btn btn-primary btn-scroll">WE'RE CREATIVE</a></div>
+                                        <div class="op-1"><a href="#features" class="btn btn-primary btn-scroll">ACCEDER</a></div>
                                     </div>
 
                             </li>
@@ -1371,7 +1371,7 @@
         <script src="js/plugins/parallax.min.js"></script>
         <script src="js/plugins/easign1.3.min.js"></script>
         <script src="js/plugins/moderniz.min.js"></script>
-        <!--<script src="js/plugins/cubeportfolio.min.js"></script>-->
+        <script src="js/plugins/cubeportfolio.min.js"></script>
         <script src="js/plugins/owlcarousel.min.js"></script>
         <script src="js/plugins/tweetie.min.js"></script>
         <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
