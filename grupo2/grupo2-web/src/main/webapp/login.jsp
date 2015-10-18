@@ -40,7 +40,7 @@
                         <ul class="nav navbar-nav  navbar-right">
                             
                             <li><a class="to-top">Home</a></li>
-                            <li class="to-section"><a href="#about">Registro</a></li>
+                            <li class="to-section"><a href="signup.jsp">Registrarse</a></li>
                             
                             <!-- <li class="to-section"><a href="#team">Team</a></li>
                             <li class="to-section"><a href="#portfolio">Portfolio</a></li>-->                            

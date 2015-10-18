@@ -40,7 +40,7 @@
                         <ul class="nav navbar-nav  navbar-right">
                             
                             <li><a class="to-top">Home</a></li>
-                            <li class="to-section"><a href="#about">Login</a></li>
+                            <li class="to-section"><a href="login.jsp">Login</a></li>
                             <!-- <li class="to-section"><a href="#team">Team</a></li>
                             <li class="to-section"><a href="#portfolio">Portfolio</a></li>
  -->                            
@@ -56,7 +56,7 @@
                                 </ul>
                             </li> 
                             
-                            <li class="to-section"><a href="#contact">Contact</a></li>
+                            <li class="to-section"><a href="signup">Registrarse</a></li>
                             <li><a class="social-icon" href="#"><i class="icon icon-social-twitter"></i></a></li>
                             <li><a class="social-icon" href="#"><i class="icon icon-social-facebook"></i></a></li>
                             <li><a class="social-icon" href="#"><i class="icon icon-support"></i></a></li>
@@ -277,8 +277,8 @@
                                         <ul class="expand">
                                             <li class="cbp-l-caption-title">Future Trend</li>
                                             <li class="cbp-l-caption-desc">by Vossen Design</li>
-                                            <li class="cbp-l-icon"><a href="img/portfolio/fullsize/1.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
-                                            <li class="cbp-l-icon"><a href="projects/project1.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
+                                            <li class="cbp-l-icon"><a href="img/portfolio/fullsize/1.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-info"></i></a></li>
+                                            <li class="cbp-l-icon"><a href="projects/project1.html" class="cbp-singlePage"><i class="icon-handbag"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
