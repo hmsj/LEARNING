@@ -1,29 +1,34 @@
 package es.uc3m.tiw.dominios;
 
 public class Alumno {
-	int tipo=3;
-	Usuario usuario;
+	Curso curso;
+	Usuario username;
 	
 	public Alumno() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Alumno(int tipo, Usuario usuario) {
+
+	public Alumno(Curso curso, Usuario username) {
 		super();
-		this.tipo = tipo;
-		this.usuario = usuario;
+		this.curso = curso;
+		this.username = username;
 	}
-	public int getTipo() {
-		return tipo;
+
+	public Curso getCurso() {
+		return curso;
 	}
-	public void setTipo(int tipo) {
-		this.tipo = tipo;
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
-	public Usuario getUsuario() {
-		return usuario;
+
+	public Usuario getUsername() {
+		return username;
 	}
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+
+	public void setUsername(Usuario username) {
+		this.username = username;
 	}
 	
 }
