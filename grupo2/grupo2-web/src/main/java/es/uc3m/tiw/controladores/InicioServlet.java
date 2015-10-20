@@ -1,6 +1,7 @@
 package es.uc3m.tiw.controladores;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,19 +11,27 @@ import javax.servlet.http.HttpServletResponse;
 import es.uc3m.tiw.dominios.*;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class InicioServlet
  */
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/inicio")
+public class InicioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public InicioServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
+
+	@Override
+	public void init() throws ServletException {
+		// TODO Auto-generated method stub
+		super.init();
+	}
+
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -37,7 +46,6 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
-	
 	
 	/*Metodo para redirigir a los jsp*/
 	protected void forward(HttpServletRequest request, HttpServletResponse response, String uri){
