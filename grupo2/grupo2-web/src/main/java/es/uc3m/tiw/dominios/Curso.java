@@ -11,7 +11,7 @@ public class Curso {
 	String dificultad;
 	int horas;
 	float precio_inicial;
-	int descuento;
+	Promocion descuento;
 	float precio_final;
 	String imagen;
 	Estado estado;
@@ -28,7 +28,7 @@ public class Curso {
 
 	public Curso(int id_curso, String titulo, String categoria,
 			String descripcion, String dificultad, int horas,
-			float precio_inicial, int descuento, float precio_final,
+			float precio_inicial, Promocion descuento, float precio_final,
 			String imagen, Estado estado, int destacado,
 			ArrayList<Leccion> lecciones, ProfesorTitular profesorTitular,
 			ArrayList<ProfesorInvitado> profesoresInvitados,
@@ -108,11 +108,11 @@ public class Curso {
 		this.precio_inicial = precio_inicial;
 	}
 
-	public int getDescuento() {
+	public Promocion getDescuento() {
 		return descuento;
 	}
 
-	public void setDescuento(int descuento) {
+	public void setDescuento(Promocion descuento) {
 		this.descuento = descuento;
 	}
 

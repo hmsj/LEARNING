@@ -1,5 +1,67 @@
 package es.uc3m.tiw.dominios;
 
-public class Leccion {
+import java.util.ArrayList;
 
+public class Leccion {
+	int id_leccion;
+	String descripcion;
+	Seccion seccion;
+	Curso curso;
+	ArrayList<Material> materiales;
+	
+	public Leccion() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Leccion(int id_leccion, String descripcion, Seccion seccion,
+			Curso curso, ArrayList<Material> materiales) {
+		super();
+		this.id_leccion = id_leccion;
+		this.descripcion = descripcion;
+		this.seccion = seccion;
+		this.curso = curso;
+		this.materiales = materiales;
+	}
+
+	public ArrayList<Material> getMateriales() {
+		return materiales;
+	}
+
+	public void setMateriales(ArrayList<Material> materiales) {
+		this.materiales = materiales;
+	}
+
+	public int getId_leccion() {
+		return id_leccion;
+	}
+
+	public void setId_leccion(int id_leccion) {
+		this.id_leccion = id_leccion;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public Seccion getSeccion() {
+		return seccion;
+	}
+
+	public void setSeccion(Seccion seccion) {
+		this.seccion = seccion;
+	}
+
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+	
 }
