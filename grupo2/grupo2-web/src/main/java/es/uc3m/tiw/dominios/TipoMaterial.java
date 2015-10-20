@@ -1,34 +1,34 @@
 package es.uc3m.tiw.dominios;
 
 public class TipoMaterial {
-	int id_tipoMaterial;
-	String descripcio_material;
+	int idtipoMaterial;
+	String descripcion_tipoMaterial;
 	
 	public TipoMaterial() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public TipoMaterial(int id_tipoMaterial, String descripcio_material) {
+	public TipoMaterial(int idtipoMaterial, String descripcion_tipoMaterial) {
 		super();
-		this.id_tipoMaterial = id_tipoMaterial;
-		this.descripcio_material = descripcio_material;
+		this.idtipoMaterial = idtipoMaterial;
+		this.descripcion_tipoMaterial = descripcion_tipoMaterial;
 	}
 
-	public int getId_tipoMaterial() {
-		return id_tipoMaterial;
+	public int getIdtipoMaterial() {
+		return idtipoMaterial;
 	}
 
-	public void setId_tipoMaterial(int id_tipoMaterial) {
-		this.id_tipoMaterial = id_tipoMaterial;
+	public void setIdtipoMaterial(int idtipoMaterial) {
+		this.idtipoMaterial = idtipoMaterial;
 	}
 
-	public String getDescripcio_material() {
-		return descripcio_material;
+	public String getDescripcion_tipoMaterial() {
+		return descripcion_tipoMaterial;
 	}
 
-	public void setDescripcio_material(String descripcio_material) {
-		this.descripcio_material = descripcio_material;
+	public void setDescripcion_tipoMaterial(String descripcion_tipoMaterial) {
+		this.descripcion_tipoMaterial = descripcion_tipoMaterial;
 	}
 	
 }

@@ -1,34 +1,34 @@
 package es.uc3m.tiw.dominios;
 
 public class TipoUsuario {
-	int id_tipo;
-	String descripcion_tipo;
+	int idtipoUsuario;
+	String descripcion_tipoUsuario;
 	
 	public TipoUsuario() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public TipoUsuario(int id_tipo, String descripcion_tipo) {
+
+	public TipoUsuario(int idtipoUsuario, String descripcion_tipoUsuario) {
 		super();
-		this.id_tipo = id_tipo;
-		this.descripcion_tipo = descripcion_tipo;
+		this.idtipoUsuario = idtipoUsuario;
+		this.descripcion_tipoUsuario = descripcion_tipoUsuario;
 	}
 
-	public int getId_tipo() {
-		return id_tipo;
+	public int getIdtipoUsuario() {
+		return idtipoUsuario;
 	}
 
-	public void setId_tipo(int id_tipo) {
-		this.id_tipo = id_tipo;
+	public void setIdtipoUsuario(int idtipoUsuario) {
+		this.idtipoUsuario = idtipoUsuario;
 	}
 
-	public String getDescripcion_tipo() {
-		return descripcion_tipo;
+	public String getDescripcion_tipoUsuario() {
+		return descripcion_tipoUsuario;
 	}
 
-	public void setDescripcion_tipo(String descripcion_tipo) {
-		this.descripcion_tipo = descripcion_tipo;
+	public void setDescripcion_tipoUsuario(String descripcion_tipoUsuario) {
+		this.descripcion_tipoUsuario = descripcion_tipoUsuario;
 	}
 	
 }

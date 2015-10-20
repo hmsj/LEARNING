@@ -1,28 +1,31 @@
 package es.uc3m.tiw.dominios;
 
-public class Logro {
-	Alumno username;
+public class Calificacion {
+	Usuario alumno;
 	Curso curso;
+	double nota;
 	TipoLogro tipoLogro;
 	
-	public Logro() {
+	public Calificacion() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Logro(Alumno username, Curso curso, TipoLogro tipoLogro) {
+	public Calificacion(Usuario alumno, Curso curso, double nota,
+			TipoLogro tipoLogro) {
 		super();
-		this.username = username;
+		this.alumno = alumno;
 		this.curso = curso;
+		this.nota = nota;
 		this.tipoLogro = tipoLogro;
 	}
 
-	public Alumno getUsername() {
-		return username;
+	public Usuario getAlumno() {
+		return alumno;
 	}
 
-	public void setUsername(Alumno username) {
-		this.username = username;
+	public void setAlumno(Usuario alumno) {
+		this.alumno = alumno;
 	}
 
 	public Curso getCurso() {
@@ -31,6 +34,14 @@ public class Logro {
 
 	public void setCurso(Curso curso) {
 		this.curso = curso;
+	}
+
+	public double getNota() {
+		return nota;
+	}
+
+	public void setNota(double nota) {
+		this.nota = nota;
 	}
 
 	public TipoLogro getTipoLogro() {

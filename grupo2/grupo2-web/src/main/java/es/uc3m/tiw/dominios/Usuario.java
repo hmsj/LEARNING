@@ -4,12 +4,16 @@ public class Usuario {
 	String username;
 	String nombre;
 	String apellidos;
-	String password;
 	String email;
+	String password;
+	String imagen;
+	String telefono;
 	String descripcion;
 	String intereses;
 	int edad;
 	TipoUsuario tipoUsuario;
+	Direccion direccion;
+	DatosBancarios banco;
 	
 	public Usuario() {
 		super();
@@ -17,18 +21,23 @@ public class Usuario {
 	}
 
 	public Usuario(String username, String nombre, String apellidos,
-			String password, String email, String descripcion,
-			String intereses, int edad, TipoUsuario tipoUsuario) {
+			String email, String password, String imagen, String telefono,
+			String descripcion, String intereses, int edad,
+			TipoUsuario tipoUsuario, Direccion direccion, DatosBancarios banco) {
 		super();
 		this.username = username;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
-		this.password = password;
 		this.email = email;
+		this.password = password;
+		this.imagen = imagen;
+		this.telefono = telefono;
 		this.descripcion = descripcion;
 		this.intereses = intereses;
 		this.edad = edad;
 		this.tipoUsuario = tipoUsuario;
+		this.direccion = direccion;
+		this.banco = banco;
 	}
 
 	public String getUsername() {
@@ -55,6 +64,14 @@ public class Usuario {
 		this.apellidos = apellidos;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -63,12 +80,20 @@ public class Usuario {
 		this.password = password;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getImagen() {
+		return imagen;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 
 	public String getDescripcion() {
@@ -101,6 +126,22 @@ public class Usuario {
 
 	public void setTipoUsuario(TipoUsuario tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
+	}
+
+	public Direccion getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
+	}
+
+	public DatosBancarios getBanco() {
+		return banco;
+	}
+
+	public void setBanco(DatosBancarios banco) {
+		this.banco = banco;
 	}
 	
 }

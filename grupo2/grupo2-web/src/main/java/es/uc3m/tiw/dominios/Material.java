@@ -1,39 +1,39 @@
 package es.uc3m.tiw.dominios;
 
 public class Material {
-	int id_material;
-	String archivo;
+	int idmaterial;
+	TipoMaterial tipoMaterial;
 	Leccion leccion;
-	TipoMaterial tipo_material;
+	String archivo;
 	
 	public Material() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Material(int id_material, String archivo, Leccion leccion,
-			TipoMaterial tipo_material) {
+	public Material(int idmaterial, TipoMaterial tipoMaterial, Leccion leccion,
+			String archivo) {
 		super();
-		this.id_material = id_material;
-		this.archivo = archivo;
+		this.idmaterial = idmaterial;
+		this.tipoMaterial = tipoMaterial;
 		this.leccion = leccion;
-		this.tipo_material = tipo_material;
-	}
-
-	public int getId_material() {
-		return id_material;
-	}
-
-	public void setId_material(int id_material) {
-		this.id_material = id_material;
-	}
-
-	public String getArchivo() {
-		return archivo;
-	}
-
-	public void setArchivo(String archivo) {
 		this.archivo = archivo;
+	}
+
+	public int getIdmaterial() {
+		return idmaterial;
+	}
+
+	public void setIdmaterial(int idmaterial) {
+		this.idmaterial = idmaterial;
+	}
+
+	public TipoMaterial getTipoMaterial() {
+		return tipoMaterial;
+	}
+
+	public void setTipoMaterial(TipoMaterial tipoMaterial) {
+		this.tipoMaterial = tipoMaterial;
 	}
 
 	public Leccion getLeccion() {
@@ -44,12 +44,12 @@ public class Material {
 		this.leccion = leccion;
 	}
 
-	public TipoMaterial getTipo_material() {
-		return tipo_material;
+	public String getArchivo() {
+		return archivo;
 	}
 
-	public void setTipo_material(TipoMaterial tipo_material) {
-		this.tipo_material = tipo_material;
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
 	}
-
+	
 }

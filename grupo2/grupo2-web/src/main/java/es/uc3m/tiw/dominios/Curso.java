@@ -1,59 +1,55 @@
 package es.uc3m.tiw.dominios;
 
-import java.util.ArrayList;
 
 public class Curso {
-
-	int id_curso;
+	int idcurso;
 	String titulo;
-	Categoria categoria;
 	String descripcion;
-	String dificultad;
 	int horas;
-	float precio_inicial;
-	Promocion descuento;
-	float precio_final;
+	Usuario profesor_titular;
 	String imagen;
-	Estado estado;
+	String certificado;
 	int destacado;
-	ArrayList<Leccion> lecciones;
-	Usuario profesorTitular;
-	ArrayList<Usuario> profesoresInvitados;
-	ArrayList<Seccion> secciones;
+	int validado;
+	double precio_inicial;
+	double precio_final;
+	Oferta oferta;
+	Categoria categoria;
+	TipoDificultad dificultad;
 	
 	public Curso() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Curso(int id_curso, String titulo, Categoria categoria,
-			String descripcion, String dificultad, int horas,
-			float precio_inicial, Promocion descuento, float precio_final,
-			String imagen, Estado estado, int destacado, Usuario profesorTitular,
-			ArrayList<Usuario> profesoresInvitados) {
+	public Curso(int idcurso, String titulo, String descripcion, int horas,
+			Usuario profesor_titular, String imagen, String certificado,
+			int destacado, int validado, double precio_inicial,
+			double precio_final, Oferta oferta, Categoria categoria,
+			TipoDificultad dificultad) {
 		super();
-		this.id_curso = id_curso;
+		this.idcurso = idcurso;
 		this.titulo = titulo;
-		this.categoria = categoria;
 		this.descripcion = descripcion;
-		this.dificultad = dificultad;
 		this.horas = horas;
-		this.precio_inicial = precio_inicial;
-		this.descuento = descuento;
-		this.precio_final = precio_final;
+		this.profesor_titular = profesor_titular;
 		this.imagen = imagen;
-		this.estado = estado;
+		this.certificado = certificado;
 		this.destacado = destacado;
-		this.profesorTitular = profesorTitular;
-		this.profesoresInvitados = profesoresInvitados;
+		this.validado = validado;
+		this.precio_inicial = precio_inicial;
+		this.precio_final = precio_final;
+		this.oferta = oferta;
+		this.categoria = categoria;
+		this.dificultad = dificultad;
 	}
 
-	public int getId_curso() {
-		return id_curso;
+	public int getIdcurso() {
+		return idcurso;
 	}
 
-	public void setId_curso(int id_curso) {
-		this.id_curso = id_curso;
+	public void setIdcurso(int idcurso) {
+		this.idcurso = idcurso;
 	}
 
 	public String getTitulo() {
@@ -64,28 +60,12 @@ public class Curso {
 		this.titulo = titulo;
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-
 	public String getDescripcion() {
 		return descripcion;
 	}
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-
-	public String getDificultad() {
-		return dificultad;
-	}
-
-	public void setDificultad(String dificultad) {
-		this.dificultad = dificultad;
 	}
 
 	public int getHoras() {
@@ -96,28 +76,12 @@ public class Curso {
 		this.horas = horas;
 	}
 
-	public float getPrecio_inicial() {
-		return precio_inicial;
+	public Usuario getProfesor_titular() {
+		return profesor_titular;
 	}
 
-	public void setPrecio_inicial(float precio_inicial) {
-		this.precio_inicial = precio_inicial;
-	}
-
-	public Promocion getDescuento() {
-		return descuento;
-	}
-
-	public void setDescuento(Promocion descuento) {
-		this.descuento = descuento;
-	}
-
-	public float getPrecio_final() {
-		return precio_final;
-	}
-
-	public void setPrecio_final(float precio_final) {
-		this.precio_final = precio_final;
+	public void setProfesor_titular(Usuario profesor_titular) {
+		this.profesor_titular = profesor_titular;
 	}
 
 	public String getImagen() {
@@ -128,12 +92,12 @@ public class Curso {
 		this.imagen = imagen;
 	}
 
-	public Estado getEstado() {
-		return estado;
+	public String getCertificado() {
+		return certificado;
 	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+	public void setCertificado(String certificado) {
+		this.certificado = certificado;
 	}
 
 	public int getDestacado() {
@@ -144,29 +108,52 @@ public class Curso {
 		this.destacado = destacado;
 	}
 
-	public ArrayList<Leccion> getLecciones() {
-		return lecciones;
+	public int getValidado() {
+		return validado;
 	}
 
-	public void setLecciones(ArrayList<Leccion> lecciones) {
-		this.lecciones = lecciones;
+	public void setValidado(int validado) {
+		this.validado = validado;
 	}
 
-	public Usuario getProfesorTitular() {
-		return profesorTitular;
+	public double getPrecio_inicial() {
+		return precio_inicial;
 	}
 
-	public void setProfesorTitular(Usuario profesorTitular) {
-		this.profesorTitular = profesorTitular;
+	public void setPrecio_inicial(double precio_inicial) {
+		this.precio_inicial = precio_inicial;
 	}
 
-	public ArrayList<Usuario> getProfesoresInvitados() {
-		return profesoresInvitados;
+	public double getPrecio_final() {
+		return precio_final;
 	}
 
-	public void setProfesoresInvitados(
-			ArrayList<Usuario> profesoresInvitados) {
-		this.profesoresInvitados = profesoresInvitados;
+	public void setPrecio_final(double precio_final) {
+		this.precio_final = precio_final;
+	}
+
+	public Oferta getOferta() {
+		return oferta;
+	}
+
+	public void setOferta(Oferta oferta) {
+		this.oferta = oferta;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public TipoDificultad getDificultad() {
+		return dificultad;
+	}
+
+	public void setDificultad(TipoDificultad dificultad) {
+		this.dificultad = dificultad;
 	}
 	
 }

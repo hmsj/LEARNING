@@ -2,7 +2,8 @@ package es.uc3m.tiw.dominios;
 
 
 public class Seccion {
-	int id_seccion;
+	int idseccion;
+	String titulo;
 	Curso curso;
 	
 	public Seccion() {
@@ -10,18 +11,27 @@ public class Seccion {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Seccion(int id_seccion, Curso curso) {
+	public Seccion(int idseccion, String titulo, Curso curso) {
 		super();
-		this.id_seccion = id_seccion;
+		this.idseccion = idseccion;
+		this.titulo = titulo;
 		this.curso = curso;
 	}
 
-	public int getId_seccion() {
-		return id_seccion;
+	public int getIdseccion() {
+		return idseccion;
 	}
 
-	public void setId_seccion(int id_seccion) {
-		this.id_seccion = id_seccion;
+	public void setIdseccion(int idseccion) {
+		this.idseccion = idseccion;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public Curso getCurso() {
