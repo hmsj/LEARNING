@@ -1,22 +1,19 @@
 package es.uc3m.tiw.dominios;
 
-import java.util.ArrayList;
 
 public class Seccion {
 	int id_seccion;
 	Curso curso;
-	ArrayList<Leccion> lecciones;
 	
 	public Seccion() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Seccion(int id_seccion, Curso curso, ArrayList<Leccion> lecciones) {
+	public Seccion(int id_seccion, Curso curso) {
 		super();
 		this.id_seccion = id_seccion;
 		this.curso = curso;
-		this.lecciones = lecciones;
 	}
 
 	public int getId_seccion() {
@@ -33,14 +30,6 @@ public class Seccion {
 
 	public void setCurso(Curso curso) {
 		this.curso = curso;
-	}
-
-	public ArrayList<Leccion> getLecciones() {
-		return lecciones;
-	}
-
-	public void setLecciones(ArrayList<Leccion> lecciones) {
-		this.lecciones = lecciones;
 	}
 	
 }

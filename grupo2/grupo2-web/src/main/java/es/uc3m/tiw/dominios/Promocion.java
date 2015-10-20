@@ -5,7 +5,6 @@ public class Promocion {
 	String tipo;
 	int valor;
 	String fecha_fin;
-	Curso curso;
 	
 	public Promocion() {
 		super();
@@ -13,13 +12,12 @@ public class Promocion {
 	}
 
 	public Promocion(int id_promocion, String tipo, int valor,
-			String fecha_fin, Curso curso) {
+			String fecha_fin) {
 		super();
 		this.id_promocion = id_promocion;
 		this.tipo = tipo;
 		this.valor = valor;
 		this.fecha_fin = fecha_fin;
-		this.curso = curso;
 	}
 
 	public int getId_promocion() {
@@ -52,10 +50,6 @@ public class Promocion {
 
 	public void setFecha_fin(String fecha_fin) {
 		this.fecha_fin = fecha_fin;
-	}
-
-	public Curso getCurso() {
-		return curso;
 	}
 
 	public void setCurso(Curso curso) {

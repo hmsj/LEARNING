@@ -6,7 +6,7 @@ public class Curso {
 
 	int id_curso;
 	String titulo;
-	String categoria;
+	Categoria categoria;
 	String descripcion;
 	String dificultad;
 	int horas;
@@ -17,8 +17,8 @@ public class Curso {
 	Estado estado;
 	int destacado;
 	ArrayList<Leccion> lecciones;
-	ProfesorTitular profesorTitular;
-	ArrayList<ProfesorInvitado> profesoresInvitados;
+	Usuario profesorTitular;
+	ArrayList<Usuario> profesoresInvitados;
 	ArrayList<Seccion> secciones;
 	
 	public Curso() {
@@ -26,13 +26,11 @@ public class Curso {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Curso(int id_curso, String titulo, String categoria,
+	public Curso(int id_curso, String titulo, Categoria categoria,
 			String descripcion, String dificultad, int horas,
 			float precio_inicial, Promocion descuento, float precio_final,
-			String imagen, Estado estado, int destacado,
-			ArrayList<Leccion> lecciones, ProfesorTitular profesorTitular,
-			ArrayList<ProfesorInvitado> profesoresInvitados,
-			ArrayList<Seccion> secciones) {
+			String imagen, Estado estado, int destacado, Usuario profesorTitular,
+			ArrayList<Usuario> profesoresInvitados) {
 		super();
 		this.id_curso = id_curso;
 		this.titulo = titulo;
@@ -46,10 +44,8 @@ public class Curso {
 		this.imagen = imagen;
 		this.estado = estado;
 		this.destacado = destacado;
-		this.lecciones = lecciones;
 		this.profesorTitular = profesorTitular;
 		this.profesoresInvitados = profesoresInvitados;
-		this.secciones = secciones;
 	}
 
 	public int getId_curso() {
@@ -68,11 +64,11 @@ public class Curso {
 		this.titulo = titulo;
 	}
 
-	public String getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(String categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 
@@ -156,29 +152,21 @@ public class Curso {
 		this.lecciones = lecciones;
 	}
 
-	public ProfesorTitular getProfesorTitular() {
+	public Usuario getProfesorTitular() {
 		return profesorTitular;
 	}
 
-	public void setProfesorTitular(ProfesorTitular profesorTitular) {
+	public void setProfesorTitular(Usuario profesorTitular) {
 		this.profesorTitular = profesorTitular;
 	}
 
-	public ArrayList<ProfesorInvitado> getProfesoresInvitados() {
+	public ArrayList<Usuario> getProfesoresInvitados() {
 		return profesoresInvitados;
 	}
 
 	public void setProfesoresInvitados(
-			ArrayList<ProfesorInvitado> profesoresInvitados) {
+			ArrayList<Usuario> profesoresInvitados) {
 		this.profesoresInvitados = profesoresInvitados;
-	}
-
-	public ArrayList<Seccion> getSecciones() {
-		return secciones;
-	}
-
-	public void setSecciones(ArrayList<Seccion> secciones) {
-		this.secciones = secciones;
 	}
 	
 }

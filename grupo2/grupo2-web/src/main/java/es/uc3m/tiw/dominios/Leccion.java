@@ -1,13 +1,11 @@
 package es.uc3m.tiw.dominios;
 
-import java.util.ArrayList;
 
 public class Leccion {
 	int id_leccion;
 	String descripcion;
 	Seccion seccion;
 	Curso curso;
-	ArrayList<Material> materiales;
 	
 	public Leccion() {
 		super();
@@ -15,21 +13,12 @@ public class Leccion {
 	}
 
 	public Leccion(int id_leccion, String descripcion, Seccion seccion,
-			Curso curso, ArrayList<Material> materiales) {
+			Curso curso) {
 		super();
 		this.id_leccion = id_leccion;
 		this.descripcion = descripcion;
 		this.seccion = seccion;
 		this.curso = curso;
-		this.materiales = materiales;
-	}
-
-	public ArrayList<Material> getMateriales() {
-		return materiales;
-	}
-
-	public void setMateriales(ArrayList<Material> materiales) {
-		this.materiales = materiales;
 	}
 
 	public int getId_leccion() {
