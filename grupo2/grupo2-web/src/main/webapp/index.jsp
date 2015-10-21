@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//ES"
    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -7,7 +7,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-       	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+       	<link rel="shortcut icon" href="" type="image/x-icon">
         <title>DokuLearning Grupo2</title>
         
         <!-- Stlylesheet -->
@@ -29,17 +29,17 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					    </button>
-                        <a class="navbar-brand to-top" rel="home" href="#">
-                        	<img src="img/assets/logo-white.png" alt="Dokulearning" class="logo-big">
+                        <!--  <a class="navbar-brand to-top" rel="home" href="#">
+                        	<img src="img/assets/logo-dark.png" alt="Dokulearning" class="logo-big">
                             <img src="img/assets/logo-dark.png" alt="Dokulearning" class="logo-small">
-                        </a>
+                        </a>-->
 					</div>
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="main-nav">
                         <ul class="nav navbar-nav  navbar-right">
                             
-                            <li><a class="to-top">Home</a></li>
+                            <li><a class="to-section" href="index.jsp">Home</a></li>
                             <li class="to-section"><a href="login.jsp">Login</a></li>
                             <!-- <li class="to-section"><a href="#team">Team</a></li>
                             <li class="to-section"><a href="#portfolio">Portfolio</a></li>
@@ -52,14 +52,14 @@
                                     <li><a href="home-fullwidth.html">Home - Fullwidth</a></li>
                                     <li><a href="home-landing-page.html">Home - Landing Page</a></li> 
                                     <li><a href="shortcodes.html">Shortcodes</a></li>
-                                    <li><a href="http://themeforest.net/user/VossenDesign/portfolio" id="btn-buy"><span class="btn-buy">Buy Now</span></a></li>
+                                  
                                 </ul>
                             </li> 
                             
-                            <li class="to-section"><a href="signup">Registrarse</a></li>
-                            <li><a class="social-icon" href="#"><i class="icon icon-social-twitter"></i></a></li>
-                            <li><a class="social-icon" href="#"><i class="icon icon-social-facebook"></i></a></li>
-                            <li><a class="social-icon" href="#"><i class="icon icon-support"></i></a></li>
+                            <li class="to-section"><a href="signup.jsp">Registrarse</a></li>
+                            <li><a class="social-icon" href="http://www.twitter.com"><i class="icon icon-social-twitter"></i></a></li>
+                            <li><a class="social-icon" href="http://www.facebook.com"><i class="icon icon-social-facebook"></i></a></li>
+                            <li><a class="social-icon" href="http://www.google.com"><i class="icon icon-support"></i></a></li>
                       </ul>
                     </div><!-- /.navbar-collapse -->
 				</div><!-- /.container -->
@@ -74,7 +74,7 @@
                     <div class="tp-banner">
                         <ul>
                             <!-- SLIDE 1 -->
-                            <li data-transition="fade" data-slotamount="7" data-masterspeed="2000" data-thumb="img/backgrounds/bg-home-fullscreen.jpg" data-delay="10000"  data-saveperformance="on" data-title="We Are Vossen">
+                            <li data-transition="fade" data-slotamount="7" data-masterspeed="2000" data-thumb="img/backgrounds/bg-home-fullscreen.jpg" data-delay="10000"  data-saveperformance="on" data-title="">
                                 <img src="img/backgrounds/startup-photos-medium.jpg" alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
 
                                     <!-- Home Heading -->
@@ -275,8 +275,8 @@
                                     <img src="img/portfolio/1.jpg" class="img-responsive" alt="" />
                                     <div class="overlay">
                                         <ul class="expand">
-                                            <li class="cbp-l-caption-title">Future Trend</li>
-                                            <li class="cbp-l-caption-desc">by Vossen Design</li>
+                                            <li class="cbp-l-caption-title">Tu curso online</li>
+                                            <li class="cbp-l-caption-desc">by grupo 2</li>
                                             <li class="cbp-l-icon"><a href="img/portfolio/fullsize/1.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-info"></i></a></li>
                                             <li class="cbp-l-icon"><a href="projects/project1.html" class="cbp-singlePage"><i class="icon-handbag"></i></a></li>
                                         </ul>
@@ -290,7 +290,7 @@
                                     <div class="overlay">
                                         <ul class="expand">
                                             <li class="cbp-l-caption-title">Pro Bicycle</li>
-                                            <li class="cbp-l-caption-desc">by Vossen Design</li>
+                                            <li class="cbp-l-caption-desc">by grupo 2</li>
                                             <li class="cbp-l-icon"><a href="img/portfolio/fullsize/2.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
                                             <li class="cbp-l-icon"><a href="projects/project2.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
                                         </ul>
@@ -304,7 +304,7 @@
                                     <div class="overlay">
                                         <ul class="expand">
                                             <li class="cbp-l-caption-title">Door Cover</li>
-                                            <li class="cbp-l-caption-desc">by Vossen Design</li>
+                                            <li class="cbp-l-caption-desc">by grupo 2</li>
                                             <li class="cbp-l-icon"><a href="img/portfolio/fullsize/3.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
                                             <li class="cbp-l-icon"><a href="projects/project3.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
                                         </ul>
@@ -318,7 +318,7 @@
                                     <div class="overlay">
                                         <ul class="expand">
                                             <li class="cbp-l-caption-title">Pro Close-up</li>
-                                            <li class="cbp-l-caption-desc">by Vossen Design</li>
+                                            <li class="cbp-l-caption-desc">by grupo 2</li>
                                             <li class="cbp-l-icon"><a class="cbp-lightbox" href="https://www.youtube.com/watch?v=3wbvpOIIBQA" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
                                             <li class="cbp-l-icon"><a href="projects/project4.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
                                         </ul>
@@ -332,7 +332,7 @@
                                     <div class="overlay">
                                         <ul class="expand">
                                             <li class="cbp-l-caption-title">Bohemian Coding</li>
-                                            <li class="cbp-l-caption-desc">by Vossen Design</li>
+                                            <li class="cbp-l-caption-desc">by grupo 2</li>
                                             <li class="cbp-l-icon"><a href="img/portfolio/fullsize/5.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
                                             <li class="cbp-l-icon"><a href="projects/project5.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
                                         </ul>
@@ -346,7 +346,7 @@
                                     <div class="overlay">
                                         <ul class="expand">
                                             <li class="cbp-l-caption-title">Poster Wall</li>
-                                            <li class="cbp-l-caption-desc">by Vossen Design</li>
+                                            <li class="cbp-l-caption-desc">by grupo 2</li>
                                             <li class="cbp-l-icon"><a href="https://www.youtube.com/watch?v=9No-FiEInLA" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
                                             <li class="cbp-l-icon"><a href="projects/project6.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
                                         </ul>
@@ -360,7 +360,7 @@
                                     <div class="overlay">
                                         <ul class="expand">
                                             <li class="cbp-l-caption-title">Red Bridge</li>
-                                            <li class="cbp-l-caption-desc">by Vossen Design</li>
+                                            <li class="cbp-l-caption-desc">by grupo 2</li>
                                             <li class="cbp-l-icon"><a href="img/portfolio/fullsize/7.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
                                             <li class="cbp-l-icon"><a href="projects/project7.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
                                         </ul>
@@ -374,7 +374,7 @@
                                     <div class="overlay">
                                         <ul class="expand">
                                             <li class="cbp-l-caption-title">V8 M52 Engine</li>
-                                            <li class="cbp-l-caption-desc">by Vossen Design</li>
+                                            <li class="cbp-l-caption-desc">by grupo 2</li>
                                             <li class="cbp-l-icon"><a href="img/portfolio/fullsize/8.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
                                             <li class="cbp-l-icon"><a href="projects/project8.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
                                         </ul>
@@ -388,7 +388,7 @@
                                     <div class="overlay">
                                         <ul class="expand">
                                             <li class="cbp-l-caption-title">Ergonomic Pad</li>
-                                            <li class="cbp-l-caption-desc">by Vossen Design</li>
+                                            <li class="cbp-l-caption-desc">by grupo 2</li>
                                             <li class="cbp-l-icon"><a href="http://vimeo.com/16465813" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
                                             <li class="cbp-l-icon"><a href="projects/project9.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
                                         </ul>
@@ -402,7 +402,7 @@
                                     <div class="overlay">
                                         <ul class="expand">
                                             <li class="cbp-l-caption-title">Cooling Tower</li>
-                                            <li class="cbp-l-caption-desc">by Vossen Design</li>
+                                            <li class="cbp-l-caption-desc">by grupo 2</li>
                                             <li class="cbp-l-icon"><a href="img/portfolio/fullsize/10.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
                                             <li class="cbp-l-icon"><a href="projects/project10.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
                                         </ul>
@@ -416,7 +416,7 @@
                                     <div class="overlay">
                                         <ul class="expand">
                                             <li class="cbp-l-caption-title">Still Motion</li>
-                                            <li class="cbp-l-caption-desc">by Vossen Design</li>
+                                            <li class="cbp-l-caption-desc">by grupo 2</li>
                                             <li class="cbp-l-icon"><a href="img/portfolio/fullsize/11.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
                                             <li class="cbp-l-icon"><a href="projects/project11.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
                                         </ul>
@@ -430,7 +430,7 @@
                                     <div class="overlay">
                                         <ul class="expand">
                                             <li class="cbp-l-caption-title">Print Design</li>
-                                            <li class="cbp-l-caption-desc">by Vossen Design</li>
+                                            <li class="cbp-l-caption-desc">by grupo 2</li>
                                             <li class="cbp-l-icon"><a href="img/portfolio/fullsize/12.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
                                             <li class="cbp-l-icon"><a href="projects/project12.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
                                         </ul>
@@ -456,8 +456,8 @@
                     <div class="row">
                         
                         <div class="col-md-12 text-center">
-                            <h3 class="section-title white wow fadeInUp">What clients say.</h3>
-                            <p class="subheading grey wow fadeInUp">Hear what over <span class="highlight">4000 satisfied</span> customers say about us!</p>
+                            <h3 class="section-title white wow fadeInUp">Cursos Destacados</h3>
+                            <p class="subheading grey wow fadeInUp">Estos son nuestros cursos con mas exito <span class="highlight">4000 satisfied</span> customers say about us!</p>
                         </div>
                         
                         <div class="clients">
@@ -610,20 +610,13 @@
 						<div class="row">
 								
 							<div class="col-md-6 col-sm-12">
-								<p>© 2015 Vossen Theme by <a href="index.html" class="logo">Vossen Design.</a> All Rights Reserved. </p>
+								<p>© 2015 TIW UC3M <a href="index.html" class="logo">Dokulearning</a> All Rights Reserved. </p>
 							</div>
 							<div class="col-md-6 col-sm-12">
 				                <ul id="social-icons">
-						            <li><a href="#"><i class="icon ion-social-twitter"></i></a></li> 	
-                                    <li><a href="#"><i class="icon ion-social-facebook"></i></a></li> 
-                                    <li><a href="#"><i class="icon ion-social-googleplus"></i></a></li> 
-                                    <li><a href="#"><i class="icon ion-social-instagram-outline"></i></a></li> 
-                                    <li><a href="#"><i class="icon ion-social-pinterest"></i></a></li>  
-                                    <li><a href="#"><i class="icon ion-social-skype"></i></a></li> 
-                                    <li><a href="#"><i class="icon ion-social-linkedin"></i></a></li> 
-                                    <li><a href="#"><i class="icon ion-social-dropbox"></i></a></li> 
-                                    <li><a href="#"><i class="icon ion-social-vimeo"></i></a></li> 
-                                    <li><a href="#"><i class="icon ion-social-youtube"></i></a></li>
+						            <li><a href="http://www.twitter.com"><i class="icon ion-social-twitter"></i></a></li> 	
+                                    <li><a href="http://www.facebook.com"><i class="icon ion-social-facebook"></i></a></li> 
+                                    <li><a href="http://www.youtube.com"><i class="icon ion-social-youtube"></i></a></li>
                                 </ul>
 							</div>
 						</div>

@@ -7,7 +7,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-       	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+       	<link rel="shortcut icon" href="" type="image/x-icon">
         <title>DokuLearning Grupo2</title>
         
         <!-- Stlylesheet -->
@@ -29,26 +29,26 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					    </button>
-                        <a class="navbar-brand to-top" rel="home" href="#">
+                        <!--  <a class="navbar-brand to-top" rel="home" href="#">
                         	<img src="img/assets/logo-dark.png" alt="Dokulearning" class="logo-big">
                             <img src="img/assets/logo-dark.png" alt="Dokulearning" class="logo-small">
-                        </a>
+                        </a>-->
 					</div>
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="main-nav">
                         <ul class="nav navbar-nav  navbar-right">
                             
-                            <li><a class="to-top">Home</a></li>
+                            <li><a class="to-section" href="index.jsp">Home</a></li>
                             <li class="to-section"><a href="signup.jsp">Registrarse</a></li>
                             
                             <!-- <li class="to-section"><a href="#team">Team</a></li>
                             <li class="to-section"><a href="#portfolio">Portfolio</a></li>-->                            
                             
                             <li class="to-section"><a href="#contact">Contact</a></li>
-                            <li><a class="social-icon" href="#"><i class="icon icon-social-twitter"></i></a></li>
-                            <li><a class="social-icon" href="#"><i class="icon icon-social-facebook"></i></a></li>
-                            <li><a class="social-icon" href="#"><i class="icon icon-support"></i></a></li>
+                            <li><a class="social-icon" href="http://www.twitter.com"><i class="icon icon-social-twitter"></i></a></li>
+                            <li><a class="social-icon" href="http://www.facebook.com"><i class="icon icon-social-facebook"></i></a></li>
+                            <li><a class="social-icon" href="http://www.google.com"><i class="icon icon-support"></i></a></li>
                       </ul>
                     </div><!-- /.navbar-collapse -->
 				</div><!-- /.container -->
