@@ -263,14 +263,11 @@
                     <div id="filters-container-fullwidth" class="cbp-l-filters-alignCenter wow fadeInUp">
                         <c:choose>
                         	<c:when test="${not empty categorias }">
-	                        	<p>$categorias.descripcion</p>
 		                        <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">Todos<div class="cbp-filter-counter"></div></div>
-		                        <div data-filter=".identity" class="cbp-filter-item">Identity<div class="cbp-filter-counter"></div></div>
-		                        <div data-filter=".web-design" class="cbp-filter-item">Web Design<div class="cbp-filter-counter"></div></div>
-		                        <div data-filter=".graphic" class="cbp-filter-item">Graphic<div class="cbp-filter-counter"></div></div>
-		                        <div data-filter=".logo" class="cbp-filter-item">Logo<div class="cbp-filter-counter"></div></div>
-		                        <div data-filter=".motion" class="cbp-filter-item">Motion<div class="cbp-filter-counter"></div></div>
-                    		</c:when>
+		                        	<c:forEach items="${categorias }" var="categoria">
+		                        		<div data-filter=".identity" class="cbp-filter-item">${categoria.descripcion_categoria }<div class="cbp-filter-counter"></div></div>
+		                       		</c:forEach>
+		                        </c:when>
                     		<c:otherwise>
                     		<div data-filter="*" class="cbp-filter-item-active cbp-filter-item">Todos<div class="cbp-filter-counter"></div></div>
                     		</c:otherwise>

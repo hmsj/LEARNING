@@ -148,6 +148,7 @@ public class InicioServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setAttribute("categorias", categorias);
+		request.setAttribute("cursos", cursos);
 		String forwardJSP = "/principal.jsp";
 		forward(request, response, forwardJSP);
 	}
