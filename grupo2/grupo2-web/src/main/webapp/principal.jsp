@@ -265,7 +265,7 @@
                         	<c:when test="${not empty categorias }">
 		                        <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">Todos<div class="cbp-filter-counter"></div></div>
 		                        	<c:forEach items="${categorias }" var="categoria">
-		                        		<div data-filter=".identity" class="cbp-filter-item">${categoria.descripcion_categoria }<div class="cbp-filter-counter"></div></div>
+		                        		<div data-filter=".${categoria.descripcion_categoria }" class="cbp-filter-item">${categoria.descripcion_categoria }<div class="cbp-filter-counter"></div></div>
 		                       		</c:forEach>
 		                        </c:when>
                     		<c:otherwise>
@@ -276,20 +276,23 @@
 
                     <div id="grid-container-fullwidth" class="cbp-l-grid-fullScreen">
                         <ul>   
-                            
-                            <li class="cbp-item effect effects identity logo">
-                                <div class="img">
-                                    <img src="img/portfolio/1.jpg" class="img-responsive" alt="" />
-                                    <div class="overlay">
-                                        <ul class="expand">
-                                            <li class="cbp-l-caption-title">Tu curso online</li>
-                                            <li class="cbp-l-caption-desc">by grupo 2</li>
-                                            <li class="cbp-l-icon"><a href="img/portfolio/fullsize/1.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-info"></i></a></li>
-                                            <li class="cbp-l-icon"><a href="projects/project1.html" class="cbp-singlePage"><i class="icon-handbag"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li> 
+                            <c:if test="${not empty cursos }">
+                            	<c:forEach items="${cursos }" var="curso">
+		                            <li class="cbp-item effect effects ${curso.categoria.descripcion_categoria }">
+		                                <div class="img">
+		                                    <img src="img/portfolio/1.jpg" class="img-responsive" alt="" />
+		                                    <div class="overlay">
+		                                        <ul class="expand">
+		                                            <li class="cbp-l-caption-title">${curso.titulo }</li>
+		                                            <li class="cbp-l-caption-desc">by ${curso.profesor_titular.nombre }</li>
+		                                            <li class="cbp-l-icon"><a href="img/portfolio/fullsize/1.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-info"></i></a></li>
+		                                            <li class="cbp-l-icon"><a href="projects/project1.html" class="cbp-singlePage"><i class="icon-handbag"></i></a></li>
+		                                        </ul>
+		                                    </div>
+		                                </div>
+		                            </li>
+	                            </c:forEach> 
+                            </c:if>
                         </ul>
                     </div>
                     
@@ -314,14 +317,27 @@
                         
                         <div class="clients">
                             <div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
-                                <!-- <a href="#">
-                                    <div class="logo-dark">
-                                        <img src="img/clients/logo-1-dark.png" class="img-responsive" alt="client">
-                                    </div>
-                                    <div class="logo-light">
-                                        <img src="img/clients/logo-1-light.png" class="img-responsive" alt="client">
-                                    </div>
-                                </a> -->   
+                                <c:if test="${not empty cursos }">
+                            		<c:forEach items="${cursos }" var="curso">
+                                		<c:if test="${curso.destacado==1 }">
+			                                <a href="#">
+			                                    <div class="logo-dark">
+			                                    	<c:choose>
+			                                    		<c:when test="${not empty curso.imagen }">
+			                                        		<img src="${curso.imagen }" class="img-responsive" alt="client">
+			                                    		</c:when>
+			                                    		<c:otherwise>
+			                                           		<img src="img/clients/logo-1-dark.png" class="img-responsive" alt="client">
+			                                    		</c:otherwise>
+			                                    	</c:choose>
+			                                    </div>
+			                                    <div class="logo-light">
+			                                        <img src="img/clients/logo-1-light.png" class="img-responsive" alt="client">
+			                                    </div>
+			                                </a>   
+		                                </c:if>
+		                            </c:forEach>
+		                         </c:if>
                             </div>
                         </div>       
                     </div>
