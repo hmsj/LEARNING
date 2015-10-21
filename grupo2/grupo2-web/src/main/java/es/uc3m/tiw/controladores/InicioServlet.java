@@ -1,6 +1,7 @@
 package es.uc3m.tiw.controladores;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,8 +32,19 @@ import es.uc3m.tiw.dominios.Usuario;
 @WebServlet("/inicio")
 public class InicioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
+    
+	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+	private ArrayList<Curso> cursos = new ArrayList<Curso>();
+	private ArrayList<ProfesorInvitado> pInvitados = new ArrayList<ProfesorInvitado>();
+	private ArrayList<Direccion> direcciones = new ArrayList<Direccion>();
+	private ArrayList<DatosBancarios> datosBancarios = new ArrayList<DatosBancarios>();
+	private ArrayList<Leccion> lecciones = new ArrayList<Leccion>();
+	private ArrayList<Seccion> secciones = new ArrayList<Seccion>();
+	private ArrayList<Material> materiales = new ArrayList<Material>();
+	private ArrayList<Calificacion> calificaciones = new ArrayList<Calificacion>();
+    private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+	
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public InicioServlet() {
@@ -74,37 +86,59 @@ public class InicioServlet extends HttpServlet {
 		Categoria categoria5 = new Categoria(5, "Idiomas");
 		Categoria categoria6 = new Categoria(6, "Negocios");
 		Categoria categoria7 = new Categoria(7, "Otros");	
+		categorias.add(categoria1);
+		categorias.add(categoria2);
+		categorias.add(categoria3);
+		categorias.add(categoria4);
+		categorias.add(categoria5);
+		categorias.add(categoria6);
+		categorias.add(categoria7);
 		
 		Direccion direccion1 = new Direccion(1, "calle 1", 1, "Madrid", "Colmenarejo", "28000", "España");
 		Direccion direccion2 = new Direccion(2, "calle 2", 2, "Madrid", "Colmenarejo", "28000", "España");
 		Direccion direccion3 = new Direccion(3, "calle 3", 3, "Madrid", "Colmenarejo", "28000", "España");
-
+		direcciones.add(direccion1);
+		direcciones.add(direccion2);
+		direcciones.add(direccion3);
+		
 		DatosBancarios banco1 = new DatosBancarios(1, "1245413235", "12/12/2020", 123);
 		DatosBancarios banco2 = new DatosBancarios(2, "5875467868", "1/2/2020", 321);
 		DatosBancarios banco3 = new DatosBancarios(3, "5832147868", "5/3/2018", 321);
-
+		datosBancarios.add(banco1);
+		datosBancarios.add(banco2);
+		datosBancarios.add(banco3);
+		
 		Usuario usuario1 = new Usuario("alumnoUser", "Alumno", "Registrado", "alumno@dokulearning.es","123456", "", "123456987", "", "", 20, tipoUsuario1, direccion1, banco1);
 		Usuario usuario2 = new Usuario(	"profeUser", "Profesor", "Registrado", "profesor@dokulearning.es", "123456", "", "987456213", "", "", 58, tipoUsuario2, direccion2, banco2);
 		Usuario usuario3 = new Usuario(	"adminUser", "Administrador", "Registrado", "admin@dokulearning.es", "123456", "", "541664884", "", "", 35, tipoUsuario3, direccion3, banco3);
 		Usuario usuario4 = new Usuario(	"profeUser2", "Profe", "Invitado", "profeInvitado@dokulearning.es", "123456", "", "987456951", "", "", 38, tipoUsuario2, direccion3, banco2);
-
+		usuarios.add(usuario1);
+		usuarios.add(usuario2);
+		usuarios.add(usuario3);
+		usuarios.add(usuario4);
+		
 		Oferta oferta1 = new Oferta(1, tipoOferta2, 30, "31/10/2015");
 		
 		double precioInicial = 50;
 		double preciofinal = calcularPrecio(precioInicial, oferta1);
 		
 		Curso curso1 = new Curso(1, "Curso 1", "Descripcion curso 1", 25, usuario2, "", "", 1, 1, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		cursos.add(curso1);
 		
-		Calificacion calificacion = new Calificacion(usuario1, curso1, 6.5, tipoLogro1);
+		Calificacion calificacion1 = new Calificacion(usuario1, curso1, 6.5, tipoLogro1);
+		calificaciones.add(calificacion1);
 		
 		Seccion seccion1 = new Seccion(1, "Seccion1", curso1);
+		secciones.add(seccion1);
 		
 		Leccion leccion1 = new Leccion(1, "Leccion1", curso1, "Descripcion leccion 1", seccion1); 
+		lecciones.add(leccion1);
 		
 		Material material1 = new Material(1, tipoMaterial1, leccion1, ""); 
+		materiales.add(material1);
 		
 		ProfesorInvitado profeInvitado = new ProfesorInvitado(usuario4, curso1);
-	
+		pInvitados.add(profeInvitado);
 	}
 
 

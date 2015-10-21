@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//ES"
    "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -283,161 +285,6 @@
                                     </div>
                                 </div>
                             </li> 
-                            
-                            <li class="cbp-item effect effects identity logo">
-                                <div class="img">
-                                    <img src="img/portfolio/2.jpg" class="img-responsive" alt="" />
-                                    <div class="overlay">
-                                        <ul class="expand">
-                                            <li class="cbp-l-caption-title">Pro Bicycle</li>
-                                            <li class="cbp-l-caption-desc">by grupo 2</li>
-                                            <li class="cbp-l-icon"><a href="img/portfolio/fullsize/2.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
-                                            <li class="cbp-l-icon"><a href="projects/project2.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="cbp-item effect effects web-design">
-                                <div class="img">
-                                    <img src="img/portfolio/3.jpg" class="img-responsive" alt="" />
-                                    <div class="overlay">
-                                        <ul class="expand">
-                                            <li class="cbp-l-caption-title">Door Cover</li>
-                                            <li class="cbp-l-caption-desc">by grupo 2</li>
-                                            <li class="cbp-l-icon"><a href="img/portfolio/fullsize/3.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
-                                            <li class="cbp-l-icon"><a href="projects/project3.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="cbp-item effect effects motion identity">
-                                <div class="img">
-                                    <img src="img/portfolio/4.jpg" class="img-responsive" alt="" />
-                                    <div class="overlay">
-                                        <ul class="expand">
-                                            <li class="cbp-l-caption-title">Pro Close-up</li>
-                                            <li class="cbp-l-caption-desc">by grupo 2</li>
-                                            <li class="cbp-l-icon"><a class="cbp-lightbox" href="https://www.youtube.com/watch?v=3wbvpOIIBQA" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
-                                            <li class="cbp-l-icon"><a href="projects/project4.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="cbp-item effect effects identity">
-                                <div class="img">
-                                    <img src="img/portfolio/5.jpg" class="img-responsive" alt="" />
-                                    <div class="overlay">
-                                        <ul class="expand">
-                                            <li class="cbp-l-caption-title">Bohemian Coding</li>
-                                            <li class="cbp-l-caption-desc">by grupo 2</li>
-                                            <li class="cbp-l-icon"><a href="img/portfolio/fullsize/5.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
-                                            <li class="cbp-l-icon"><a href="projects/project5.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="cbp-item effect effects motion logo">
-                                <div class="img">
-                                    <img src="img/portfolio/6.jpg" class="img-responsive" alt="" />
-                                    <div class="overlay">
-                                        <ul class="expand">
-                                            <li class="cbp-l-caption-title">Poster Wall</li>
-                                            <li class="cbp-l-caption-desc">by grupo 2</li>
-                                            <li class="cbp-l-icon"><a href="https://www.youtube.com/watch?v=9No-FiEInLA" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
-                                            <li class="cbp-l-icon"><a href="projects/project6.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="cbp-item effect effects web-design">
-                                <div class="img">
-                                    <img src="img/portfolio/7.jpg" class="img-responsive" alt="" />
-                                    <div class="overlay">
-                                        <ul class="expand">
-                                            <li class="cbp-l-caption-title">Red Bridge</li>
-                                            <li class="cbp-l-caption-desc">by grupo 2</li>
-                                            <li class="cbp-l-icon"><a href="img/portfolio/fullsize/7.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
-                                            <li class="cbp-l-icon"><a href="projects/project7.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="cbp-item effect effects web-design">
-                                <div class="img">
-                                    <img src="img/portfolio/8.jpg" class="img-responsive" alt="" />
-                                    <div class="overlay">
-                                        <ul class="expand">
-                                            <li class="cbp-l-caption-title">V8 M52 Engine</li>
-                                            <li class="cbp-l-caption-desc">by grupo 2</li>
-                                            <li class="cbp-l-icon"><a href="img/portfolio/fullsize/8.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
-                                            <li class="cbp-l-icon"><a href="projects/project8.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="cbp-item effect effects identity motion">
-                                <div class="img">
-                                    <img src="img/portfolio/9.jpg" class="img-responsive" alt="" />
-                                    <div class="overlay">
-                                        <ul class="expand">
-                                            <li class="cbp-l-caption-title">Ergonomic Pad</li>
-                                            <li class="cbp-l-caption-desc">by grupo 2</li>
-                                            <li class="cbp-l-icon"><a href="http://vimeo.com/16465813" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
-                                            <li class="cbp-l-icon"><a href="projects/project9.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li> 
-                            
-                            <li class="cbp-item effect effects web-design graphic">
-                                <div class="img">
-                                    <img src="img/portfolio/10.jpg" class="img-responsive" alt="" />
-                                    <div class="overlay">
-                                        <ul class="expand">
-                                            <li class="cbp-l-caption-title">Cooling Tower</li>
-                                            <li class="cbp-l-caption-desc">by grupo 2</li>
-                                            <li class="cbp-l-icon"><a href="img/portfolio/fullsize/10.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
-                                            <li class="cbp-l-icon"><a href="projects/project10.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="cbp-item effect effects graphic logo">
-                                <div class="img">
-                                    <img src="img/portfolio/11.jpg" class="img-responsive" alt="" />
-                                    <div class="overlay">
-                                        <ul class="expand">
-                                            <li class="cbp-l-caption-title">Still Motion</li>
-                                            <li class="cbp-l-caption-desc">by grupo 2</li>
-                                            <li class="cbp-l-icon"><a href="img/portfolio/fullsize/11.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
-                                            <li class="cbp-l-icon"><a href="projects/project11.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="cbp-item effect effects graphic logo">
-                                <div class="img">
-                                    <img src="img/portfolio/12.jpg" class="img-responsive" alt="" />
-                                    <div class="overlay">
-                                        <ul class="expand">
-                                            <li class="cbp-l-caption-title">Print Design</li>
-                                            <li class="cbp-l-caption-desc">by grupo 2</li>
-                                            <li class="cbp-l-icon"><a href="img/portfolio/fullsize/12.jpg" class="cbp-lightbox" data-title="Dashboard<br>by Wunderwelt"><i class="icon-magnifier"></i></a></li>
-                                            <li class="cbp-l-icon"><a href="projects/project12.html" class="cbp-singlePage"><i class="icon-link"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li> 
-                            
                         </ul>
                     </div>
                     
@@ -457,145 +304,21 @@
                         
                         <div class="col-md-12 text-center">
                             <h3 class="section-title white wow fadeInUp">Cursos Destacados</h3>
-                            <p class="subheading grey wow fadeInUp">Estos son nuestros cursos con mas exito <span class="highlight">4000 satisfied</span> customers say about us!</p>
+                            <p class="subheading grey wow fadeInUp">Estos son nuestros cursos con mas <span class="highlight">exito</span></p>
                         </div>
                         
                         <div class="clients">
-                            
                             <div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
-                                <a href="#">
+                                <!-- <a href="#">
                                     <div class="logo-dark">
                                         <img src="img/clients/logo-1-dark.png" class="img-responsive" alt="client">
                                     </div>
                                     <div class="logo-light">
                                         <img src="img/clients/logo-1-light.png" class="img-responsive" alt="client">
                                     </div>
-                                </a>    
+                                </a> -->   
                             </div>
-                            
-                            <div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
-                                <a href="#">
-                                    <div class="logo-dark">
-                                        <img src="img/clients/logo-2-dark.png" class="img-responsive" alt="client">
-                                    </div>
-                                    <div class="logo-light">
-                                        <img src="img/clients/logo-2-light.png" class="img-responsive" alt="client">
-                                    </div>
-                                </a>    
-                            </div>
-                            
-                            <div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
-                                <a href="#">
-                                    <div class="logo-dark">
-                                        <img src="img/clients/logo-3-dark.png" class="img-responsive" alt="client">
-                                    </div>
-                                    <div class="logo-light">
-                                        <img src="img/clients/logo-3-light.png" class="img-responsive" alt="client">
-                                    </div>
-                                </a>    
-                            </div>
-                            
-                            <div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
-                                <a href="#">
-                                    <div class="logo-dark">
-                                        <img src="img/clients/logo-4-dark.png" class="img-responsive" alt="client">
-                                    </div>
-                                    <div class="logo-light">
-                                        <img src="img/clients/logo-4-light.png" class="img-responsive" alt="client">
-                                    </div>
-                                </a>    
-                            </div>
-                            
-                            <div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
-                                <a href="#">
-                                    <div class="logo-dark">
-                                        <img src="img/clients/logo-5-dark.png" class="img-responsive" alt="client">
-                                    </div>
-                                    <div class="logo-light">
-                                        <img src="img/clients/logo-5-light.png" class="img-responsive" alt="client">
-                                    </div>
-                                </a>    
-                            </div>
-                            
-                            <div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
-                                <a href="#">
-                                    <div class="logo-dark">
-                                        <img src="img/clients/logo-6-dark.png" class="img-responsive" alt="client">
-                                    </div>
-                                    <div class="logo-light">
-                                        <img src="img/clients/logo-6-light.png" class="img-responsive" alt="client">
-                                    </div>
-                                </a>    
-                            </div>
-                            
-                            <div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
-                                <a href="#">
-                                    <div class="logo-dark">
-                                        <img src="img/clients/logo-7-dark.png" class="img-responsive" alt="client">
-                                    </div>
-                                    <div class="logo-light">
-                                        <img src="img/clients/logo-7-light.png" class="img-responsive" alt="client">
-                                    </div>
-                                </a>    
-                            </div>
-                            
-                            <div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
-                                <a href="#">
-                                    <div class="logo-dark">
-                                        <img src="img/clients/logo-8-dark.png" class="img-responsive" alt="client">
-                                    </div>
-                                    <div class="logo-light">
-                                        <img src="img/clients/logo-8-light.png" class="img-responsive" alt="client">
-                                    </div>
-                                </a>    
-                            </div>
-                            
-                            <div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
-                                <a href="#">
-                                    <div class="logo-dark">
-                                        <img src="img/clients/logo-9-dark.png" class="img-responsive" alt="client">
-                                    </div>
-                                    <div class="logo-light">
-                                        <img src="img/clients/logo-9-light.png" class="img-responsive" alt="client">
-                                    </div>
-                                </a>    
-                            </div>
-                            
-                            <div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
-                                <a href="#">
-                                    <div class="logo-dark">
-                                        <img src="img/clients/logo-10-dark.png" class="img-responsive" alt="client">
-                                    </div>
-                                    <div class="logo-light">
-                                        <img src="img/clients/logo-10-light.png" class="img-responsive" alt="client">
-                                    </div>
-                                </a>    
-                            </div>
-                            
-                            <div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
-                                <a href="#">
-                                    <div class="logo-dark">
-                                        <img src="img/clients/logo-11-dark.png" class="img-responsive" alt="client">
-                                    </div>
-                                    <div class="logo-light">
-                                        <img src="img/clients/logo-11-light.png" class="img-responsive" alt="client">
-                                    </div>
-                                </a>    
-                            </div>
-                            
-                            <div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
-                                <a href="#">
-                                    <div class="logo-dark">
-                                        <img src="img/clients/logo-12-dark.png" class="img-responsive" alt="client">
-                                    </div>
-                                    <div class="logo-light">
-                                        <img src="img/clients/logo-12-light.png" class="img-responsive" alt="client">
-                                    </div>
-                                </a>    
-                            </div>
-                            
-                        </div>
-                        
+                        </div>       
                     </div>
                 </div>
             </section>
