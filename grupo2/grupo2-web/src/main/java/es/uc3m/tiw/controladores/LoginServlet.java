@@ -2,6 +2,7 @@ package es.uc3m.tiw.controladores;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +25,13 @@ public class LoginServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+
+	@Override
+	public void init() throws ServletException {
+		// TODO Auto-generated method stub
+		super.init();
+		ServletContext contexto = getServletContext();
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

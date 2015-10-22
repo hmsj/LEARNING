@@ -41,7 +41,7 @@
 		<div class="collapse navbar-collapse" id="main-nav">
 			<ul class="nav navbar-nav  navbar-right">
 
-				<li><a class="to-section" href="index.jsp">Home</a></li>
+				<li><a class="to-section" href="principal.jsp">Home</a></li>
 				<li class="to-section"><a href="login.jsp">Login</a></li>
 				<!-- <li class="to-section"><a href="#team">Team</a></li>
                             <li class="to-section"><a href="#portfolio">Portfolio</a></li>

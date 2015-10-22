@@ -33,6 +33,7 @@ import es.uc3m.tiw.dominios.Usuario;
  */
 @WebServlet("/inicio")
 public class InicioServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
     private static final int destacado = 1;
     private static final int nodestacado = 0;
@@ -66,11 +67,9 @@ public class InicioServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	@Override
-	public void init() throws ServletException {
-		// TODO Auto-generated method stub		
-		TipoUsuario tipoUsuario1 = new TipoUsuario(1, "alumno");
+    
+    public void init(javax.servlet.ServletConfig arg0) throws ServletException {
+    	TipoUsuario tipoUsuario1 = new TipoUsuario(1, "alumno");
 		TipoUsuario tipoUsuario2 = new TipoUsuario(2, "profesor");
 		TipoUsuario tipoUsuario3 = new TipoUsuario(3, "administrador");
 		tipoUsuarios.add(tipoUsuario1);
@@ -204,6 +203,31 @@ public class InicioServlet extends HttpServlet {
 		
 		ProfesorInvitado profeInvitado = new ProfesorInvitado(usuario4, curso1);
 		pInvitados.add(profeInvitado);
+		
+		arg0.getServletContext().setAttribute("alumnos", alumnos);
+		arg0.getServletContext().setAttribute("calificaciones", calificaciones);
+		arg0.getServletContext().setAttribute("categorias", categorias);
+		arg0.getServletContext().setAttribute("cursos", cursos);
+		arg0.getServletContext().setAttribute("datosBancarios", datosBancarios);
+		arg0.getServletContext().setAttribute("direcciones", direcciones);
+		arg0.getServletContext().setAttribute("lecciones", lecciones);
+		arg0.getServletContext().setAttribute("materiales", materiales);
+		arg0.getServletContext().setAttribute("ofertas", ofertas);
+		arg0.getServletContext().setAttribute("profesInvitados",pInvitados);
+		arg0.getServletContext().setAttribute("secciones", secciones);
+		arg0.getServletContext().setAttribute("tipoDificultades", tipoDificultades);
+		arg0.getServletContext().setAttribute("tipoLogros", tipoLogros);
+		arg0.getServletContext().setAttribute("tipoMateriales", tipoMateriales);
+		arg0.getServletContext().setAttribute("tipoOfertas", tipoOfertas);
+		arg0.getServletContext().setAttribute("tipoUsuarios", tipoUsuarios);
+		arg0.getServletContext().setAttribute("usuarios", usuarios);
+	};
+
+	@Override
+	public void init() throws ServletException {
+		// TODO Auto-generated method stub
+		super.init();
+		
 	}
 
 
@@ -212,23 +236,7 @@ public class InicioServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setAttribute("alumnos", alumnos);
-		request.setAttribute("calificaciones", calificaciones);
-		request.setAttribute("categorias", categorias);
-		request.setAttribute("cursos", cursos);
-		request.setAttribute("datosBancarios", datosBancarios);
-		request.setAttribute("direcciones", direcciones);
-		request.setAttribute("lecciones", lecciones);
-		request.setAttribute("materiales", materiales);
-		request.setAttribute("ofertas", ofertas);
-		request.setAttribute("profesInvitados",pInvitados);
-		request.setAttribute("secciones", secciones);
-		request.setAttribute("tipoDificultades", tipoDificultades);
-		request.setAttribute("tipoLogros", tipoLogros);
-		request.setAttribute("tipoMateriales", tipoMateriales);
-		request.setAttribute("tipoOfertas", tipoOfertas);
-		request.setAttribute("tipoUsuarios", tipoUsuarios);
-		request.setAttribute("usuarios", usuarios);
+		
 		String forwardJSP = "/principal.jsp";
 		forward(request, response, forwardJSP);
 	}
