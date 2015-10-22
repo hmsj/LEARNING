@@ -251,7 +251,7 @@
 								<c:when test="${curso.validado ==  1}">
 									<li class="cbp-item effect effects ${curso.categoria.descripcion_categoria }">
 										<div class="img">
-											<img src="${curso.imagen }" class="img-responsive" alt="" style = "height:100%"/>
+											<img src="${curso.imagen }" class="img-responsive" alt="" style = "width:100%;height:100%;"/>
 											<div class="overlay">
 												<ul class="expand">
 													<li class="cbp-l-caption-title">${curso.titulo }</li>
