@@ -75,7 +75,7 @@
                         <ul>
                             <!-- SLIDE 1 -->
                             <li data-transition="fade" data-slotamount="7" data-masterspeed="2000" data-thumb="img/backgrounds/bg-home-fullscreen.jpg" data-delay="10000"  data-saveperformance="on" data-title="We Are Vossen">
-                                <img src="img/backgrounds/startup-photos-medium.jpg" alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+                                <img src="img/backgrounds/bg-1.jpg" alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
 
                                     <!-- Home Heading -->
                                     <div class="tp-caption sft"
@@ -90,39 +90,8 @@
                                         data-endelementdelay="0.1"
                                         data-endspeed="300"
                                         style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
-                                        <h2 class="home-heading op-1">DokuLearning</h2>
+                                        <h2 class="home-heading op-1">Cursos DokuLearning</h2>
                                     </div>
-                                    <!-- Home Subheading -->
-                                    <div class="tp-caption home-subheading sft fadeout"
-                                        data-x="center" 
-                                        data-y="360" 
-                                        data-speed="1200"
-                                        data-start="1350"
-                                        data-easing="Power3.easeInOut"
-                                        data-splitin="none"
-                                        data-splitout="none"
-                                        data-elementdelay="0.1"
-                                        data-endelementdelay="0.1"
-                                        data-endspeed="300"
-                                        style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
-                                        <div class="op-1">2015 · TU PORTAL DE E-LEARNING</div>
-                                    </div>
-                                    <!-- Home Button -->
-                                    <div class="tp-caption home-button sft fadeout"
-                                        data-x="center" 
-                                        data-y="400" 
-                                        data-speed="1200"
-                                        data-start="1550"
-                                        data-easing="Power3.easeInOut"
-                                        data-splitin="none"
-                                        data-splitout="none"
-                                        data-elementdelay="0.1"
-                                        data-endelementdelay="0.1"
-                                        data-endspeed="300"
-                                        style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
-                                        <div class="op-1"><a href="#features" class="btn btn-primary btn-scroll">ACCEDER</a></div>
-                                    </div>
-
                             </li>
 
                         </ul>
@@ -146,117 +115,14 @@
             
             <!-- Start Features Section -->
             <section id="features">
-                <div class="container">                      
-                    <div class="row features-row wow fadeInUp">
-                        
-                        <div class="col-md-4 col-sm-12 feature-column">
-                            <div class="feature-icon">
-                                <i class="icon-eyeglasses size-2x highlight"></i>
-                                <i class="icon-eyeglasses back-icon"></i>
-                            </div>
-                            <div class="feature-info">
-                                <h4>Parallax Design</h4>
-                                <p class="feature-description">Vivamus molestie phasellus enim sed orci eu pharetra. Donec posuere nunc vitae tortor sagittis feugiat in non massa.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-12 feature-column">
-                            <div class="feature-icon">
-                                <i class="icon-lock-open size-2x highlight"></i>
-                                <i class="icon-lock-open back-icon"></i>
-                            </div>
-                            <div class="feature-info">
-                                <h4>Fully Responsive</h4>
-                                <p class="feature-description">Vivamus molestie phasellus enim sed orci eu pharetra. Donec posuere nunc vitae tortor sagittis feugiat in non massa.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-12 feature-column">
-                            <div class="feature-icon">
-                                <i class="icon-energy size-2x highlight"></i>
-                                <i class="icon-energy back-icon"></i>
-                            </div>
-                            <div class="feature-info">
-                                <h4>Fast & Smooth</h4>
-                                <p class="feature-description">Vivamus molestie phasellus enim sed orci eu pharetra. Donec posuere nunc vitae tortor sagittis feugiat in non massa.</p>
-                            </div>
-                        </div>
-                                
-                    </div>   
-                    
-                    <div class="row wow fadeInUp">
-                        
-                        <div class="col-md-4 col-sm-12 feature-column">
-                            <div class="feature-icon">
-                                <i class="icon-settings size-2x highlight"></i>
-                                <i class="icon-settings back-icon"></i>
-                            </div>
-                            <div class="feature-info">
-                                <h4>Seo Optimized </h4>
-                                <p class="feature-description">Vivamus molestie phasellus enim sed orci eu pharetra. Donec posuere nunc vitae tortor sagittis feugiat in non massa.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-12 feature-column">
-                            <div class="feature-icon">
-                                <i class="icon-book-open size-2x highlight"></i>
-                                <i class="icon-book-open back-icon"></i>
-                            </div>
-                            <div class="feature-info">
-                                <h4>Clean Code</h4>
-                                <p class="feature-description">Vivamus molestie phasellus enim sed orci eu pharetra. Donec posuere nunc vitae tortor sagittis feugiat in non massa.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-12 feature-column">
-                            <div class="feature-icon">
-                                <i class="icon-support size-2x highlight"></i>
-                                <i class="icon-support back-icon"></i>
-                            </div>
-                            <div class="feature-info">
-                                <h4>Free 24/7 Support</h4>
-                                <p class="feature-description">Vivamus molestie phasellus enim sed orci eu pharetra. Donec posuere nunc vitae tortor sagittis feugiat in non massa.</p>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </section>
-            <!--End Features Section -->
-            
-            <!-- Start About Section --> 
-            <section id="about" class="parallax-section-1"> 
-                <div class="container">
-                    <div class="row">
-                        
-                        <div class="col-md-6 text-left about-text">
-                            <h2 class="content-title white wow fadeInUp">About us.</h2>          
-                            <p class="grey wow fadeInUp">Fusce faucibus tincidunt nulla, tincidunt sagittis magna venenatis quis. Proin commodo eu ipsum eu suscipit. In dapibus arcu sit amet imperdiet posuere. Praesent condimentum nulla at mauris ornare, eget consequat felis euismod. Praesent condimentum nulla at mauris ornare.</p> 
-				            <p class="grey wow fadeInUp">Vivamus a placerat ante. Duis vulputate nibh sit amet augue vehicula, mattis viverra purus tristique. Integer lobortis erat in placerat fermentum. Sed luctus varius leo ac posuere. Integer eget est vitae dolor. Vivamus a placerat ante. Duis vulputate nibh sit amet augue vehicula, mattis viverra purus tristique. Integer lobortis erat in placerat fermentum. Sed luctus varius leo ac posuere. Integer eget est vitae dolor.</p>
-                        </div>
-                        
-                        <div class="col-md-6 wow fadeInUp">
-                            <div class="video-container">
-                                <iframe src="http://player.vimeo.com/video/115919099?title=0&amp;byline=0&amp;portrait=0&amp;color=fff" allowfullscreen></iframe>
-                            </div>
-                        </div>
-
-                	</div>
-                </div>
-            </section>
-        	<!-- End About Section -->
-            
-            <!-- Start Team Section -->
-            <section id="team">
-                <div class="container"> 
-                    
-                    <div class="col-md-12 text-center wow fadeInUp">
-                        <h3 class="section-title">Meet the Crew.</h3> 
-                        <p class="subheading">Interdisciplinary team with <span class="highlight">big ideas</span> and challenges.</p>
-                    </div>
-                    
-                    <div class="row">
+                <div class="container">   
+                <div><h2>Cursos de diseño</h2></div>                   
+                   <div class="row">
                             
-                        <div class="col-md-4 col-sm-4 team-member">
+                        <div class="col-md-6 col-sm-4 team-member">
                             <div class="effect effects wow fadeInUp">
                                 <div class="img">
-                                    <img src="img/team-1.jpg" class="img-responsive" alt="" />
+                                    <img src="img/courses/DiseñoVideojuegos.jpg" class="img-responsive" alt="" />
                                     <div class="overlay">
                                         <ul class="expand">
                                             <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-facebook"></i></a></li>
@@ -275,34 +141,11 @@
                                 <p>Vivamus motestues phasellus enim sed orci eu pharetra. Donec posuere nunc vitae tortor sagittis feugiat in non massa. Quisqueeas sed mi nec.</p>
                             </div>
                         </div>            
-                                
-                        <div class="col-md-4 col-sm-4 team-member">
-                            <div class="effect effects wow fadeInUp">
-                                <div class="img">
-                                    <img src="img/team-2.jpg" class="img-responsive" alt="" />
-                                    <div class="overlay">
-                                        <ul class="expand">
-                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-facebook"></i></a></li>
-                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-twitter"></i></a></li>
-                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-youtube"></i></a></li>
-                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-dribbble"></i></a></li>
-                                            <li class="social-icon"><a href="#" onClick="return false;"><i class=" icon-envelope-open"></i></a></li>
-                                        </ul>
-                                        <a class="close-overlay hidden">x</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="member-info wow fadeInUp">
-                                <h4>Jane Wunder</h4>
-                                <h5 class="highlight">PR Manager</h5>
-                                <p>Vivamus motestues phasellus enim sed orci eu pharetra. Donec posuere nunc vitae tortor sagittis feugiat in non massa. Quisqueeas sed mi nec.</p>
-                            </div>
-                        </div> 
                         
-                        <div class="col-md-4 col-sm-4 team-member">
+                        <div class="col-md-6 col-sm-4 team-member">
                             <div class="effect effects wow fadeInUp">
                                 <div class="img">
-                                    <img src="img/team-3.jpg" class="img-responsive" alt="" />
+                                    <img src="img/courses/DiseñoPhotoshop.jpg" class="img-responsive" alt="" />
                                     <div class="overlay">
                                         <ul class="expand">
                                             <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-facebook"></i></a></li>
@@ -323,6 +166,124 @@
                         </div>                        
                         
                     </div>
+
+                </div>
+            </section>
+            <!--End Features Section -->
+            
+            <!-- Start About Section --> 
+            <section id="about" class="parallax-section-1"> 
+               <div class="container">   
+                <div><h2 class="content-title white wow fadeInUp">Cursos de diseño</h2></div>                   
+                   <div class="row">
+                            
+                        <div class="col-md-6 col-sm-4 team-member">
+                            <div class="effect effects wow fadeInUp">
+                                <div class="img">
+                                    <img src="img/courses/DiseñoVideojuegos.jpg" class="img-responsive" alt="" />
+                                    <div class="overlay">
+                                        <ul class="expand">
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-facebook"></i></a></li>
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-twitter"></i></a></li>
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-youtube"></i></a></li>
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-dribbble"></i></a></li>
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class=" icon-envelope-open"></i></a></li>
+                                        </ul>
+                                        <a class="close-overlay hidden">x</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info wow fadeInUp">
+                                <h4>John Vossen</h4>
+                                <h5 class="highlight">CEO / Founder</h5>
+                                <p>Vivamus motestues phasellus enim sed orci eu pharetra. Donec posuere nunc vitae tortor sagittis feugiat in non massa. Quisqueeas sed mi nec.</p>
+                            </div>
+                        </div>            
+                        
+                        <div class="col-md-6 col-sm-4 team-member">
+                            <div class="effect effects wow fadeInUp">
+                                <div class="img">
+                                    <img src="img/courses/DiseñoPhotoshop.jpg" class="img-responsive" alt="" />
+                                    <div class="overlay">
+                                        <ul class="expand">
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-facebook"></i></a></li>
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-twitter"></i></a></li>
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-youtube"></i></a></li>
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-dribbble"></i></a></li>
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class=" icon-envelope-open"></i></a></li>
+                                        </ul>
+                                        <a class="close-overlay hidden">x</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info wow fadeInUp">
+                                <h4>Mike Nicecode</h4>
+                                <h5 class="highlight">Web Developer</h5>
+                                <p>Vivamus motestues phasellus enim sed orci eu pharetra. Donec posuere nunc vitae tortor sagittis feugiat in non massa. Quisqueeas sed mi nec.</p>
+                            </div>
+                        </div>                        
+                        
+                    </div>
+
+                </div>         
+                            
+            </section>
+        	<!-- End About Section -->
+            
+            <!-- Start Team Section -->
+            <section id="team">
+                <div class="container">   
+                <div><h2>Cursos de diseño</h2></div>                   
+                   <div class="row">
+                            
+                        <div class="col-md-6 col-sm-4 team-member">
+                            <div class="effect effects wow fadeInUp">
+                                <div class="img">
+                                    <img src="img/courses/DiseñoVideojuegos.jpg" class="img-responsive" alt="" />
+                                    <div class="overlay">
+                                        <ul class="expand">
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-facebook"></i></a></li>
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-twitter"></i></a></li>
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-youtube"></i></a></li>
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-dribbble"></i></a></li>
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class=" icon-envelope-open"></i></a></li>
+                                        </ul>
+                                        <a class="close-overlay hidden">x</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info wow fadeInUp">
+                                <h4>John Vossen</h4>
+                                <h5 class="highlight">CEO / Founder</h5>
+                                <p>Vivamus motestues phasellus enim sed orci eu pharetra. Donec posuere nunc vitae tortor sagittis feugiat in non massa. Quisqueeas sed mi nec.</p>
+                            </div>
+                        </div>            
+                        
+                        <div class="col-md-6 col-sm-4 team-member">
+                            <div class="effect effects wow fadeInUp">
+                                <div class="img">
+                                    <img src="img/courses/DiseñoPhotoshop.jpg" class="img-responsive" alt="" />
+                                    <div class="overlay">
+                                        <ul class="expand">
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-facebook"></i></a></li>
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-twitter"></i></a></li>
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-youtube"></i></a></li>
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class="icon-social-dribbble"></i></a></li>
+                                            <li class="social-icon"><a href="#" onClick="return false;"><i class=" icon-envelope-open"></i></a></li>
+                                        </ul>
+                                        <a class="close-overlay hidden">x</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info wow fadeInUp">
+                                <h4>Mike Nicecode</h4>
+                                <h5 class="highlight">Web Developer</h5>
+                                <p>Vivamus motestues phasellus enim sed orci eu pharetra. Donec posuere nunc vitae tortor sagittis feugiat in non massa. Quisqueeas sed mi nec.</p>
+                            </div>
+                        </div>                        
+                        
+                    </div>
+
                 </div>
             </section>
             <!-- End Team Section -->
