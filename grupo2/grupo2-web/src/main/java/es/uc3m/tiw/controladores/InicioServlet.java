@@ -157,8 +157,35 @@ public class InicioServlet extends HttpServlet {
 		double precioInicial = 50;
 		double preciofinal = calcularPrecio(precioInicial, oferta1);
 		
-		Curso curso1 = new Curso(1, "Curso 1", "Descripcion curso 1", 25, usuario2, "", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		Curso curso1 = new Curso(1, "Curso de diseño photoshop", "Aprende el manejo basico de Photoshop", 25, usuario2, "img/courses/DiseñoPhotoshop.jpg ", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		Curso curso2 = new Curso(2, "Curso de diseño de videojuegos", "Diseño de juegos y simulacion con 3d Unity", 25, usuario2, "img/courses/DiseñoVideojuegos.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		Curso curso3 = new Curso(3, "Curso de fotografia: el enfoque", "Sacale el maximo partido a tu camara", 25, usuario2, "img/courses/FotografiaEnfocar.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		Curso curso4 = new Curso(4, "Curso de fotografia nocturna", "Fotografia nocturna con tu camara digital", 25, usuario2, "img/courses/FotografiaNocturna.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		Curso curso5 = new Curso(5, "Curso de idiomas: Aleman", "Nivel intermedio de aleman con profesores nativos", 25, usuario2, "img/courses/IdiomaAleman.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		Curso curso6 = new Curso(6, "Curso de idiomas: Ingles", "Aprende ingles con 1000 palabras, metodo mejorado", 25, usuario2, "img/courses/IdiomaIngles.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		Curso curso7 = new Curso(7, "Curso de marketing digital", "Marketing basado en conocimiento de community manager", 25, usuario2, "img/courses/MarketingDigital.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		Curso curso8 = new Curso(8, "Curso de marketing directo", "Como conseguir la mejor impresion en las personas", 25, usuario2, "img/courses/MarketingDirecto.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		Curso curso9 = new Curso(9, "Curso de negocios: inversion de bolsa", "Aprende  invertir en funcion de tu perfil de riesgo", 25, usuario2, "img/courses/NegocioBolsa.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		Curso curso10 = new Curso(10, "Curso de negocios: estrategia", "Toma de decisiones en diferentes aspectos de mercado", 25, usuario2, "img/courses/NegociosEstrategia.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		Curso curso11 = new Curso(11, "Curso para emprendedores", "Como hacer un plan de empresa desde cero", 25, usuario2, "img/courses/OtrosEmprendimiento.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		Curso curso12 = new Curso(12, "Curso de ofimatica Microsoft", "Curso rapido de Word, Excell, Power Point", 25, usuario2, "img/courses/OtrosMicrosoft.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		Curso curso13 = new Curso(13, "Curso de programacion en Android", "Crea tu propia aplicacion en menos de una semana", 25, usuario2, "img/courses/ProgramacionAndroid.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		Curso curso14 = new Curso(14, "Curso de programacion web: HTML5", "Conceptos basicos e intermedios de programacion web", 25, usuario2, "img/courses/ProgramacionHtml5.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+
 		cursos.add(curso1);
+		cursos.add(curso2);
+		cursos.add(curso3);
+		cursos.add(curso4);
+		cursos.add(curso5);
+		cursos.add(curso6);
+		cursos.add(curso7);
+		cursos.add(curso8);
+		cursos.add(curso9);
+		cursos.add(curso10);
+		cursos.add(curso11);
+		cursos.add(curso12);
+		cursos.add(curso13);
+		cursos.add(curso14);
 		
 		Alumno alumno1 = new Alumno(usuario1, null, cursos);
 		alumnos.add(alumno1);
@@ -212,6 +239,8 @@ public class InicioServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		
+		
 		
 	}
 	
