@@ -1,6 +1,7 @@
 package es.uc3m.tiw.controladores;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,6 +37,10 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String usuario = request.getParameter("username");
+		String password = request.getParameter("password");
+		
+		String forwardJSP = "/principal.jsp";
 	}
 	
 	
@@ -51,6 +56,14 @@ public class LoginServlet extends HttpServlet {
 		}catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
+	}
+	
+	
+	private Usuario comprobarUsuario(String username, String password){
+		Usuario user = null;
+	
+		return user;
+		
 	}
 
 }
