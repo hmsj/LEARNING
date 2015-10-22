@@ -33,8 +33,12 @@ import es.uc3m.tiw.dominios.Usuario;
 @WebServlet("/inicio")
 public class InicioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-	private ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
+    private static final int destacado = 1;
+    private static final int nodestacado = 0;
+    private static final int validado = 1;
+    private static final int novalidado = 0;
+
+    private ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
 	private ArrayList<Calificacion> calificaciones = new ArrayList<Calificacion>();
     private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
 	private ArrayList<Curso> cursos = new ArrayList<Curso>();
@@ -152,7 +156,7 @@ public class InicioServlet extends HttpServlet {
 		double precioInicial = 50;
 		double preciofinal = calcularPrecio(precioInicial, oferta1);
 		
-		Curso curso1 = new Curso(1, "Curso 1", "Descripcion curso 1", 25, usuario2, "", "", 1, 1, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		Curso curso1 = new Curso(1, "Curso 1", "Descripcion curso 1", 25, usuario2, "", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
 		cursos.add(curso1);
 		
 		Alumno alumno1 = new Alumno(usuario1, null, cursos);
