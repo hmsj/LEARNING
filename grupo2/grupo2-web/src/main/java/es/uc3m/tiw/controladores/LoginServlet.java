@@ -1,15 +1,16 @@
 package es.uc3m.tiw.controladores;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-import javax.servlet.ServletContext;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.uc3m.tiw.dominios.*;
+import es.uc3m.tiw.dominios.Usuario;
 
 /**
  * Servlet implementation class LoginServlet
@@ -17,7 +18,7 @@ import es.uc3m.tiw.dominios.*;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	ArrayList<Usuario> usuarios = new ArrayList<Usuario>(); 
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -27,10 +28,11 @@ public class LoginServlet extends HttpServlet {
     }
 
 	@Override
-	public void init() throws ServletException {
+	public void init(ServletConfig arg0) throws ServletException {
 		// TODO Auto-generated method stub
-		super.init();
-		ServletContext contexto = getServletContext();
+		super.init(arg0);
+		
+		usuarios.add((Usuario) arg0.getServletContext().getAttribute("usuarios"));
 	}
 
 	/**
@@ -47,8 +49,14 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String usuario = request.getParameter("username");
 		String password = request.getParameter("password");
+		Usuario user = comprobarUsuario(usuario, password);
+		if(user!=null){
+			String forwardJSP = "/principal.jsp";
+			
+		}else{
+			String mensaje = "Datos incorrectos";
+		}
 		
-		String forwardJSP = "/principal.jsp";
 	}
 	
 	
@@ -69,7 +77,11 @@ public class LoginServlet extends HttpServlet {
 	
 	private Usuario comprobarUsuario(String username, String password){
 		Usuario user = null;
-	
+			for (Usuario usuario : usuarios){
+				if(username.equals(usuario.getUsername()) && password.equals(usuario.getPassword())){
+					user = usuario;
+				}
+			}
 		return user;
 		
 	}
