@@ -249,9 +249,11 @@
 						<c:forEach items="${cursos }" var="curso">
 							<c:choose>
 								<c:when test="${curso.validado ==  1}">
-									<li class="cbp-item effect effects ${curso.categoria.descripcion_categoria }">
+									<li
+										class="cbp-item effect effects ${curso.categoria.descripcion_categoria }">
 										<div class="img">
-											<img src="${curso.imagen }" class="img-responsive" alt="" style = "width:100%;height:100%;"/>
+											<img src="${curso.imagen }" class="img-responsive" alt=""
+												style="width: 100%; height: 100%;" />
 											<div class="overlay">
 												<ul class="expand">
 													<li class="cbp-l-caption-title">${curso.titulo }</li>
@@ -261,8 +263,9 @@
 														href="img/portfolio/fullsize/1.jpg" class="cbp-lightbox"
 														data-title="Dashboard<br>by Wunderwelt"><i
 															class="icon-info"></i></a></li>
-													<li class="cbp-l-icon"><a href="projects/project1.html"
-														class="cbp-singlePage"><i class="icon-handbag"></i></a></li>
+													<li class="cbp-l-icon"><a
+														href="projects/project1.html" class="cbp-singlePage"><i
+															class="icon-handbag"></i></a></li>
 												</ul>
 											</div>
 										</div>
@@ -297,39 +300,31 @@
 				</div>
 
 				<div class="clients">
-					<div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
-						<c:if test="${not empty cursos }">
-							<c:forEach items="${cursos }" var="curso">
-								<c:choose>
-									<c:when test="${curso.validado==1 }">
-										<c:if test="${curso.destacado==1 }">
-											<a href="#">
-												<div class="logo-dark">
-													<c:choose>
-														<c:when test="${not empty curso.imagen }">
-															<img src="${curso.imagen }" class="img-responsive"
-																alt="client">
-														</c:when>
-														<c:otherwise>
-															<img src="img/clients/logo-1-dark.png"
-																class="img-responsive" alt="client">
-														</c:otherwise>
-													</c:choose>
-												</div>
-												<div class="logo-light">
-													<img src="img/clients/logo-1-light.png"
-														class="img-responsive" alt="client">
-												</div>
-											</a>
-										</c:if>
-									</c:when>
-								</c:choose>
-							</c:forEach>
-						</c:if>
-					</div>
+					<c:if test="${not empty cursos }">
+						<c:forEach items="${cursos }" var="curso">
+							<c:if test="${curso.validado == 1 }">
+								<c:if test="${curso.destacado == 1 }">
+									<div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
+										<c:choose>
+											<c:when test="${not empty curso.imagen }">
+												<a href="#">
+													<div class="logo-dark">
+														<img src="${curso.imagen }" class="img-responsive"
+															alt="client">
+													</div>
+													<div class="logo-light">
+														<img src="img/clients/logo-1-light.png"
+															class="img-responsive" alt="client">
+													</div>
+												</a>
+											</c:when>
+										</c:choose>
+									</div>
+								</c:if>
+							</c:if>
+						</c:forEach>
+					</c:if>
 				</div>
-			</div>
-		</div>
 		</section>
 		<!-- End Testimonials Section -->
 
