@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import es.uc3m.tiw.dominios.Usuario;
 
@@ -28,11 +29,11 @@ public class LoginServlet extends HttpServlet {
     }
 
 	@Override
-	public void init(ServletConfig arg0) throws ServletException {
+	public void init(ServletConfig contexto) throws ServletException {
 		// TODO Auto-generated method stub
-		super.init(arg0);
+		super.init(contexto);
 		
-		usuarios.add((Usuario) arg0.getServletContext().getAttribute("usuarios"));
+		usuarios.add((Usuario) contexto.getServletContext().getAttribute("usuarios"));
 	}
 
 	/**
@@ -47,16 +48,22 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String forwardJSP = "";
+		String mensaje = "";
+		HttpSession sesion = request.getSession(true);
 		String usuario = request.getParameter("username");
 		String password = request.getParameter("password");
 		Usuario user = comprobarUsuario(usuario, password);
 		if(user!=null){
-			String forwardJSP = "/principal.jsp";
-			
+			forwardJSP = "/principal.jsp";	
+			sesion.setAttribute("usuario", user);
+			sesion.setAttribute("acceso", "ok");
 		}else{
-			String mensaje = "Datos incorrectos";
+			mensaje = "Datos incorrectos";
+			request.setAttribute("mensaje", mensaje);
+			forwardJSP = "/login.jsp";
 		}
-		
+		forward(request, response, forwardJSP);
 	}
 	
 	

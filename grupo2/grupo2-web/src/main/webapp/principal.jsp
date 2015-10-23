@@ -193,7 +193,7 @@
 			<div class="home-bottom">
 				<div class="container text-center">
 					<div class="move bounce">
-						<a href="#features" class="ion-ios-arrow-down btn-scroll"></a>
+						<a href="#portfolio" class="ion-ios-arrow-down btn-scroll"></a>
 					</div>
 				</div>
 			</div>

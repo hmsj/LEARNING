@@ -68,7 +68,7 @@ public class InicioServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-    public void init(javax.servlet.ServletConfig arg0) throws ServletException {
+    public void init(javax.servlet.ServletConfig contexto) throws ServletException {
     	TipoUsuario tipoUsuario1 = new TipoUsuario(1, "alumno");
 		TipoUsuario tipoUsuario2 = new TipoUsuario(2, "profesor");
 		TipoUsuario tipoUsuario3 = new TipoUsuario(3, "administrador");
@@ -204,23 +204,23 @@ public class InicioServlet extends HttpServlet {
 		ProfesorInvitado profeInvitado = new ProfesorInvitado(usuario4, curso1);
 		pInvitados.add(profeInvitado);
 		
-		arg0.getServletContext().setAttribute("alumnos", alumnos);
-		arg0.getServletContext().setAttribute("calificaciones", calificaciones);
-		arg0.getServletContext().setAttribute("categorias", categorias);
-		arg0.getServletContext().setAttribute("cursos", cursos);
-		arg0.getServletContext().setAttribute("datosBancarios", datosBancarios);
-		arg0.getServletContext().setAttribute("direcciones", direcciones);
-		arg0.getServletContext().setAttribute("lecciones", lecciones);
-		arg0.getServletContext().setAttribute("materiales", materiales);
-		arg0.getServletContext().setAttribute("ofertas", ofertas);
-		arg0.getServletContext().setAttribute("profesInvitados",pInvitados);
-		arg0.getServletContext().setAttribute("secciones", secciones);
-		arg0.getServletContext().setAttribute("tipoDificultades", tipoDificultades);
-		arg0.getServletContext().setAttribute("tipoLogros", tipoLogros);
-		arg0.getServletContext().setAttribute("tipoMateriales", tipoMateriales);
-		arg0.getServletContext().setAttribute("tipoOfertas", tipoOfertas);
-		arg0.getServletContext().setAttribute("tipoUsuarios", tipoUsuarios);
-		arg0.getServletContext().setAttribute("usuarios", usuarios);
+		contexto.getServletContext().setAttribute("alumnos", alumnos);
+		contexto.getServletContext().setAttribute("calificaciones", calificaciones);
+		contexto.getServletContext().setAttribute("categorias", categorias);
+		contexto.getServletContext().setAttribute("cursos", cursos);
+		contexto.getServletContext().setAttribute("datosBancarios", datosBancarios);
+		contexto.getServletContext().setAttribute("direcciones", direcciones);
+		contexto.getServletContext().setAttribute("lecciones", lecciones);
+		contexto.getServletContext().setAttribute("materiales", materiales);
+		contexto.getServletContext().setAttribute("ofertas", ofertas);
+		contexto.getServletContext().setAttribute("profesInvitados",pInvitados);
+		contexto.getServletContext().setAttribute("secciones", secciones);
+		contexto.getServletContext().setAttribute("tipoDificultades", tipoDificultades);
+		contexto.getServletContext().setAttribute("tipoLogros", tipoLogros);
+		contexto.getServletContext().setAttribute("tipoMateriales", tipoMateriales);
+		contexto.getServletContext().setAttribute("tipoOfertas", tipoOfertas);
+		contexto.getServletContext().setAttribute("tipoUsuarios", tipoUsuarios);
+		contexto.getServletContext().setAttribute("usuarios", usuarios);
 	};
 
 	@Override
