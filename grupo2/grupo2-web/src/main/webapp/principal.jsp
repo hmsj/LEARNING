@@ -42,7 +42,14 @@
 			<ul class="nav navbar-nav  navbar-right">
 
 				<li><a class="to-section" href="principal.jsp">Home</a></li>
-				<li class="to-section"><a href="login.jsp">Login</a></li>
+				<c:choose>
+					<c:when test="${sessionScope.usuario != null }">
+					<li class="to-section"><a href="/login">Logout</a></li>
+					</c:when>
+				<c:otherwise>
+					<li class="to-section"><a href="/login">Login</a></li>				
+				</c:otherwise>
+				</c:choose>
 				<!-- <li class="to-section"><a href="#team">Team</a></li>
                             <li class="to-section"><a href="#portfolio">Portfolio</a></li>
  -->

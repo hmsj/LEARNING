@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,8 +33,6 @@ public class LoginServlet extends HttpServlet {
 	public void init(ServletConfig contexto) throws ServletException {
 		// TODO Auto-generated method stub
 		super.init(contexto);
-		
-		usuarios.add((Usuario) contexto.getServletContext().getAttribute("usuarios"));
 	}
 
 	/**
@@ -63,6 +62,7 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute("mensaje", mensaje);
 			forwardJSP = "/login.jsp";
 		}
+		
 		forward(request, response, forwardJSP);
 	}
 	
@@ -83,7 +83,7 @@ public class LoginServlet extends HttpServlet {
 	
 	
 	private Usuario comprobarUsuario(String username, String password){
-		Usuario user = null;
+		Usuario user = new Usuario();
 			for (Usuario usuario : usuarios){
 				if(username.equals(usuario.getUsername()) && password.equals(usuario.getPassword())){
 					user = usuario;
