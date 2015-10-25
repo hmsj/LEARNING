@@ -78,9 +78,9 @@
 				<form method="post" action="login" name="loginform" id="loginform">
 					<fieldset>
 						<input name="username" type="text" id="username"
-							placeholder="Nombre de usuario" />
+							placeholder="Nombre de usuario*" />
 						<input name="password"
-							type="password" id="password" placeholder="Contraseña" />
+							type="password" id="password" placeholder="Contraseña*"/>
 					</fieldset>
 					<input type="submit" class="submit" id="submit" value="ENTRAR" />
 				</form>

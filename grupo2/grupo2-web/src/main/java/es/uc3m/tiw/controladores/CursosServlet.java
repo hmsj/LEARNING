@@ -15,7 +15,7 @@ import es.uc3m.tiw.dominios.Curso;
 /**
  * Servlet implementation class CursosServlet
  */
-@WebServlet("/cursos")
+@WebServlet(value="/cursos", loadOnStartup=1)
 public class CursosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     ArrayList<Curso> cursos = new ArrayList<Curso>();
@@ -32,6 +32,7 @@ public class CursosServlet extends HttpServlet {
 	public void init(ServletConfig contexto) throws ServletException {
 		// TODO Auto-generated method stub
 		super.init(contexto);
+		
 	}
 
 	/**
@@ -39,10 +40,11 @@ public class CursosServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getServletContext();
+		this.getServletContext().getAttribute("cursos");
+		this.getServletContext().getAttribute("categorias");
 		forwardJSP = "/listadoCursos.jsp";
 		
-		cursos.add((Curso) request.getServletContext().getAttribute("cursos"));	
+		
 		forward(request, response, forwardJSP);
 		
 	}

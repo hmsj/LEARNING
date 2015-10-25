@@ -72,11 +72,16 @@
                             		Profesor<input name="tipouser" type="radio" id="tipouser" value="profesor">
                             	</fieldset>
                                 <fieldset>
-                                	<input name="nombre" type="text" id="nombre" placeholder="Nombre"/> 
-                                	<input name="apellidos" type="text" id="apellidos" placeholder="Apellidos"/> 
-                                	<input name="username" type="text" id="username" placeholder="Nombre de usuario"/> 
-                                	<input name="email" type="email" id="email" placeholder="Email"/>
-                                	<input name="password" type="password" id="password" placeholder="Contraseña"/>  
+                                	<input name="nombre" type="text" id="nombre" placeholder="Nombre*" style="color:red;"/> 
+                                	<input name="apellidos" type="text" id="apellidos" placeholder="Apellidos*" style="color:red;"/> 
+                                	<input name="username" type="text" id="username" placeholder="Nombre de usuario*" style="color:red;"/> 
+                                	<input name="email" type="email" id="email" placeholder="Email*" style="color:red;"/>
+                                	<input name="password" type="password" id="password" placeholder="Contraseña*" style="color:red;"/>  
+                                	<input name="edad" type="number" id="edad" placeholder="Edad"/>
+                                	<input name="intereses" type="text" id="intereses" placeholder="Intereses"/> 
+                                	<input name="descripcion" type="text" id="descripcion" placeholder="Descripcion"/>
+                                	<input name=> 
+                                	
                                 </fieldset>
                                 <fieldset>
                                 	<label for="pagos">Permite el uso de sus datos para sus cobros</label>

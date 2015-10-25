@@ -17,7 +17,7 @@ import es.uc3m.tiw.dominios.Usuario;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/login")
+@WebServlet(value="/login", loadOnStartup=1)//No se necesita loadonstartup
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ArrayList<Usuario> usuarios = new ArrayList<Usuario>(); 
@@ -33,7 +33,6 @@ public class LoginServlet extends HttpServlet {
 	public void init(ServletConfig contexto) throws ServletException {
 		// TODO Auto-generated method stub
 		super.init(contexto);
-		usuarios = (ArrayList<Usuario>) contexto.getServletContext().getAttribute("usuarios");
 	}
 
 	/**
@@ -55,6 +54,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		this.getServletContext().getAttribute("usuarios");
 		String forwardJSP = "";
 		String mensaje = "";
 		HttpSession sesion = request.getSession(true);
@@ -91,9 +91,11 @@ public class LoginServlet extends HttpServlet {
 	
 	
 	private Usuario comprobarUsuario(String username, String password){
-		Usuario user = new Usuario();
+		Usuario user = null;
 			for (Usuario usuario : usuarios){
+				user = new Usuario();
 				if(username.equals(usuario.getUsername()) && password.equals(usuario.getPassword())){
+					
 					user = usuario;
 				}
 			}
