@@ -44,10 +44,10 @@
 				<li><a class="to-section" href="principal.jsp">Home</a></li>
 				<c:choose>
 					<c:when test="${sessionScope.usuario != null }">
-					<li class="to-section"><a href="/login">Logout</a></li>
+					<li class="to-section"><a href="login?accion=salir">Logout</a></li>
 					</c:when>
 				<c:otherwise>
-					<li class="to-section"><a href="/login">Login</a></li>				
+					<li class="to-section"><a href="login">Login</a></li>				
 				</c:otherwise>
 				</c:choose>
 				<!-- <li class="to-section"><a href="#team">Team</a></li>
