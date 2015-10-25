@@ -189,7 +189,7 @@
 		<!-- Start Price List -->
 		<section id="price-list" class="parallax-section-6">
 		<div class="container">
-			<h3 class="section-title white wow fadeInUp">Temario</h3>
+			<h3 class="section-title white wow fadeInUp">Temario del Curso</h3>
 			<div class="row wow fadeInUp">
 				<c:if test="${not empty secciones }">
 					<c:forEach items="${secciones }" var="seccion">
