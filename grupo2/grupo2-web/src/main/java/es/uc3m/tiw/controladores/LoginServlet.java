@@ -33,6 +33,7 @@ public class LoginServlet extends HttpServlet {
 	public void init(ServletConfig contexto) throws ServletException {
 		// TODO Auto-generated method stub
 		super.init(contexto);
+		usuarios = (ArrayList<Usuario>) this.getServletContext().getAttribute("usuarios");
 	}
 
 	/**
@@ -54,7 +55,6 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		this.getServletContext().getAttribute("usuarios");
 		String forwardJSP = "";
 		String mensaje = "";
 		HttpSession sesion = request.getSession(true);
@@ -93,9 +93,8 @@ public class LoginServlet extends HttpServlet {
 	private Usuario comprobarUsuario(String username, String password){
 		Usuario user = null;
 			for (Usuario usuario : usuarios){
-				user = new Usuario();
 				if(username.equals(usuario.getUsername()) && password.equals(usuario.getPassword())){
-					
+					user = new Usuario();					
 					user = usuario;
 				}
 			}
