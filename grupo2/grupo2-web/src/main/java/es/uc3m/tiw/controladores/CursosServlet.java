@@ -11,8 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import es.uc3m.tiw.dominios.Alumno;
 import es.uc3m.tiw.dominios.Categoria;
 import es.uc3m.tiw.dominios.Curso;
+import es.uc3m.tiw.dominios.Leccion;
+import es.uc3m.tiw.dominios.Material;
+import es.uc3m.tiw.dominios.Seccion;
 
 /**
  * Servlet implementation class CursosServlet
@@ -22,6 +26,10 @@ public class CursosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ArrayList<Curso> cursos = new ArrayList<Curso>();
 	ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+	ArrayList<Seccion> secciones = new ArrayList<Seccion>();
+	ArrayList<Leccion> lecciones = new ArrayList<Leccion>();
+	ArrayList<Material> materiales = new ArrayList<Material>();
+	ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
 	String forwardJSP = "";
 
 	/**
@@ -40,6 +48,10 @@ public class CursosServlet extends HttpServlet {
 				"cursos");
 		categorias = (ArrayList<Categoria>) this.getServletContext()
 				.getAttribute("categorias");
+		secciones = (ArrayList<Seccion>) this.getServletContext().getAttribute("secciones");
+		lecciones = (ArrayList<Leccion>) this.getServletContext().getAttribute("lecciones");
+		materiales = (ArrayList<Material>) this.getServletContext().getAttribute("materiales");
+		alumnos = (ArrayList<Alumno>) this.getServletContext().getAttribute("alumnos");
 	}
 
 	/**
@@ -54,8 +66,6 @@ public class CursosServlet extends HttpServlet {
 		forwardJSP = "/listadoCursos.jsp";
 
 		if (parametro != null && !"".equals(parametro)) {
-			cursos = (ArrayList<Curso>) this.getServletContext().getAttribute(
-					"cursos");
 			Curso course = obtenerCurso(parametro);
 			if (course != null) {
 				sesion.setAttribute("curso", course);

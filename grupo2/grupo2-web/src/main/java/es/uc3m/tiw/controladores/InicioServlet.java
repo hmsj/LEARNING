@@ -145,10 +145,13 @@ public class InicioServlet extends HttpServlet {
 		Usuario usuario2 = new Usuario(	"profeUser", "Profesor", "Registrado", "profesor@dokulearning.es", "123456", "", "987456213", "", "", 58, tipoUsuario2, direccion2, banco2);
 		Usuario usuario3 = new Usuario(	"adminUser", "Administrador", "Registrado", "admin@dokulearning.es", "123456", "", "541664884", "", "", 35, tipoUsuario3, direccion3, banco3);
 		Usuario usuario4 = new Usuario(	"profeUser2", "Profe", "Invitado", "profeInvitado@dokulearning.es", "123456", "", "987456951", "", "", 38, tipoUsuario2, direccion3, banco2);
+		Usuario usuario5 = new Usuario("alumn", "Alumno", "Registrado", "alumno@dokulearning.es","123456", "", "123456987", "", "", 20, tipoUsuario1, direccion1, banco1);
+
 		usuarios.add(usuario1);
 		usuarios.add(usuario2);
 		usuarios.add(usuario3);
 		usuarios.add(usuario4);
+		usuarios.add(usuario5);
 		
 		Oferta oferta1 = new Oferta(1, tipoOferta2, 30, "31/10/2015");
 		ofertas.add(oferta1);
@@ -187,7 +190,9 @@ public class InicioServlet extends HttpServlet {
 		cursos.add(curso14);
 		
 		Alumno alumno1 = new Alumno(usuario1, null, cursos);
+		Alumno alumno2 = new Alumno(usuario5, null, null);
 		alumnos.add(alumno1);
+		alumnos.add(alumno2);
 		
 		Calificacion calificacion1 = new Calificacion(alumno1, curso1, 6.5, tipoLogro1);
 		calificaciones.add(calificacion1);
