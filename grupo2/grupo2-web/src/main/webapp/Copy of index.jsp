@@ -910,7 +910,9 @@
                                     <h3 class="label">Basic</h3>
                                     <p class="price grey">
                                         <sup class="currency">$</sup>
-                                        <span class="pricing">99</span>
+                                        <span class="pricing">99
+                                        	<span style="display:in">Hola</span>
+                                        </span>
                                         <span class="time-period">Per Month</span>
                                     </p>
                                     <p class="features grey">

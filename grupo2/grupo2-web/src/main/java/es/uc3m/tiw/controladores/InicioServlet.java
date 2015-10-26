@@ -3,6 +3,7 @@ package es.uc3m.tiw.controladores;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,8 +31,9 @@ import es.uc3m.tiw.dominios.Usuario;
 /**
  * Servlet implementation class InicioServlet
  */
-@WebServlet("/inicio")
+@WebServlet(value="/inicio", loadOnStartup=1)
 public class InicioServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
     private static final int destacado = 1;
     private static final int nodestacado = 0;
@@ -65,11 +67,9 @@ public class InicioServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	@Override
-	public void init() throws ServletException {
-		// TODO Auto-generated method stub		
-		TipoUsuario tipoUsuario1 = new TipoUsuario(1, "alumno");
+    
+    public void init(javax.servlet.ServletConfig contexto) throws ServletException {
+    	TipoUsuario tipoUsuario1 = new TipoUsuario(1, "alumno");
 		TipoUsuario tipoUsuario2 = new TipoUsuario(2, "profesor");
 		TipoUsuario tipoUsuario3 = new TipoUsuario(3, "administrador");
 		tipoUsuarios.add(tipoUsuario1);
@@ -156,20 +156,20 @@ public class InicioServlet extends HttpServlet {
 		double precioInicial = 50;
 		double preciofinal = calcularPrecio(precioInicial, oferta1);
 		
-		Curso curso1 = new Curso(1, "Curso de diseño photoshop", "Aprende el manejo basico de Photoshop", 25, usuario2, "img/courses/DiseñoPhotoshop.jpg ", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
-		Curso curso2 = new Curso(2, "Curso de diseño de videojuegos", "Diseño de juegos y simulacion con 3d Unity", 25, usuario2, "img/courses/DiseñoVideojuegos.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
-		Curso curso3 = new Curso(3, "Curso de fotografia: el enfoque", "Sacale el maximo partido a tu camara", 25, usuario2, "img/courses/FotografiaEnfocar.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
-		Curso curso4 = new Curso(4, "Curso de fotografia nocturna", "Fotografia nocturna con tu camara digital", 25, usuario2, "img/courses/FotografiaNocturna.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
-		Curso curso5 = new Curso(5, "Curso de idiomas: Aleman", "Nivel intermedio de aleman con profesores nativos", 25, usuario2, "img/courses/IdiomaAleman.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
-		Curso curso6 = new Curso(6, "Curso de idiomas: Ingles", "Aprende ingles con 1000 palabras, metodo mejorado", 25, usuario2, "img/courses/IdiomaIngles.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
-		Curso curso7 = new Curso(7, "Curso de marketing digital", "Marketing basado en conocimiento de community manager", 25, usuario2, "img/courses/MarketingDigital.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
-		Curso curso8 = new Curso(8, "Curso de marketing directo", "Como conseguir la mejor impresion en las personas", 25, usuario2, "img/courses/MarketingDirecto.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
-		Curso curso9 = new Curso(9, "Curso de negocios: inversion de bolsa", "Aprende  invertir en funcion de tu perfil de riesgo", 25, usuario2, "img/courses/NegocioBolsa.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
-		Curso curso10 = new Curso(10, "Curso de negocios: estrategia", "Toma de decisiones en diferentes aspectos de mercado", 25, usuario2, "img/courses/NegociosEstrategia.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
-		Curso curso11 = new Curso(11, "Curso para emprendedores", "Como hacer un plan de empresa desde cero", 25, usuario2, "img/courses/OtrosEmprendimiento.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
-		Curso curso12 = new Curso(12, "Curso de ofimatica Microsoft", "Curso rapido de Word, Excell, Power Point", 25, usuario2, "img/courses/OtrosMicrosoft.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
-		Curso curso13 = new Curso(13, "Curso de programacion en Android", "Crea tu propia aplicacion en menos de una semana", 25, usuario2, "img/courses/ProgramacionAndroid.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
-		Curso curso14 = new Curso(14, "Curso de programacion web: HTML5", "Conceptos basicos e intermedios de programacion web", 25, usuario2, "img/courses/ProgramacionHtml5.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		Curso curso1 = new Curso(1, "Curso de diseño photoshop", "Aprende el manejo basico de Photoshop", 25, usuario2, "img/courses/DiseñoPhotoshop.jpg ", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria4, tipoDificultad1);
+		Curso curso2 = new Curso(2, "Curso de diseño de videojuegos", "Diseño de juegos y simulacion con 3d Unity", 25, usuario2, "img/courses/DiseñoVideojuegos.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria4, tipoDificultad1);
+		Curso curso3 = new Curso(3, "Curso de fotografia: el enfoque", "Sacale el maximo partido a tu camara", 25, usuario2, "img/courses/FotografiaEnfocar.jpg", "", nodestacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		Curso curso4 = new Curso(4, "Curso de fotografia nocturna", "Fotografia nocturna con tu camara digital", 25, usuario2, "img/courses/FotografiaNocturna.jpg", "", destacado, novalidado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
+		Curso curso5 = new Curso(5, "Curso de idiomas: Aleman", "Nivel intermedio de aleman con profesores nativos", 25, usuario2, "img/courses/IdiomaAleman.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria5, tipoDificultad1);
+		Curso curso6 = new Curso(6, "Curso de idiomas: Ingles", "Aprende ingles con 1000 palabras, metodo mejorado", 25, usuario2, "img/courses/IdiomaIngles.jpg", "", nodestacado, validado, precioInicial, preciofinal, oferta1, categoria5, tipoDificultad1);
+		Curso curso7 = new Curso(7, "Curso de marketing digital", "Marketing basado en conocimiento de community manager", 25, usuario2, "img/courses/MarketingDigital.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria3, tipoDificultad1);
+		Curso curso8 = new Curso(8, "Curso de marketing directo", "Como conseguir la mejor impresion en las personas", 25, usuario2, "img/courses/MarketingDirecto.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria3, tipoDificultad1);
+		Curso curso9 = new Curso(9, "Curso de negocios: inversion de bolsa", "Aprende  invertir en funcion de tu perfil de riesgo", 25, usuario2, "img/courses/NegocioBolsa.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria6, tipoDificultad1);
+		Curso curso10 = new Curso(10, "Curso de negocios: estrategia", "Toma de decisiones en diferentes aspectos de mercado", 25, usuario2, "img/courses/NegociosEstrategia.jpg", "", nodestacado, validado, precioInicial, preciofinal, oferta1, categoria6, tipoDificultad1);
+		Curso curso11 = new Curso(11, "Curso para emprendedores", "Como hacer un plan de empresa desde cero", 25, usuario2, "img/courses/OtrosEmprendimiento.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria7, tipoDificultad1);
+		Curso curso12 = new Curso(12, "Curso de ofimatica Microsoft", "Curso rapido de Word, Excell, Power Point", 25, usuario2, "img/courses/OtrosMicrosoft.jpg", "", destacado, novalidado, precioInicial, preciofinal, oferta1, categoria7, tipoDificultad1);
+		Curso curso13 = new Curso(13, "Curso de programacion en Android", "Crea tu propia aplicacion en menos de una semana", 25, usuario2, "img/courses/ProgramacionAndroid.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria1, tipoDificultad1);
+		Curso curso14 = new Curso(14, "Curso de programacion web: HTML5", "Conceptos basicos e intermedios de programacion web", 25, usuario2, "img/courses/ProgramacionHtml5.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria1, tipoDificultad1);
 
 		cursos.add(curso1);
 		cursos.add(curso2);
@@ -203,6 +203,31 @@ public class InicioServlet extends HttpServlet {
 		
 		ProfesorInvitado profeInvitado = new ProfesorInvitado(usuario4, curso1);
 		pInvitados.add(profeInvitado);
+		
+		contexto.getServletContext().setAttribute("alumnos", alumnos);
+		contexto.getServletContext().setAttribute("calificaciones", calificaciones);
+		contexto.getServletContext().setAttribute("categorias", categorias);
+		contexto.getServletContext().setAttribute("cursos", cursos);
+		contexto.getServletContext().setAttribute("datosBancarios", datosBancarios);
+		contexto.getServletContext().setAttribute("direcciones", direcciones);
+		contexto.getServletContext().setAttribute("lecciones", lecciones);
+		contexto.getServletContext().setAttribute("materiales", materiales);
+		contexto.getServletContext().setAttribute("ofertas", ofertas);
+		contexto.getServletContext().setAttribute("profesInvitados",pInvitados);
+		contexto.getServletContext().setAttribute("secciones", secciones);
+		contexto.getServletContext().setAttribute("tipoDificultades", tipoDificultades);
+		contexto.getServletContext().setAttribute("tipoLogros", tipoLogros);
+		contexto.getServletContext().setAttribute("tipoMateriales", tipoMateriales);
+		contexto.getServletContext().setAttribute("tipoOfertas", tipoOfertas);
+		contexto.getServletContext().setAttribute("tipoUsuarios", tipoUsuarios);
+		contexto.getServletContext().setAttribute("usuarios", usuarios);
+	};
+
+	@Override
+	public void init() throws ServletException {
+		// TODO Auto-generated method stub
+		super.init();
+		
 	}
 
 
@@ -211,23 +236,7 @@ public class InicioServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setAttribute("alumnos", alumnos);
-		request.setAttribute("calificaciones", calificaciones);
-		request.setAttribute("categorias", categorias);
-		request.setAttribute("cursos", cursos);
-		request.setAttribute("datosBancarios", datosBancarios);
-		request.setAttribute("direcciones", direcciones);
-		request.setAttribute("lecciones", lecciones);
-		request.setAttribute("materiales", materiales);
-		request.setAttribute("ofertas", ofertas);
-		request.setAttribute("profesInvitados",pInvitados);
-		request.setAttribute("secciones", secciones);
-		request.setAttribute("tipoDificultades", tipoDificultades);
-		request.setAttribute("tipoLogros", tipoLogros);
-		request.setAttribute("tipoMateriales", tipoMateriales);
-		request.setAttribute("tipoOfertas", tipoOfertas);
-		request.setAttribute("tipoUsuarios", tipoUsuarios);
-		request.setAttribute("usuarios", usuarios);
+		
 		String forwardJSP = "/principal.jsp";
 		forward(request, response, forwardJSP);
 	}
