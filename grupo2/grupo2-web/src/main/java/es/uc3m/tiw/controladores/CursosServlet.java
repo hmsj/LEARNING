@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.uc3m.tiw.dominios.Categoria;
 import es.uc3m.tiw.dominios.Curso;
 
 /**
@@ -19,6 +20,7 @@ import es.uc3m.tiw.dominios.Curso;
 public class CursosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     ArrayList<Curso> cursos = new ArrayList<Curso>();
+    ArrayList<Categoria> categorias = new ArrayList<Categoria>();
     String forwardJSP = "";
     /**
      * @see HttpServlet#HttpServlet()
@@ -32,7 +34,8 @@ public class CursosServlet extends HttpServlet {
 	public void init(ServletConfig contexto) throws ServletException {
 		// TODO Auto-generated method stub
 		super.init(contexto);
-		
+		cursos=(ArrayList<Curso>) this.getServletContext().getAttribute("cursos");
+		categorias=(ArrayList<Categoria>) this.getServletContext().getAttribute("categorias");
 	}
 
 	/**
@@ -40,8 +43,7 @@ public class CursosServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		this.getServletContext().getAttribute("cursos");
-		this.getServletContext().getAttribute("categorias");
+		
 		forwardJSP = "/listadoCursos.jsp";
 		
 		

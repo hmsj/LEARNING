@@ -113,17 +113,18 @@
 	</div>
 	</section>
 	<!-- End Home Revolution Slider Parallax Section -->
+	<div class="site-wrapper content">
 
-	<c:if test="${not empty categorias }">
-		<c:forEach items="${categorias }" var="categoria">
-			<div class="site-wrapper content">
+		<c:if test="${not empty categorias }">
+			<c:forEach items="${categorias }" var="categoria">
 				<c:choose>
 					<c:when test="${categoria.idcategoria == 1 }">
 						<!-- Start Features Section -->
 						<section id="cat1">
 						<div class="container">
 							<div>
-								<h2>Cursos de ${categoria.descripcion_categoria }</h2>
+								<h2 class="content-title wow fadeInUp">Cursos de
+									${categoria.descripcion_categoria }</h2>
 							</div>
 							<div class="row">
 								<c:if test="${not empty cursos }">
@@ -207,7 +208,7 @@
 													</div>
 												</div>
 												<div class="member-info wow fadeInUp">
-													<h4>${curso.profesor_titular.nombre }</h4>
+													<h4 style="color: white;">${curso.profesor_titular.nombre }</h4>
 													<p>${curso.descripcion }</p>
 												</div>
 											</div>
@@ -223,7 +224,8 @@
 						<section id="cat3">
 						<div class="container">
 							<div>
-								<h2>Cursos de ${categoria.descripcion_categoria}</h2>
+								<h2 class="content-title wow fadeInUp">Cursos de
+									${categoria.descripcion_categoria}</h2>
 							</div>
 							<div class="row">
 								<c:if test="${not empty cursos }">
@@ -269,7 +271,7 @@
 					</c:when>
 
 					<c:when test="${categoria.idcategoria == 4 }">
-						<section id="cat4" class="parallax-section-1">
+						<section id="cat4" class="parallax-section-2">
 						<div class="container">
 							<div>
 								<h2 class="content-title white wow fadeInUp">Cursos de
@@ -306,7 +308,7 @@
 													</div>
 												</div>
 												<div class="member-info wow fadeInUp">
-													<h4>${curso.profesor_titular.nombre }</h4>
+													<h4 style="color: white;">${curso.profesor_titular.nombre }</h4>
 													<p>${curso.descripcion }</p>
 												</div>
 											</div>
@@ -322,7 +324,8 @@
 						<section id="cat5">
 						<div class="container">
 							<div>
-								<h2>Cursos de ${categoria.descripcion_categoria}</h2>
+								<h2 class="content-title wow fadeInUp">Cursos de
+									${categoria.descripcion_categoria}</h2>
 							</div>
 							<div class="row">
 								<c:if test="${not empty cursos }">
@@ -366,9 +369,9 @@
 						</div>
 						</section>
 					</c:when>
-					
+
 					<c:when test="${categoria.idcategoria == 6 }">
-						<section id="cat6" class="parallax-section-1">
+						<section id="cat6" class="parallax-section-3">
 						<div class="container">
 							<div>
 								<h2 class="content-title white wow fadeInUp">Cursos de
@@ -405,7 +408,7 @@
 													</div>
 												</div>
 												<div class="member-info wow fadeInUp">
-													<h4>${curso.profesor_titular.nombre }</h4>
+													<h4 style="color: white;">${curso.profesor_titular.nombre }</h4>
 													<p>${curso.descripcion }</p>
 												</div>
 											</div>
@@ -416,12 +419,13 @@
 						</div>
 						</section>
 					</c:when>
-					
+
 					<c:when test="${categoria.idcategoria == 7 }">
 						<section id="cat7">
 						<div class="container">
 							<div>
-								<h2>Cursos de ${categoria.descripcion_categoria}</h2>
+								<h2 class="content-title wow fadeInUp">Cursos de
+									${categoria.descripcion_categoria}</h2>
 							</div>
 							<div class="row">
 								<c:if test="${not empty cursos }">
@@ -466,124 +470,45 @@
 						</section>
 					</c:when>
 				</c:choose>
-		</c:forEach>
-	</c:if>
+			</c:forEach>
+		</c:if>
 
+		<!-- Start Footer 1 -->
+		<footer id="footer">
+		<div class="footer-copyright">
+			<div class="container">
+				<div class="row">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<!-- Start Footer 1 -->
-	<footer id="footer">
-	<div class="footer-widgets">
-		<div class="container">
-
-			<div class="col-md-3 col-sm-6 col-twitter">
-				<h4>Latest Tweet</h4>
-				<div class="tweet"></div>
-			</div>
-
-			<div class="col-md-3 col-sm-6 col-footer">
-				<div class="subscription">
-					<h4>Newsletter</h4>
-					<p>Subscribe to receive new ideas, inspiration and our weekly
-						news!</p>
-
-					<form action="php/subscribe-mailchimp.php" method="post"
-						id="subscribe-form" role="form">
-						<div class="form-validation alert"></div>
-						<div class="form-group subscribe-form-input">
-							<input type="email" name="email" id="subscribe-form-email"
-								class="footer-subscribe-input" placeholder="Your Email Address"
-								autocomplete="off" />
-							<button class="subscribe-form-submit btn-primary-full"
-								data-loading-text="Loading...">Subscribe</button>
-						</div>
-					</form>
-
-				</div>
-			</div>
-
-			<div class="col-md-3 col-sm-6 col-footer">
-				<div class="contact">
-					<h4>Visit us Today!</h4>
-					<ul class="contact-details">
-						<li><p>
-								<i class="icon ion-ios-location-outline highlight"></i> 259 W
-								95th St, New York, United States
-							</p></li>
-						<li><p>
-								<i class="icon ion-ios-telephone highlight"></i> (123) 456-7891
-							</p></li>
-						<li><p>
-								<i class="icon ion-android-mail highlight"></i> <a
-									href="vossendesign@gmail.com">vossendesign@gmail.com</a>
-							</p></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-md-3 col-sm-6 col-footer">
-				<h4>About Vossen</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-					in euismod nisi.</p>
-				<p>Cras at ultrices erat, sed vulputate eros. Nunc at augue
-					gravida est fermentum vulputate. Pellentesque et ipsum in dui
-					malesuada tempus. Donec pellentesque.</p>
-			</div>
-
-		</div>
-	</div>
-	<!-- End Footer Widgets -->
-
-	<div class="footer-copyright">
-		<div class="container">
-			<div class="row">
-
-				<div class="col-md-6 col-sm-12">
-					<p>
-						© 2015 Vossen Theme by <a href="index.html" class="logo">Vossen
-							Design.</a> All Rights Reserved.
-					</p>
-				</div>
-				<div class="col-md-6 col-sm-12">
-					<ul id="social-icons">
-						<li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
-						<li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
-						<li><a href="#"><i class="icon ion-social-googleplus"></i></a></li>
-						<li><a href="#"><i
-								class="icon ion-social-instagram-outline"></i></a></li>
-						<li><a href="#"><i class="icon ion-social-pinterest"></i></a></li>
-						<li><a href="#"><i class="icon ion-social-skype"></i></a></li>
-						<li><a href="#"><i class="icon ion-social-linkedin"></i></a></li>
-						<li><a href="#"><i class="icon ion-social-dropbox"></i></a></li>
-						<li><a href="#"><i class="icon ion-social-vimeo"></i></a></li>
-						<li><a href="#"><i class="icon ion-social-youtube"></i></a></li>
-					</ul>
+					<div class="col-md-6 col-sm-12">
+						<p>
+							© 2015 Vossen Theme by <a href="index.html" class="logo">Vossen
+								Design.</a> All Rights Reserved.
+						</p>
+					</div>
+					<div class="col-md-6 col-sm-12">
+						<ul id="social-icons">
+							<li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
+							<li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
+							<li><a href="#"><i class="icon ion-social-googleplus"></i></a></li>
+							<li><a href="#"><i
+									class="icon ion-social-instagram-outline"></i></a></li>
+							<li><a href="#"><i class="icon ion-social-pinterest"></i></a></li>
+							<li><a href="#"><i class="icon ion-social-skype"></i></a></li>
+							<li><a href="#"><i class="icon ion-social-linkedin"></i></a></li>
+							<li><a href="#"><i class="icon ion-social-dropbox"></i></a></li>
+							<li><a href="#"><i class="icon ion-social-vimeo"></i></a></li>
+							<li><a href="#"><i class="icon ion-social-youtube"></i></a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- End Footer Copyright --> </footer>
-	<!-- End Footer 1 -->
+		<!-- End Footer Copyright --> </footer>
+		<!-- End Footer 1 -->
 
-	<!-- Start Back To Top -->
-	<a id="back-to-top"><i class="icon ion-chevron-up"></i></a>
-	<!-- End Back To Top -->
+		<!-- Start Back To Top -->
+		<a id="back-to-top"><i class="icon ion-chevron-up"></i></a>
+		<!-- End Back To Top -->
 
 	</div>
 	<!-- End Site Wrapper -->
