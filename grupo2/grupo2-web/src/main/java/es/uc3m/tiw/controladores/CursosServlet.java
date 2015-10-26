@@ -17,7 +17,7 @@ import es.uc3m.tiw.dominios.Curso;
 /**
  * Servlet implementation class CursosServlet
  */
-@WebServlet(value = "/cursos", loadOnStartup = 1)
+@WebServlet(value = "/cursos")
 public class CursosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ArrayList<Curso> cursos = new ArrayList<Curso>();
@@ -54,6 +54,8 @@ public class CursosServlet extends HttpServlet {
 		forwardJSP = "/listadoCursos.jsp";
 
 		if (parametro != null && !"".equals(parametro)) {
+			cursos = (ArrayList<Curso>) this.getServletContext().getAttribute(
+					"cursos");
 			Curso course = obtenerCurso(parametro);
 			if (course != null) {
 				sesion.setAttribute("curso", course);
@@ -92,10 +94,18 @@ public class CursosServlet extends HttpServlet {
 		Curso course = null;
 		int intpar = Integer.parseInt(parametro);
 		for (Curso curso : cursos) {
-			if (course.getIdcurso() == 1) {
+			if(intpar == curso.getIdcurso()){
+				course = new Curso();
+				course=curso;
+			}
+			
+			/*
+			 * if (curso.getIdcurso() == 1) {
 				course = new Curso();
 				course = curso;
 			}
+			 */
+			
 		}
 		return course;
 

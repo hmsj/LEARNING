@@ -87,11 +87,11 @@
 					<!-- SLIDE 1 -->
 					<li data-transition="fade" data-slotamount="7"
 						data-masterspeed="2000"
-						data-thumb="img/backgrounds/bg-home-fullscreen.jpg"
-						data-delay="10000" data-saveperformance="on" data-title=""><img
+						data-thumb="${sessionScope.curso.imagen }"
+						data-delay="10000" data-saveperformance="on" data-title=""><!--<img
 						src="${sessionScope.curso.imagen }" alt="slidebg1"
 						data-bgposition="center top" data-bgfit="cover"
-						data-bgrepeat="no-repeat"> <!-- Home Heading -->
+						data-bgrepeat="no-repeat">  --> <!-- Home Heading -->
 						<div class="tp-caption sft" data-x="center" data-y="260"
 							data-speed="1200" data-start="1100"
 							data-easing="Power3.easeInOut" data-splitin="none"
@@ -106,7 +106,7 @@
 							data-splitout="none" data-elementdelay="0.1"
 							data-endelementdelay="0.1" data-endspeed="300"
 							style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
-							<div class="op-1">${sessionScope.curso.profesor_actual }</div>
+							<div class="op-1">${sessionScope.curso.profesor_titular.username }</div>
 						</div> <!-- Home Button -->
 						<div class="tp-caption home-button sft fadeout" data-x="center"
 							data-y="400" data-speed="1200" data-start="1550"
@@ -126,7 +126,7 @@
 															test="${alumno.curso_actual.idcurso == sessionScope.curso.idcurso }">
 															<a href="#features" class="btn btn-primary btn-scroll">ACCEDER</a>
 														</c:if>
-														<c:forEach items="${alumno.cursos }" var="cursado">
+														<c:forEach items="${alumno.listado_cursos }" var="cursado">
 															<c:if
 																test="${cursado.idcurso != sessionScope.curso.idcurso }">
 																<a href="#features" class="btn btn-primary btn-scroll">MATRICULARSE</a>
@@ -151,19 +151,18 @@
 				<div class="tp-bannertimer"></div>
 			</div>
 
-			<div class="home-bottom">
+			<!-- <div class="home-bottom">
 				<div class="container text-center">
 					<div class="move bounce">
 						<a href="#portfolio" class="ion-ios-arrow-down btn-scroll"></a>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 		</div>
 	</div>
 	</section>
 	<!-- End Home Revolution Slider Parallax Section -->
-
 	<div class="site-wrapper content">
 
 		<section id="services">
@@ -208,7 +207,7 @@
 															<c:if
 																test="${leccion.idleccion == material.leccion.idleccion }">
 																<!-- ***************************AQUI*************************** -->
-																<span><href src="${material.archivo }"></span>
+																<!-- <span><href src="${material.archivo }"></span> -->
 															</c:if>
 														</c:forEach>
 													</span>
@@ -226,6 +225,7 @@
 		</section>
 		<!-- End Price List -->
 
+	
 		<!-- Start Footer 1 -->
 		<footer id="footer">
 

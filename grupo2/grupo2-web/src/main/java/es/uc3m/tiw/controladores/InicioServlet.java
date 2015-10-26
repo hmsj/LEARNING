@@ -31,7 +31,7 @@ import es.uc3m.tiw.dominios.Usuario;
 /**
  * Servlet implementation class InicioServlet
  */
-@WebServlet(value="/inicio", loadOnStartup=1)
+@WebServlet(value="/inicio")
 public class InicioServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;

@@ -17,7 +17,7 @@ import es.uc3m.tiw.dominios.Usuario;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet(value="/login", loadOnStartup=1)//No se necesita loadonstartup
+@WebServlet(value="/login")//No se necesita loadonstartup
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ArrayList<Usuario> usuarios = new ArrayList<Usuario>(); 
