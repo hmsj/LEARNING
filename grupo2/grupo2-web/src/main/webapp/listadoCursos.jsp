@@ -424,8 +424,8 @@
 						<section id="cat7">
 						<div class="container">
 							<div>
-								<h2 class="content-title wow fadeInUp">Cursos de
-									${categoria.descripcion_categoria}</h2>
+								<h2 class="content-title wow fadeInUp">
+									${categoria.descripcion_categoria} cursos</h2>
 							</div>
 							<div class="row">
 								<c:if test="${not empty cursos }">
