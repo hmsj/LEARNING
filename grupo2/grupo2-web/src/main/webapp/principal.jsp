@@ -17,6 +17,29 @@
 
 <!-- Skin Color -->
 <link rel="stylesheet" href="css/colors/green.css" id="color-skins" />
+<style type="text/css">
+.boton {
+	-webkit-border-radius: 4;
+	-moz-border-radius: 4;
+	border-radius: 4px;
+	font-family: Montserrat, sans-serif;
+	color: #7E7B7B;
+	font-size: 14px;
+	background: #F6F7F7;
+	padding: 10px 20px 10px 20px;
+	text-decoration: none;
+	font-weight: 700;
+	line-height: 1.6;
+	margin: 0 5px 0 5px;
+	padding: 10px 22px;
+	text-align: center;
+}
+
+.boton:hover {
+	background: #B2CC02;
+	text-decoration: none;
+}
+</style>
 </head>
 <body>
 	<!--Start Header-->
@@ -44,11 +67,11 @@
 				<li><a class="to-section" href="principal.jsp">Home</a></li>
 				<c:choose>
 					<c:when test="${sessionScope.usuario != null }">
-					<li class="to-section"><a href="login?accion=salir">Logout</a></li>
+						<li class="to-section"><a href="login?accion=salir">Logout</a></li>
 					</c:when>
-				<c:otherwise>
-					<li class="to-section"><a href="login">Login</a></li>				
-				</c:otherwise>
+					<c:otherwise>
+						<li class="to-section"><a href="login">Login</a></li>
+					</c:otherwise>
 				</c:choose>
 				<!-- <li class="to-section"><a href="#team">Team</a></li>
                             <li class="to-section"><a href="#portfolio">Portfolio</a></li>
@@ -253,7 +276,7 @@
 			<div id="grid-container-fullwidth" class="cbp-l-grid-fullScreen">
 				<ul>
 					<c:if test="${not empty cursos }">
-						<c:forEach items="${cursos }" var="curso">
+						<c:forEach items="${cursos }" begin="0" end="2" var="curso">
 							<c:choose>
 								<c:when test="${curso.validado ==  1}">
 									<li
@@ -267,12 +290,8 @@
 													<li class="cbp-l-caption-desc">by
 														${curso.profesor_titular.nombre }</li>
 													<li class="cbp-l-icon"><a
-														href="img/portfolio/fullsize/1.jpg" class="cbp-lightbox"
-														data-title="Dashboard<br>by Wunderwelt"><i
+														href="cursos?parametro=${curso.idcurso }"><i
 															class="icon-info"></i></a></li>
-													<li class="cbp-l-icon"><a
-														href="projects/project1.html" class="cbp-singlePage"><i
-															class="icon-handbag"></i></a></li>
 												</ul>
 											</div>
 										</div>
@@ -283,11 +302,8 @@
 					</c:if>
 				</ul>
 			</div>
-
-			<div class="cbp-l-loadMore-button">
-				<a href="projects/loadMore.html"
-					class="cbp-l-loadMore-button-link wow fadeInUp">VER MAS</a>
-				<!-- Portfolio AJAX load more button will be functional only on your server. Upload to your server when testing. -->
+			<div style="margin-top:30px;margin-left: 45%;">
+				<a href="cursos" class="boton">VER MAS</a>
 			</div>
 
 		</div>
