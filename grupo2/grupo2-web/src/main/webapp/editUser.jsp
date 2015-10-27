@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -17,45 +18,8 @@
 <link rel="stylesheet" href="css/colors/green.css" id="color-skins" />
 </head>
 <body>
-	<!--Start Header-->
-	<header> <nav class="navbar navbar-default" role="navigation">
-	<div class="container">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#main-nav">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<!--  <a class="navbar-brand to-top" rel="home" href="#">
-                        	<img src="img/assets/logo-dark.png" alt="Dokulearning" class="logo-big">
-                            <img src="img/assets/logo-dark.png" alt="Dokulearning" class="logo-small">
-                        </a>-->
-		</div>
-
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="main-nav">
-			<ul class="nav navbar-nav  navbar-right">
-
-				<li><a class="to-section" href="index.jsp">Home</a></li>
-				<li class="to-section"><a href="login.jsp">Login</a></li>
-				<!--<li class="to-section"><a href="#team">Team</a></li>
-                            <li class="to-section"><a href="#portfolio">Portfolio</a></li>-->
-
-				<li class="to-section"><a href="#contact">Contact</a></li>
-				<li><a class="social-icon" href="http://www.twitter.com"><i
-						class="icon icon-social-twitter"></i></a></li>
-				<li><a class="social-icon" href="http://www.twitter.com"><i
-						class="icon icon-social-facebook"></i></a></li>
-				<li><a class="social-icon" href="http://www.google.com"><i
-						class="icon icon-support"></i></a></li>
-			</ul>
-		</div>
-		<!-- /.navbar-collapse -->
-	</div>
-	<!-- /.container --> </nav> </header>
-	<!--End Header-->
+	  <jsp:include page="header.jsp"></jsp:include>
+	 
 	<section id="price-list" class="parallax-section-6">
 	<div class="container">
 	

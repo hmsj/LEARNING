@@ -1,9 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!--COPIAR EN EL JSP CORRESPONDIENTE
- <jsp:include page="header.jsp"></jsp:include>-->
- 
- 
+
 <nav class="navbar navbar-default navbar-alt"
 		role="navigation">
 	<div class="container">
