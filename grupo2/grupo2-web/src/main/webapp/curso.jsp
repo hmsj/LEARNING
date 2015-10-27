@@ -113,15 +113,31 @@
 							style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
 							<c:choose>
 								<c:when test="${sessionScope.usuario != null }">
-									
-										<c:choose>
+
+									<c:choose>
 										<c:when test="${not empty mensaje1 }">
-										<div class="op-1">
-											<a href="#features" class="btn btn-primary btn-scroll">ENTRAR</a>
-										</div>
+											<div class="op-1">
+												<a href="#features" class="btn btn-primary btn-scroll">ENTRAR</a>
+											</div>
 										</c:when>
-										</c:choose>
-								
+										<c:when test="${not empty mensaje2 }">
+											<div class="op-1">
+												<a href="#features" class="btn btn-primary btn-scroll">VER
+													DATOS</a>
+											</div>
+										</c:when>
+										<c:when test="${not empty mensaje3 }">
+											<div class="op-1">
+												<a href="#features" class="btn btn-primary btn-scroll">MATRICULATE</a>
+											</div>
+										</c:when>
+										<c:otherwise>
+											<div class="op-1">
+												<a href="#features" class="btn btn-primary btn-scroll">MATRICULATE</a>
+											</div>
+										</c:otherwise>
+									</c:choose>
+
 								</c:when>
 								<c:otherwise>
 									<div class="op-1">
