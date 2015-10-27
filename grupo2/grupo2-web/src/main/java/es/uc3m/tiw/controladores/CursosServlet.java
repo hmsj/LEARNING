@@ -85,11 +85,11 @@ public class CursosServlet extends HttpServlet {
 							sesion.setAttribute("curso", course);
 							forwardJSP = "/curso.jsp";
 						}else if(matriculado != null){
-							request.setAttribute("mensaje1", "El alumno esta matriculado en el curso");
+							request.setAttribute("mensaje2", "El alumno esta matriculado en el curso");
 							sesion.setAttribute("curso", course);
 							forwardJSP = "/curso.jsp";
 						}else {
-							request.setAttribute("mensaje1", "El alumno no esta matriculado");
+							request.setAttribute("mensaje3", "El alumno no esta matriculado");
 							sesion.setAttribute("curso", course);
 							forwardJSP = "/curso.jsp";
 						}
