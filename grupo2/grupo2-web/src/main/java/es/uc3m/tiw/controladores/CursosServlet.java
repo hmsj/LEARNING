@@ -79,31 +79,34 @@ public class CursosServlet extends HttpServlet {
 					Alumno alumn = comprobarAlumno(usuarioLogado);
 					if (alumn != null) {
 						Curso cursado = comprobarCursado(alumn, course);
-						Curso matriculado = comprobarMatricula (alumn, course);
-						if(cursado != null){
-							request.setAttribute("mensaje1", "El alumno ya ha realizado el curso");	
+						Curso matriculado = comprobarMatricula(alumn, course);
+						if (cursado != null) {
+							request.setAttribute("mensaje1",
+									"El alumno ya ha realizado el curso");
 							sesion.setAttribute("curso", course);
 							forwardJSP = "/curso.jsp";
-						}else if(matriculado != null){
-							request.setAttribute("mensaje2", "El alumno esta matriculado en el curso");
+						} else if (matriculado != null) {
+							request.setAttribute("mensaje2",
+									"El alumno esta matriculado en el curso");
 							sesion.setAttribute("curso", course);
 							forwardJSP = "/curso.jsp";
-						}else {
-							request.setAttribute("mensaje3", "El alumno no esta matriculado");
+						} else {
+							request.setAttribute("mensaje3",
+									"El alumno no esta matriculado");
 							sesion.setAttribute("curso", course);
 							forwardJSP = "/curso.jsp";
 						}
-					}/*else{
-						Usuario profesor = comprobarProfesor();
-						if(profesor!=null){
-							
-						}
-					}*/
-				}else{
+					}/*
+					 * else{ Usuario profesor = comprobarProfesor();
+					 * if(profesor!=null){
+					 * 
+					 * } }
+					 */
+				} else {
 					sesion.setAttribute("curso", course);
 					forwardJSP = "/curso.jsp";
 				}
-				
+
 			}
 		}
 		forward(request, response, forwardJSP);
@@ -158,19 +161,21 @@ public class CursosServlet extends HttpServlet {
 
 	private Curso comprobarCursado(Alumno alumno, Curso curso) {
 		Curso cursoRealizado = null;
-		for (Curso cursado : alumno.getListado_cursos()) {
-			if (cursado.getIdcurso() == curso.getIdcurso()) {
-				cursoRealizado = new Curso();
-				cursoRealizado = curso;
+		if (alumno.getListado_cursos() != null) {
+			for (Curso cursado : alumno.getListado_cursos()) {
+				if (cursado.getIdcurso() == curso.getIdcurso()) {
+					cursoRealizado = new Curso();
+					cursoRealizado = curso;
+				}
 			}
 		}
 		return cursoRealizado;
 	}
-	
+
 	private Curso comprobarMatricula(Alumno alumno, Curso curso) {
 		Curso cursoMatriculado = null;
-		for (Curso matriculado : alumno.getListado_cursos()) {
-			if (matriculado.getIdcurso() == curso.getIdcurso()) {
+		if (alumno.getCurso_actual() != null) {
+			if (curso.getIdcurso() == alumno.getCurso_actual().getIdcurso()) {
 				cursoMatriculado = new Curso();
 				cursoMatriculado = curso;
 			}
