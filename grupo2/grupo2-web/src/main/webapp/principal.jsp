@@ -290,7 +290,7 @@
 													<li class="cbp-l-caption-desc">by
 														${curso.profesor_titular.nombre }</li>
 													<li class="cbp-l-icon"><a
-														href="cursos?parametro=${curso.idcurso }"><i
+														href="cursos?idcurso=${curso.idcurso }"><i
 															class="icon-info"></i></a></li>
 												</ul>
 											</div>
@@ -330,7 +330,7 @@
 									<div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
 										<c:choose>
 											<c:when test="${not empty curso.imagen }">
-												<a href="#">
+												<a href="cursos?idcurso=${curso.idcurso }">
 													<div class="logo-dark">
 														<img src="${curso.imagen }" class="img-responsive"
 															alt="client">

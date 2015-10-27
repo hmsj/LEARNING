@@ -16,7 +16,9 @@ import es.uc3m.tiw.dominios.Categoria;
 import es.uc3m.tiw.dominios.Curso;
 import es.uc3m.tiw.dominios.Leccion;
 import es.uc3m.tiw.dominios.Material;
+import es.uc3m.tiw.dominios.ProfesorInvitado;
 import es.uc3m.tiw.dominios.Seccion;
+import es.uc3m.tiw.dominios.Usuario;
 
 /**
  * Servlet implementation class CursosServlet
@@ -48,10 +50,14 @@ public class CursosServlet extends HttpServlet {
 				"cursos");
 		categorias = (ArrayList<Categoria>) this.getServletContext()
 				.getAttribute("categorias");
-		secciones = (ArrayList<Seccion>) this.getServletContext().getAttribute("secciones");
-		lecciones = (ArrayList<Leccion>) this.getServletContext().getAttribute("lecciones");
-		materiales = (ArrayList<Material>) this.getServletContext().getAttribute("materiales");
-		alumnos = (ArrayList<Alumno>) this.getServletContext().getAttribute("alumnos");
+		secciones = (ArrayList<Seccion>) this.getServletContext().getAttribute(
+				"secciones");
+		lecciones = (ArrayList<Leccion>) this.getServletContext().getAttribute(
+				"lecciones");
+		materiales = (ArrayList<Material>) this.getServletContext()
+				.getAttribute("materiales");
+		alumnos = (ArrayList<Alumno>) this.getServletContext().getAttribute(
+				"alumnos");
 	}
 
 	/**
@@ -61,16 +67,40 @@ public class CursosServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String parametro = request.getParameter("parametro");
+		String idCurso = request.getParameter("idcurso");
 		HttpSession sesion = request.getSession(true);
+		Usuario usuarioLogado = (Usuario) sesion.getAttribute("usuario");
 		forwardJSP = "/listadoCursos.jsp";
 
-		if (parametro != null && !"".equals(parametro)) {
-			Curso course = obtenerCurso(parametro);
+		if (idCurso != null && !"".equals(idCurso)) {
+			Curso course = obtenerCurso(idCurso);
 			if (course != null) {
-				sesion.setAttribute("curso", course);
-				request.setAttribute("curso", course);
-				forwardJSP = "/curso.jsp";
+				if (usuarioLogado != null) {
+					Alumno alumn = comprobarAlumno(usuarioLogado);
+					if (alumn != null) {
+						Curso cursado = comprobarCursado(alumn, course);
+						Curso matriculado = comprobarMatricula (alumn, course);
+						if(cursado != null){
+							request.setAttribute("mensaje1", "El alumno ya ha realizado el curso");	
+							sesion.setAttribute("curso", course);
+							forwardJSP = "/curso.jsp";
+						}else if(matriculado != null){
+							request.setAttribute("mensaje1", "El alumno esta matriculado en el curso");
+							sesion.setAttribute("curso", course);
+							forwardJSP = "/curso.jsp";
+						}else {
+							request.setAttribute("mensaje1", "El alumno no esta matriculado");
+							sesion.setAttribute("curso", course);
+							forwardJSP = "/curso.jsp";
+						}
+					}/*else{
+						Usuario profesor = comprobarProfesor();
+						if(profesor!=null){
+							
+						}
+					}*/
+				}
+				
 			}
 		}
 		forward(request, response, forwardJSP);
@@ -102,23 +132,47 @@ public class CursosServlet extends HttpServlet {
 
 	private Curso obtenerCurso(String parametro) {
 		Curso course = null;
-		int intpar = Integer.parseInt(parametro);
+		int intCurso = Integer.parseInt(parametro);
 		for (Curso curso : cursos) {
-			if(intpar == curso.getIdcurso()){
-				course = new Curso();
-				course=curso;
-			}
-			
-			/*
-			 * if (curso.getIdcurso() == 1) {
+			if (intCurso == curso.getIdcurso()) {
 				course = new Curso();
 				course = curso;
 			}
-			 */
-			
 		}
 		return course;
+	}
 
+	private Alumno comprobarAlumno(Usuario usuario) {
+		Alumno alumn = null;
+		for (Alumno alumno : alumnos) {
+			if (usuario.getUsername() == alumno.getUsername().getUsername()) {
+				alumn = new Alumno();
+				alumn = alumno;
+			}
+		}
+		return alumn;
+	}
+
+	private Curso comprobarCursado(Alumno alumno, Curso curso) {
+		Curso cursoRealizado = null;
+		for (Curso cursado : alumno.getListado_cursos()) {
+			if (cursado.getIdcurso() == curso.getIdcurso()) {
+				cursoRealizado = new Curso();
+				cursoRealizado = curso;
+			}
+		}
+		return cursoRealizado;
+	}
+	
+	private Curso comprobarMatricula(Alumno alumno, Curso curso) {
+		Curso cursoMatriculado = null;
+		for (Curso matriculado : alumno.getListado_cursos()) {
+			if (matriculado.getIdcurso() == curso.getIdcurso()) {
+				cursoMatriculado = new Curso();
+				cursoMatriculado = curso;
+			}
+		}
+		return cursoMatriculado;
 	}
 
 }
