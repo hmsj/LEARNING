@@ -330,7 +330,7 @@
 									<div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
 										<c:choose>
 											<c:when test="${not empty curso.imagen }">
-												<a href="#">
+												<a href="cursos?idcurso=${curso.idcurso }">
 													<div class="logo-dark">
 														<img src="${curso.imagen }" class="img-responsive"
 															alt="client">
