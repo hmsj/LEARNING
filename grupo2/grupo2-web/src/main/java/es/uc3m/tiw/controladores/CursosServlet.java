@@ -99,6 +99,9 @@ public class CursosServlet extends HttpServlet {
 							
 						}
 					}*/
+				}else{
+					sesion.setAttribute("curso", course);
+					forwardJSP = "/curso.jsp";
 				}
 				
 			}

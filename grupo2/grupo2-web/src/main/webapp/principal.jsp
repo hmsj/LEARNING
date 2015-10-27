@@ -290,7 +290,7 @@
 													<li class="cbp-l-caption-desc">by
 														${curso.profesor_titular.nombre }</li>
 													<li class="cbp-l-icon"><a
-														href="cursos?parametro=${curso.idcurso }"><i
+														href="cursos?idcurso=${curso.idcurso }"><i
 															class="icon-info"></i></a></li>
 												</ul>
 											</div>
