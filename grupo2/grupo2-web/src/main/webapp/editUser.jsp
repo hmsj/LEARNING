@@ -112,11 +112,11 @@
 							value="${sessionScope.usuario.email }*" /> <input name="password"
 							type="password" id="passwordEdit"
 							value="${sessionScope.usuario.password }*" /> <input name="edad"
-							type="number" id="edadEdit" value="${sessionScope.usuario.edad }" />
+							type="number" id="edadEdit" placeholder="${sessionScope.usuario.edad }" />
 						<input name="intereses" type="text" id="interesesEdit"
 							value="${sessionScope.usuario.intereses }" /> <input
 							name="descripcion" type="text" id="descripcionEdit"
-							value="${sessionScope.usuario.decripcion }" />
+							value="${sessionScope.usuario.descripcion }" />
 					</fieldset>
 					<fieldset>
 						<label for="pagos">Permite el uso de sus datos para sus
