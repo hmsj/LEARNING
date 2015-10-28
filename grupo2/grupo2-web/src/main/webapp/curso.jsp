@@ -224,6 +224,7 @@
 						</c:forEach>
 					</c:when>
 					<c:otherwise>
+						<p>HOLA</p>
 					</c:otherwise>
 				</c:choose>
 			</div>

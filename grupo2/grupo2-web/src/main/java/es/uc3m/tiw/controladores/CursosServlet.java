@@ -18,6 +18,7 @@ import es.uc3m.tiw.dominios.Leccion;
 import es.uc3m.tiw.dominios.Material;
 import es.uc3m.tiw.dominios.ProfesorInvitado;
 import es.uc3m.tiw.dominios.Seccion;
+import es.uc3m.tiw.dominios.TipoDificultad;
 import es.uc3m.tiw.dominios.Usuario;
 
 /**
@@ -32,6 +33,7 @@ public class CursosServlet extends HttpServlet {
 	ArrayList<Leccion> lecciones = new ArrayList<Leccion>();
 	ArrayList<Material> materiales = new ArrayList<Material>();
 	ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
+	ArrayList<TipoDificultad> dificultades =  new ArrayList<TipoDificultad>();
 	String forwardJSP = "";
 
 	/**
@@ -80,14 +82,14 @@ public class CursosServlet extends HttpServlet {
 					if (alumn != null) {
 						Curso cursado = comprobarCursado(alumn, course);
 						Curso matriculado = comprobarMatricula(alumn, course);
-						if (cursado != null) {
-							request.setAttribute("mensaje1",
-									"El alumno ya ha realizado el curso");
-							sesion.setAttribute("curso", course);
-							forwardJSP = "/curso.jsp";
-						} else if (matriculado != null) {
+						if (matriculado != null) {
 							request.setAttribute("mensaje2",
 									"El alumno esta matriculado en el curso");
+							sesion.setAttribute("curso", course);
+							forwardJSP = "/curso.jsp";
+						} else if (cursado != null) {
+							request.setAttribute("mensaje1",
+									"El alumno ya ha realizado el curso");
 							sesion.setAttribute("curso", course);
 							forwardJSP = "/curso.jsp";
 						} else {
