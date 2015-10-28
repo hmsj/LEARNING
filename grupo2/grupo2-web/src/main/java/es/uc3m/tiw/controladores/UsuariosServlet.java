@@ -83,16 +83,22 @@ public class UsuariosServlet extends HttpServlet {
 		if(usuarioLogado != null){
 			TipoUsuario tipoUsuario = comprobarUsuario(usuarioLogado); 
 			if(tipoUsuario.getIdtipoUsuario() == 1){
-				
-			}else if (tipoUsuario.getIdtipoUsuario() == 2){
-				
-			}else if(tipoUsuario.getIdtipoUsuario() == 3){
-				String mensaje = "";
+				String mensaje = "Es un usuario alumno";
 				request.setAttribute("mensaje", mensaje);
+				forwardJSP = "/editUser.jsp";
+			}else if (tipoUsuario.getIdtipoUsuario() == 2){
+				String mensaje1 = "Es un usuario profesor";
+				request.setAttribute("mensaje", mensaje1);
+				forwardJSP = "/editUser.jsp";
+			}else if(tipoUsuario.getIdtipoUsuario() == 3){
+				String mensaje = "Entre en la seccion de administrador";
+				request.setAttribute("mensaje", mensaje);
+				forwardJSP = "/principal.jsp";
 			}
 		}else{
-			forwardJSP="/login.jsp";
-			
+			String mensaje = "Debe entrar al sistema para acceder a sus datos";
+			request.setAttribute("mensaje", mensaje);
+			forwardJSP = "/login.jsp";
 		}
 		forward(request, response, forwardJSP);
 	}
