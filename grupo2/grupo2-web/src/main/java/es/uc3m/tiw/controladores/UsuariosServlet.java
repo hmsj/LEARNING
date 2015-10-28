@@ -77,26 +77,34 @@ public class UsuariosServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String idUsuario = request.getParameter("idusuario");
+		String username = request.getParameter("username");
+		String mensaje ="";
 		HttpSession sesion = request.getSession(true);
 		Usuario usuarioLogado = (Usuario) sesion.getAttribute("usuario");
-		if(usuarioLogado != null){
-			TipoUsuario tipoUsuario = comprobarUsuario(usuarioLogado); 
-			if(tipoUsuario.getIdtipoUsuario() == 1){
-				String mensaje = "Es un usuario alumno";
+		if (usuarioLogado != null) {
+			if (username != null && !"".equals(username)
+					&& usuarioLogado.getUsername().equals(username)) {
+				TipoUsuario tipoUsuario = comprobarUsuario(usuarioLogado);
+				if (tipoUsuario.getIdtipoUsuario() == 1) {
+					mensaje = "Es un usuario alumno";
+					request.setAttribute("mensaje", mensaje);
+					forwardJSP = "/editUser.jsp";
+				} else if (tipoUsuario.getIdtipoUsuario() == 2) {
+					String mensaje1 = "Es un usuario profesor";
+					request.setAttribute("mensaje", mensaje1);
+					forwardJSP = "/editUser.jsp";
+				} else if (tipoUsuario.getIdtipoUsuario() == 3) {
+					mensaje = "Entre en la seccion de administrador";
+					request.setAttribute("mensaje", mensaje);
+					forwardJSP = "/principal.jsp";
+				}
+			} else {
+				mensaje = "Se ha producido un error, debe registrarse de nuevo";
 				request.setAttribute("mensaje", mensaje);
-				forwardJSP = "/editUser.jsp";
-			}else if (tipoUsuario.getIdtipoUsuario() == 2){
-				String mensaje1 = "Es un usuario profesor";
-				request.setAttribute("mensaje", mensaje1);
-				forwardJSP = "/editUser.jsp";
-			}else if(tipoUsuario.getIdtipoUsuario() == 3){
-				String mensaje = "Entre en la seccion de administrador";
-				request.setAttribute("mensaje", mensaje);
-				forwardJSP = "/principal.jsp";
+				forwardJSP = "/login.jsp";
 			}
-		}else{
-			String mensaje = "Debe entrar al sistema para acceder a sus datos";
+		} else {
+			mensaje = "Debe entrar al sistema para acceder a sus datos";
 			request.setAttribute("mensaje", mensaje);
 			forwardJSP = "/login.jsp";
 		}
@@ -111,7 +119,7 @@ public class UsuariosServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
-	
+
 	/* Metodo para redirigir a los jsp */
 	protected void forward(HttpServletRequest request,
 			HttpServletResponse response, String uri) {
@@ -126,11 +134,12 @@ public class UsuariosServlet extends HttpServlet {
 			ioe.printStackTrace();
 		}
 	}
-	
+
 	protected TipoUsuario comprobarUsuario(Usuario usuario) {
 		TipoUsuario userType = null;
 		for (TipoUsuario tipoUsuario : tipoUsuarios) {
-			if (usuario.getTipoUsuario().getIdtipoUsuario() == tipoUsuario.getIdtipoUsuario()) {
+			if (usuario.getTipoUsuario().getIdtipoUsuario() == tipoUsuario
+					.getIdtipoUsuario()) {
 				userType = new TipoUsuario();
 				userType = tipoUsuario;
 			}

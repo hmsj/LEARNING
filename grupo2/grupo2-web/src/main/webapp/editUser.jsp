@@ -24,7 +24,7 @@
 	<div class="container">
 	
 				<div class="col-md-12 text-center">
-				<h3 class="section-title white wow fadeInUp ">Edite su perfil</h3>
+				<h3 class="section-title white wow fadeInUp ">${sessionScope.usuario.username }</h3>
 			</div>
 		<div class="row wow fadeInUp">
 

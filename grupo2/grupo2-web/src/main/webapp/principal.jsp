@@ -43,9 +43,9 @@
 </head>
 <body>
 	<c:if test="${not empty mensaje }">
-		<p class ="error_message">${mensaje }</p>				
+		<p class="error_message">${mensaje }</p>
 	</c:if>
-<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 
 	<!-- Start Home Revolution Slider Parallax Section -->
 	<section id="home-revolution-slider">
@@ -248,7 +248,7 @@
 					</c:if>
 				</ul>
 			</div>
-			<div style="margin-top:30px;margin-left: 45%;">
+			<div style="margin-top: 30px; margin-left: 45%;">
 				<a href="cursos" class="boton">VER MAS</a>
 			</div>
 
@@ -299,15 +299,12 @@
 
 		<!-- Start Footer 1 -->
 		<footer id="footer">
-
-
 		<div class="footer-copyright">
 			<div class="container">
 				<div class="row">
-
 					<div class="col-md-6 col-sm-12">
 						<p>
-							© 2015 TIW UC3M <a href="index.html" class="logo">Dokulearning</a>
+							© 2015 TIW UC3M <a href="inicio" class="logo">Dokulearning</a>
 							All Rights Reserved.
 						</p>
 					</div>
