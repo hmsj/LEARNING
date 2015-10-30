@@ -64,23 +64,29 @@
 									<c:choose>
 										<c:when test="${not empty mensaje1 }">
 											<div class="op-1">
-												<a href="#features" class="btn btn-primary btn-scroll">ENTRAR</a>
+												<a href="price-list" class="btn btn-primary btn-scroll">ENTRAR</a>
 											</div>
 										</c:when>
 										<c:when test="${not empty mensaje2 }">
 											<div class="op-1">
-												<a href="#features" class="btn btn-primary btn-scroll">VER
+												<a href="#services" class="btn btn-primary btn-scroll">VER
 													DATOS</a>
 											</div>
 										</c:when>
 										<c:when test="${not empty mensaje3 }">
 											<div class="op-1">
-												<a href="#features" class="btn btn-primary btn-scroll">MATRICULATE</a>
+												<a href="#" class="btn btn-primary btn-scroll">MATRICULATE</a>
+											</div>
+										</c:when>
+										<c:when test="${not empty mensaje }">
+											<div class="op-1">
+												<div class="error">${mensaje }</div>
+												<a href="#" class="btn btn-primary btn-scroll">MATRICULATE</a>
 											</div>
 										</c:when>
 										<c:otherwise>
 											<div class="op-1">
-												<a href="#features" class="btn btn-primary btn-scroll">MATRICULATE</a>
+												<a href="#" class="btn btn-primary btn-scroll">MATRICULATE</a>
 											</div>
 										</c:otherwise>
 									</c:choose>
@@ -140,14 +146,19 @@
 			<div class="col-md-12 text-center">
 				<h3 class="section-title white wow fadeInUp">Temario del curso</h3>
 			</div>
+			
 			<div class="row wow fadeInUp">
 				<c:choose>
 					<c:when test="${not empty secciones }">
 						<c:forEach items="${secciones }" var="seccion">
-							<c:if test="${seccion.curso.idcurso == $sessionScope.curso.idcurso }">
+						${seccion.titulo }-a
+							<!--<c:if test="${seccion.curso.idcurso == $sessionScope.curso.idcurso }">-->
 							<div class="col-md-3 col-sm-6 price-list-box">
+								${seccion.titulo }-a
 								<div class="price-box">
+									${seccion.titulo }-b
 									<div class="price-table">
+										${seccion.titulo }-c
 										<h3 class="label">${seccion.titulo }</h3>
 										<p class="price grey">
 											<sup class="currency">$</sup> <span class="pricing">99
@@ -162,12 +173,11 @@
 												class="feature option-button no-border"> <a href="#"
 												class="btn-effect">SIGN UP NOW!</a>
 											</span>
-
 										</p>
 									</div>
 								</div>
 							</div>
-							</c:if>
+							<!--</c:if>-->
 						</c:forEach>
 					</c:when>
 					<c:otherwise>

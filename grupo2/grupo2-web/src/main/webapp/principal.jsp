@@ -282,11 +282,21 @@
 															alt="client">
 													</div>
 													<div class="logo-light">
-														<img src="img/clients/logo-1-light.png"
-															class="img-responsive" alt="client">
+														<p class="text-center">${curso.titulo }</p>
 													</div>
 												</a>
 											</c:when>
+											<c:otherwise>
+												<a href="cursos?idcurso=${curso.idcurso }">
+													<div class="logo-dark">
+														<img src="img/portfolio/1.jpg" class="img-responsive"
+															alt="client">
+													</div>
+													<div class="logo-light">
+														<p class="text-center">${curso.titulo }</p>
+													</div>
+												</a>
+											</c:otherwise>
 										</c:choose>
 									</div>
 								</c:if>

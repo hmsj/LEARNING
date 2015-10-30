@@ -19,6 +19,7 @@ import es.uc3m.tiw.dominios.Material;
 import es.uc3m.tiw.dominios.ProfesorInvitado;
 import es.uc3m.tiw.dominios.Seccion;
 import es.uc3m.tiw.dominios.TipoDificultad;
+import es.uc3m.tiw.dominios.TipoUsuario;
 import es.uc3m.tiw.dominios.Usuario;
 
 /**
@@ -33,7 +34,8 @@ public class CursosServlet extends HttpServlet {
 	ArrayList<Leccion> lecciones = new ArrayList<Leccion>();
 	ArrayList<Material> materiales = new ArrayList<Material>();
 	ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
-	ArrayList<TipoDificultad> dificultades =  new ArrayList<TipoDificultad>();
+	ArrayList<TipoDificultad> dificultades = new ArrayList<TipoDificultad>();
+	ArrayList<TipoUsuario> tipoUsuarios = new ArrayList<TipoUsuario>();
 	String forwardJSP = "";
 
 	/**
@@ -60,6 +62,8 @@ public class CursosServlet extends HttpServlet {
 				.getAttribute("materiales");
 		alumnos = (ArrayList<Alumno>) this.getServletContext().getAttribute(
 				"alumnos");
+		tipoUsuarios = (ArrayList<TipoUsuario>) this.getServletContext()
+				.getAttribute("tipoUsuarios");
 	}
 
 	/**
@@ -78,32 +82,50 @@ public class CursosServlet extends HttpServlet {
 			Curso course = obtenerCurso(idCurso);
 			if (course != null) {
 				if (usuarioLogado != null) {
-					Alumno alumn = comprobarAlumno(usuarioLogado);
-					if (alumn != null) {
-						Curso cursado = comprobarCursado(alumn, course);
-						Curso matriculado = comprobarMatricula(alumn, course);
-						if (matriculado != null) {
-							request.setAttribute("mensaje2",
-									"El alumno esta matriculado en el curso");
+					TipoUsuario tipoUser = comprobarUsuario(usuarioLogado);
+					if (tipoUser.getIdtipoUsuario() == 1) {
+						Alumno alumn = comprobarAlumno(usuarioLogado);
+						if (alumn != null) {
+							Curso cursado = comprobarCursado(alumn, course);
+							Curso matriculado = comprobarMatricula(alumn,
+									course);
+							if (matriculado != null) {
+								request.setAttribute("mensaje2",
+										"El alumno esta matriculado en el curso");
+								sesion.setAttribute("curso", course);
+								forwardJSP = "/curso.jsp";
+							} else if (cursado != null) {
+								request.setAttribute("mensaje1",
+										"El alumno ya ha realizado el curso");
+								sesion.setAttribute("curso", course);
+								forwardJSP = "/curso.jsp";
+							} else {
+								request.setAttribute("mensaje3",
+										"El alumno no esta matriculado");
+								sesion.setAttribute("curso", course);
+								forwardJSP = "/curso.jsp";
+							}
+						}
+					} else if (tipoUser.getIdtipoUsuario() == 2) {
+						boolean esProfe = comprobarProfeCurso(usuarioLogado, course);
+						if(esProfe){
+							request.setAttribute("mensaje4",
+									"El usuario es profesor del curso");
 							sesion.setAttribute("curso", course);
 							forwardJSP = "/curso.jsp";
-						} else if (cursado != null) {
-							request.setAttribute("mensaje1",
-									"El alumno ya ha realizado el curso");
-							sesion.setAttribute("curso", course);
-							forwardJSP = "/curso.jsp";
-						} else {
-							request.setAttribute("mensaje3",
-									"El alumno no esta matriculado");
+						}else{
+							request.setAttribute("mensaje",
+									"No es profesor de este curso");
 							sesion.setAttribute("curso", course);
 							forwardJSP = "/curso.jsp";
 						}
-					}/*
-					 * else{ Usuario profesor = comprobarProfesor();
-					 * if(profesor!=null){
-					 * 
-					 * } }
-					 */
+						
+					} else {
+						request.setAttribute("mensaje",
+								"Los datos no son validos para realizar esta accion, por favor acceda de nuevo");
+						request.getSession().invalidate();
+						forwardJSP = "/login.jsp";
+					}
 				} else {
 					sesion.setAttribute("curso", course);
 					forwardJSP = "/curso.jsp";
@@ -185,4 +207,23 @@ public class CursosServlet extends HttpServlet {
 		return cursoMatriculado;
 	}
 
+	protected TipoUsuario comprobarUsuario(Usuario usuario) {
+		TipoUsuario userType = null;
+		for (TipoUsuario tipoUsuario : tipoUsuarios) {
+			if (usuario.getTipoUsuario().getIdtipoUsuario() == tipoUsuario
+					.getIdtipoUsuario()) {
+				userType = new TipoUsuario();
+				userType = tipoUsuario;
+			}
+		}
+		return userType;
+	}
+
+	protected boolean comprobarProfeCurso(Usuario usuario, Curso curso) {
+		boolean esProfe = false;
+		if(curso.getProfesor_titular().getUsername().equals(usuario.getUsername())){
+			esProfe = true;
+		}
+		return esProfe;
+	}
 }

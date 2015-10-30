@@ -159,7 +159,7 @@ public class InicioServlet extends HttpServlet {
 		double precioInicial = 50;
 		double preciofinal = calcularPrecio(precioInicial, oferta1);
 		
-		Curso curso1 = new Curso(1, "Curso de diseño photoshop", "Aprende el manejo basico de Photoshop", 25, usuario2, "img/courses/DiseñoPhotoshop.jpg ", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria4, tipoDificultad1);
+		Curso curso1 = new Curso(1, "Curso de diseño photoshop", "Aprende el manejo basico de Photoshop", 25, usuario2, null, "", destacado, validado, precioInicial, preciofinal, oferta1, categoria4, tipoDificultad1);
 		Curso curso2 = new Curso(2, "Curso de diseño de videojuegos", "Diseño de juegos y simulacion con 3d Unity", 25, usuario2, "img/courses/DiseñoVideojuegos.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria4, tipoDificultad1);
 		Curso curso3 = new Curso(3, "Curso de fotografia: el enfoque", "Sacale el maximo partido a tu camara", 25, usuario2, "img/courses/FotografiaEnfocar.jpg", "", nodestacado, validado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);
 		Curso curso4 = new Curso(4, "Curso de fotografia nocturna", "Fotografia nocturna con tu camara digital", 25, usuario2, "img/courses/FotografiaNocturna.jpg", "", destacado, novalidado, precioInicial, preciofinal, oferta1, categoria2, tipoDificultad1);

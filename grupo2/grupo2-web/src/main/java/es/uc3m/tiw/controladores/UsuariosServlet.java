@@ -20,6 +20,7 @@ import es.uc3m.tiw.dominios.Direccion;
 import es.uc3m.tiw.dominios.Leccion;
 import es.uc3m.tiw.dominios.Material;
 import es.uc3m.tiw.dominios.Seccion;
+import es.uc3m.tiw.dominios.TipoDificultad;
 import es.uc3m.tiw.dominios.TipoLogro;
 import es.uc3m.tiw.dominios.TipoUsuario;
 import es.uc3m.tiw.dominios.Usuario;
@@ -38,6 +39,7 @@ public class UsuariosServlet extends HttpServlet {
 	ArrayList<Direccion> direcciones = new ArrayList<Direccion>();
 	ArrayList<TipoLogro> tipoLogros = new ArrayList<TipoLogro>();
 	ArrayList<TipoUsuario> tipoUsuarios = new ArrayList<TipoUsuario>();
+	ArrayList<TipoDificultad> tipoDificultades = new ArrayList<TipoDificultad>();
 	String forwardJSP = "";
 
 	/**
@@ -68,6 +70,7 @@ public class UsuariosServlet extends HttpServlet {
 				.getAttribute("tipoLogros");
 		tipoUsuarios = (ArrayList<TipoUsuario>) this.getServletContext()
 				.getAttribute("tipoUsuarios");
+		tipoDificultades = (ArrayList<TipoDificultad>) this.getServletContext().getAttribute("tipoDificultades");
 	}
 
 	/**
@@ -86,12 +89,14 @@ public class UsuariosServlet extends HttpServlet {
 					&& usuarioLogado.getUsername().equals(username)) {
 				TipoUsuario tipoUsuario = comprobarUsuario(usuarioLogado);
 				if (tipoUsuario.getIdtipoUsuario() == 1) {
+					Alumno alumnoLogado = obtenerAlumno(usuarioLogado);
+					sesion.setAttribute("alumno", alumnoLogado);
 					mensaje = "Es un usuario alumno";
 					request.setAttribute("mensaje", mensaje);
 					forwardJSP = "/editUser.jsp";
 				} else if (tipoUsuario.getIdtipoUsuario() == 2) {
 					String mensaje1 = "Es un usuario profesor";
-					request.setAttribute("mensaje", mensaje1);
+					request.setAttribute("mensaje1", mensaje1);
 					forwardJSP = "/editUser.jsp";
 				} else if (tipoUsuario.getIdtipoUsuario() == 3) {
 					mensaje = "Entre en la seccion de administrador";
@@ -145,6 +150,17 @@ public class UsuariosServlet extends HttpServlet {
 			}
 		}
 		return userType;
+	}
+	
+	protected Alumno obtenerAlumno(Usuario usuario) {	
+		Alumno alumn = null;
+		for (Alumno alumno : alumnos){
+			if(usuario.getUsername().equals(alumno.getUsername().getUsername())){
+				alumn = new Alumno();
+				alumn = alumno;
+			}
+		}
+		return alumn;
 	}
 
 }
