@@ -227,6 +227,8 @@
 								<c:when test="${curso.validado ==  1}">
 									<li
 										class="cbp-item effect effects ${curso.categoria.descripcion_categoria }">
+										<c:choose>
+										<c:when test="${not empty curso.imagen }">
 										<div class="img">
 											<img src="${curso.imagen }" class="img-responsive" alt=""
 												style="width: 100%; height: 100%;" />
@@ -241,6 +243,24 @@
 												</ul>
 											</div>
 										</div>
+										</c:when>
+										<c:otherwise>
+										<div class="img">
+											<img src="img/portfolio/1.jpg" class="img-responsive" alt=""
+												style="width: 100%; height: 100%;" />
+											<div class="overlay">
+												<ul class="expand">
+													<li class="cbp-l-caption-title">${curso.titulo }</li>
+													<li class="cbp-l-caption-desc">by
+														${curso.profesor_titular.nombre }</li>
+													<li class="cbp-l-icon"><a
+														href="cursos?idcurso=${curso.idcurso }"><i
+															class="icon-info"></i></a></li>
+												</ul>
+											</div>
+										</div>
+										</c:otherwise>
+										</c:choose>
 									</li>
 								</c:when>
 							</c:choose>

@@ -66,7 +66,7 @@
                         
                         <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
                             <div id="message"></div>
-                            <form method="post" action="" name="signupform" id="signupform">
+                            <form method="post" action="usuarios" name="signupform" id="signupform">
                             	<label for="tipouser">Selecciona uno de los siguientes roles:</label><fieldset>
                             		Alumno:<input name="tipouser" type="radio" id="tipouser" value="alumno" checked="checked">
                             		Profesor<input name="tipouser" type="radio" id="tipouser" value="profesor">
@@ -77,11 +77,12 @@
                                 	<input name="username" type="text" id="username" placeholder="Nombre de usuario*"/> 
                                 	<input name="email" type="email" id="email" placeholder="Email*"/>
                                 	<input name="password" type="password" id="password" placeholder="Contraseña*"/>  
-                                	<input name="edad" type="number" id="edad" placeholder="Edad"/>
-                                	<input name="intereses" type="text" id="intereses" placeholder="Intereses"/> 
-                                	<input name="descripcion" type="text" id="descripcion" placeholder="Descripcion"/>
-                                	<input name=> 
-                                	
+                                	<input name="telefono" type="tel" id="telefono" placeholder="Telefono"> 
+                                	<input name="edad" type="number" id="edad" placeholder="Edad"/>                            	
+                                </fieldset>
+                                <fieldset>
+                                	<textarea name="intereses" cols="40" rows="3" id="intereses" placeholder="Intereses"></textarea>
+                                	<textarea name="descripcion" cols="40" rows="3" id="descripcion" placeholder="Descripcion"></textarea> 
                                 </fieldset>
                                 <fieldset>
                                 	<label for="pagos">Permite el uso de sus datos para sus cobros</label>

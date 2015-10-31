@@ -70,7 +70,8 @@ public class UsuariosServlet extends HttpServlet {
 				.getAttribute("tipoLogros");
 		tipoUsuarios = (ArrayList<TipoUsuario>) this.getServletContext()
 				.getAttribute("tipoUsuarios");
-		tipoDificultades = (ArrayList<TipoDificultad>) this.getServletContext().getAttribute("tipoDificultades");
+		tipoDificultades = (ArrayList<TipoDificultad>) this.getServletContext()
+				.getAttribute("tipoDificultades");
 	}
 
 	/**
@@ -81,7 +82,7 @@ public class UsuariosServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String username = request.getParameter("username");
-		String mensaje ="";
+		String mensaje = "";
 		HttpSession sesion = request.getSession(true);
 		Usuario usuarioLogado = (Usuario) sesion.getAttribute("usuario");
 		if (usuarioLogado != null) {
@@ -123,6 +124,70 @@ public class UsuariosServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Usuario nuevoUsuario = new Usuario();
+		boolean estaVacio = false;
+
+		if (request.getParameter("tipouser") != null
+				&& !"".equals(request.getParameter("tipouser"))) {
+			if (request.getParameter("tipouser").equalsIgnoreCase("alumno")) {
+				nuevoUsuario.setTipoUsuario(new TipoUsuario(1, "alumno"));
+			} else if (request.getParameter("tipouser").equalsIgnoreCase("profesor")) {
+				nuevoUsuario.setTipoUsuario(new TipoUsuario(2, "profesor"));
+			} else {
+				estaVacio = true;
+			}
+			if (request.getParameter("nombre") != null && !"".equalsIgnoreCase(request.getParameter("nombre"))) {
+				nuevoUsuario.setNombre(request.getParameter("nombre"));
+				if (request.getParameter("apellidos") != null && !"".equalsIgnoreCase(request.getParameter("apellidos"))) {
+					nuevoUsuario.setNombre(request.getParameter("apellidos"));
+					if (request.getParameter("username") != null && !"".equalsIgnoreCase(request.getParameter("username"))) {
+						nuevoUsuario.setNombre(request.getParameter("username"));
+						if (request.getParameter("nombre") != null && !"".equalsIgnoreCase(request.getParameter("nombre"))) {
+							nuevoUsuario.setNombre(request.getParameter("nombre"));
+							if (request.getParameter("email") != null && !"".equalsIgnoreCase(request.getParameter("email"))) {
+								nuevoUsuario.setNombre(request.getParameter("email"));
+								if (request.getParameter("password") != null && !"".equalsIgnoreCase(request.getParameter("password"))) {
+									nuevoUsuario.setNombre(request.getParameter("password"));
+								}else {
+									estaVacio = true;
+								}
+							}else {
+								estaVacio = true;
+							}
+						}else {
+							estaVacio = true;
+						}
+					}else {
+						estaVacio = true;
+					}
+				}else {
+					estaVacio = true;
+				}
+			}else {
+				estaVacio = true;
+			}
+
+		}else {
+			estaVacio = true;
+		}
+		if (estaVacio) {
+			forwardJSP = "/login.jsp";
+			String mensaje = "Debe rellenar los datos marcados con *";
+			request.setAttribute("mensaje", mensaje);
+		}
+		if(request.getParameter("edad")!=null && !"".equalsIgnoreCase(request.getParameter("edad"))){
+			int nuevaEdad = Integer.parseInt(request.getParameter("edad"));
+			nuevoUsuario.setEdad(nuevaEdad);
+		}
+		if (request.getParameter("intereses")!=null && !"".equalsIgnoreCase(request.getParameter("intereses"))) {
+			nuevoUsuario.setIntereses(request.getParameter("intereses"));
+		}
+		if(request.getParameter("descripcion")!=null && !"".equalsIgnoreCase(request.getParameter("descripcion"))){
+			nuevoUsuario.setDescripcion(request.getParameter("descripcion"));
+		}
+		if (request.getParameter("telefono")!=null && !"".equalsIgnoreCase(request.getParameter("telefono"))) {
+			nuevoUsuario.setTelefono(request.getParameter("telefono"));
+		}
 	}
 
 	/* Metodo para redirigir a los jsp */
@@ -151,11 +216,12 @@ public class UsuariosServlet extends HttpServlet {
 		}
 		return userType;
 	}
-	
-	protected Alumno obtenerAlumno(Usuario usuario) {	
+
+	protected Alumno obtenerAlumno(Usuario usuario) {
 		Alumno alumn = null;
-		for (Alumno alumno : alumnos){
-			if(usuario.getUsername().equals(alumno.getUsername().getUsername())){
+		for (Alumno alumno : alumnos) {
+			if (usuario.getUsername()
+					.equals(alumno.getUsername().getUsername())) {
 				alumn = new Alumno();
 				alumn = alumno;
 			}

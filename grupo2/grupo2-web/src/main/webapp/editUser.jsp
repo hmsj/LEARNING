@@ -118,7 +118,7 @@
 							name="emailEdit" type="text" id="emailEdit"
 							value="${sessionScope.usuario.email }" /> <input name="edadEdit"
 							type="number" id="edadEdit" value="${sessionScope.usuario.edad }" />
-						<input name="phoneEdit" type="phone" id="phoneEdit"
+						<input name="phoneEdit" type="tel" id="phoneEdit"
 							value="${sessionScope.usuario.telefono }" />
 
 					</fieldset>
