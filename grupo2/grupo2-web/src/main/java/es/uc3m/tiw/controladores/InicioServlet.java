@@ -19,7 +19,7 @@ import es.uc3m.tiw.dominios.Direccion;
 import es.uc3m.tiw.dominios.Leccion;
 import es.uc3m.tiw.dominios.Material;
 import es.uc3m.tiw.dominios.Oferta;
-import es.uc3m.tiw.dominios.ProfesorInvitado;
+import es.uc3m.tiw.dominios.Profesor;
 import es.uc3m.tiw.dominios.Seccion;
 import es.uc3m.tiw.dominios.TipoDificultad;
 import es.uc3m.tiw.dominios.TipoLogro;
@@ -49,7 +49,7 @@ public class InicioServlet extends HttpServlet {
 	private ArrayList<Leccion> lecciones = new ArrayList<Leccion>();
 	private ArrayList<Material> materiales = new ArrayList<Material>();
 	private ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
-	private ArrayList<ProfesorInvitado> pInvitados = new ArrayList<ProfesorInvitado>();
+	private ArrayList<Profesor> pInvitados = new ArrayList<Profesor>();
 	private ArrayList<Seccion> secciones = new ArrayList<Seccion>();
     private ArrayList<TipoDificultad> tipoDificultades = new ArrayList<TipoDificultad>();
     private ArrayList<TipoLogro> tipoLogros = new ArrayList<TipoLogro>();
@@ -190,7 +190,7 @@ public class InicioServlet extends HttpServlet {
 		cursos.add(curso14);
 		
 		Alumno alumno1 = new Alumno(usuario1, null, cursos);
-		Alumno alumno2 = new Alumno(usuario5, null, null);
+		Alumno alumno2 = new Alumno(usuario5, curso1, null);
 		alumnos.add(alumno1);
 		alumnos.add(alumno2);
 		
@@ -206,7 +206,7 @@ public class InicioServlet extends HttpServlet {
 		Material material1 = new Material(1, tipoMaterial1, leccion1, ""); 
 		materiales.add(material1);
 		
-		ProfesorInvitado profeInvitado = new ProfesorInvitado(usuario4, curso1);
+		Profesor profeInvitado = new Profesor(usuario4, curso1);
 		pInvitados.add(profeInvitado);
 		
 		contexto.getServletContext().setAttribute("alumnos", alumnos);

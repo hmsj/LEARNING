@@ -74,7 +74,7 @@
 						<p class="error_message">${mensajeError }</p>
 					</div>
 				</c:if>
-				<form method="post" action="registro?accion=registrar"
+				<form method="post" action="registro"
 					name="signupform" id="signupform">
 					<label for="tipouser">Selecciona uno de los siguientes
 						roles:</label>

@@ -2,16 +2,16 @@ package es.uc3m.tiw.dominios;
 
 import java.io.Serializable;
 
-public class ProfesorInvitado implements Serializable{
+public class Profesor implements Serializable{
 	Usuario usuario_username;
 	Curso curso_idcurso;
 	
-	public ProfesorInvitado() {
+	public Profesor() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProfesorInvitado(Usuario usuario_username, Curso curso_idcurso) {
+	public Profesor(Usuario usuario_username, Curso curso_idcurso) {
 		super();
 		this.usuario_username = usuario_username;
 		this.curso_idcurso = curso_idcurso;

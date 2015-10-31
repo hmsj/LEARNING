@@ -215,7 +215,14 @@
 									<div class="col-md-6 col-sm-6 team-member">
 										<div class="effect effects wow fadeInUp">
 											<div class="img">
+											<c:choose>
+											<c:when test="${not empty cursado.imagen }">
 												<img src="${cursado.imagen }" class="img-responsive" alt="" />
+											</c:when>
+											<c:otherwise>
+												<img src="img/portfolio/1.jpg" class="img-responsive" alt="" />
+											</c:otherwise>
+											</c:choose>
 												<div class="overlay">
 													<ul class="expand">
 														<c:forEach items="${calificaciones }" var="calificacion">

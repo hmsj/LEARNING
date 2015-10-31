@@ -16,7 +16,7 @@ import es.uc3m.tiw.dominios.Categoria;
 import es.uc3m.tiw.dominios.Curso;
 import es.uc3m.tiw.dominios.Leccion;
 import es.uc3m.tiw.dominios.Material;
-import es.uc3m.tiw.dominios.ProfesorInvitado;
+import es.uc3m.tiw.dominios.Profesor;
 import es.uc3m.tiw.dominios.Seccion;
 import es.uc3m.tiw.dominios.TipoDificultad;
 import es.uc3m.tiw.dominios.TipoUsuario;
