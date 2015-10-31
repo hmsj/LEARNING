@@ -107,7 +107,7 @@
 			</div>
 
 			<div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
-				<form method="post" action="" name="editUserform" id="editUserform">
+				<form method="post" action="usuarios?accion=editar" name="editUserform" id="editUserform">
 					<fieldset>
 						<input name="nombreEdit" type="text" id="nombreEdit"
 							value="${sessionScope.usuario.nombre }" /> <input

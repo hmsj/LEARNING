@@ -35,7 +35,7 @@
 					</c:when>
 					<c:otherwise>
 						<li class="to-section"><a href="login">Login</a></li>
-						<li class="to-section"><a href="signup.jsp">Registrarse</a></li>
+						<li class="to-section"><a href="registro">Registrarse</a></li>
 					</c:otherwise>
 				</c:choose>
 				

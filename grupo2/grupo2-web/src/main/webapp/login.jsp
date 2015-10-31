@@ -60,7 +60,7 @@
 	</div>
 	<!-- /.container --> </nav> </header>
 	<!--End Header-->
-	
+
 	<!-- Start Login Form Section -->
 	<section id="contact">
 	<div class="container">
@@ -71,16 +71,16 @@
 			</div>
 
 			<div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
-				<div id="message"></div>
 				<c:if test="${not empty mensaje }">
-					<p class ="error_message">${mensaje }</p>				
+					<div id="message">
+						<p class="error_message">${mensaje }</p>
+					</div>
 				</c:if>
 				<form method="post" action="login" name="loginform" id="loginform">
 					<fieldset>
 						<input name="username" type="text" id="username"
-							placeholder="Nombre de usuario*" />
-						<input name="password"
-							type="password" id="password" placeholder="Contraseña*"/>
+							placeholder="Nombre de usuario*" /> <input name="password"
+							type="password" id="password" placeholder="Contraseña*" />
 					</fieldset>
 					<input type="submit" class="submit" id="submit" value="ENTRAR" />
 				</form>

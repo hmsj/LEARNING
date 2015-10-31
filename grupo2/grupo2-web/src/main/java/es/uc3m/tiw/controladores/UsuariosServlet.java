@@ -34,11 +34,11 @@ public class UsuariosServlet extends HttpServlet {
 	ArrayList<Curso> cursos = new ArrayList<Curso>();
 	ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
 	ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+	ArrayList<TipoUsuario> tipoUsuarios = new ArrayList<TipoUsuario>();
 	ArrayList<Calificacion> calificaciones = new ArrayList<Calificacion>();
 	ArrayList<DatosBancarios> datosBancarios = new ArrayList<DatosBancarios>();
 	ArrayList<Direccion> direcciones = new ArrayList<Direccion>();
 	ArrayList<TipoLogro> tipoLogros = new ArrayList<TipoLogro>();
-	ArrayList<TipoUsuario> tipoUsuarios = new ArrayList<TipoUsuario>();
 	ArrayList<TipoDificultad> tipoDificultades = new ArrayList<TipoDificultad>();
 	String forwardJSP = "";
 
@@ -60,6 +60,8 @@ public class UsuariosServlet extends HttpServlet {
 				"alumnos");
 		usuarios = (ArrayList<Usuario>) this.getServletContext().getAttribute(
 				"usuarios");
+		tipoUsuarios = (ArrayList<TipoUsuario>) this.getServletContext()
+				.getAttribute("tipoUsuarios");
 		calificaciones = (ArrayList<Calificacion>) this.getServletContext()
 				.getAttribute("calificaciones");
 		datosBancarios = (ArrayList<DatosBancarios>) this.getServletContext()
@@ -68,8 +70,6 @@ public class UsuariosServlet extends HttpServlet {
 				.getAttribute("direcciones");
 		tipoLogros = (ArrayList<TipoLogro>) this.getServletContext()
 				.getAttribute("tipoLogros");
-		tipoUsuarios = (ArrayList<TipoUsuario>) this.getServletContext()
-				.getAttribute("tipoUsuarios");
 		tipoDificultades = (ArrayList<TipoDificultad>) this.getServletContext()
 				.getAttribute("tipoDificultades");
 	}
@@ -124,70 +124,7 @@ public class UsuariosServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Usuario nuevoUsuario = new Usuario();
-		boolean estaVacio = false;
-
-		if (request.getParameter("tipouser") != null
-				&& !"".equals(request.getParameter("tipouser"))) {
-			if (request.getParameter("tipouser").equalsIgnoreCase("alumno")) {
-				nuevoUsuario.setTipoUsuario(new TipoUsuario(1, "alumno"));
-			} else if (request.getParameter("tipouser").equalsIgnoreCase("profesor")) {
-				nuevoUsuario.setTipoUsuario(new TipoUsuario(2, "profesor"));
-			} else {
-				estaVacio = true;
-			}
-			if (request.getParameter("nombre") != null && !"".equalsIgnoreCase(request.getParameter("nombre"))) {
-				nuevoUsuario.setNombre(request.getParameter("nombre"));
-				if (request.getParameter("apellidos") != null && !"".equalsIgnoreCase(request.getParameter("apellidos"))) {
-					nuevoUsuario.setNombre(request.getParameter("apellidos"));
-					if (request.getParameter("username") != null && !"".equalsIgnoreCase(request.getParameter("username"))) {
-						nuevoUsuario.setNombre(request.getParameter("username"));
-						if (request.getParameter("nombre") != null && !"".equalsIgnoreCase(request.getParameter("nombre"))) {
-							nuevoUsuario.setNombre(request.getParameter("nombre"));
-							if (request.getParameter("email") != null && !"".equalsIgnoreCase(request.getParameter("email"))) {
-								nuevoUsuario.setNombre(request.getParameter("email"));
-								if (request.getParameter("password") != null && !"".equalsIgnoreCase(request.getParameter("password"))) {
-									nuevoUsuario.setNombre(request.getParameter("password"));
-								}else {
-									estaVacio = true;
-								}
-							}else {
-								estaVacio = true;
-							}
-						}else {
-							estaVacio = true;
-						}
-					}else {
-						estaVacio = true;
-					}
-				}else {
-					estaVacio = true;
-				}
-			}else {
-				estaVacio = true;
-			}
-
-		}else {
-			estaVacio = true;
-		}
-		if (estaVacio) {
-			forwardJSP = "/login.jsp";
-			String mensaje = "Debe rellenar los datos marcados con *";
-			request.setAttribute("mensaje", mensaje);
-		}
-		if(request.getParameter("edad")!=null && !"".equalsIgnoreCase(request.getParameter("edad"))){
-			int nuevaEdad = Integer.parseInt(request.getParameter("edad"));
-			nuevoUsuario.setEdad(nuevaEdad);
-		}
-		if (request.getParameter("intereses")!=null && !"".equalsIgnoreCase(request.getParameter("intereses"))) {
-			nuevoUsuario.setIntereses(request.getParameter("intereses"));
-		}
-		if(request.getParameter("descripcion")!=null && !"".equalsIgnoreCase(request.getParameter("descripcion"))){
-			nuevoUsuario.setDescripcion(request.getParameter("descripcion"));
-		}
-		if (request.getParameter("telefono")!=null && !"".equalsIgnoreCase(request.getParameter("telefono"))) {
-			nuevoUsuario.setTelefono(request.getParameter("telefono"));
-		}
+		
 	}
 
 	/* Metodo para redirigir a los jsp */
