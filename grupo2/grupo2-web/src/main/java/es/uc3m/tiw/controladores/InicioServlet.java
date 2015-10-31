@@ -203,7 +203,7 @@ public class InicioServlet extends HttpServlet {
 		Leccion leccion1 = new Leccion(1, "Leccion1", curso1, "Descripcion leccion 1", seccion1); 
 		lecciones.add(leccion1);
 		
-		Material material1 = new Material(1, tipoMaterial1, leccion1, ""); 
+		Material material1 = new Material(1, tipoMaterial1, leccion1, "", "material 1"); 
 		materiales.add(material1);
 		
 		Profesor profeInvitado = new Profesor(usuario4, curso1);

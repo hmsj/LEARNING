@@ -249,33 +249,100 @@
 				<c:choose>
 					<c:when test="${not empty secciones }">
 						<c:forEach items="${secciones }" var="seccion">
-							<c:if test="${seccion.curso.idcurso == sessionScope.curso.idcurso }">
-							<div class="col-md-3 col-sm-6 price-list-box">
-								<div class="price-box">
-									<div class="price-table">
-
-										<h3 class="label">${seccion.titulo }</h3>
-										<p class="price grey">
-											<sup class="currency">$</sup> <span class="pricing">99
-												<span style="display: in">Hola</span>
-											</span> <span class="time-period">Per Month</span>
-										</p>
-										<p class="features grey">
-											<span class="feature">24/7 Free Support</span> <span
-												class="feature">100GB Storage</span> <span class="feature">1GB
-												Bandwidth</span> <span class="feature"></span> <span
-												class="feature no-border"></span> <span
-												class="feature option-button no-border"> <a href="#"
-												class="btn-effect">SIGN UP NOW!</a>
-											</span>
-										</p>
+							<c:if
+								test="${seccion.curso.idcurso == sessionScope.curso.idcurso }">
+								<div class="col-md-3 col-sm-6 price-list-box">
+									<div class="price-box">
+										<div class="price-table">
+											<h3 class="label">${seccion.titulo }</h3>
+											<c:if test="${not empty lecciones }">
+												<c:forEach items="${lecciones }" var="leccion">
+													<c:if
+														test="${leccion.seccion.idseccion == seccion.idseccion }">
+														<p class="price grey">
+															<span class="pricing">${leccion.titulo }
+														</p>
+														<c:if test="${not empty sessionScope.usuario }">
+															<c:forEach items="${alumnos }" var="alumno">
+																<c:if
+																	test="${sessionScope.usuario.username == alumno.username.username && sessionScope.curso.idcurso == alumno.curso_actual.idcurso }">
+																	<c:if test="${not empty materiales }">
+																		<c:forEach items="${materiales }" var="material">
+																			<p class="features grey">
+																				<a class="feature" href="${material.archivo }">${material.titulo }</a>
+																			</p>
+																		</c:forEach>
+																	</c:if>
+																</c:if>
+															</c:forEach>
+														</c:if>
+													</c:if>
+												</c:forEach>
+											</c:if>
+										</div>
 									</div>
 								</div>
-							</div>
 							</c:if>
 						</c:forEach>
 					</c:when>
 				</c:choose>
+			</div>
+		</div>
+		</section>
+
+<section id="alumnosMatriculados">
+		<div class="container">
+			<div class="col-md-12 text-center">
+				<h3 class="section-title wow fadeInUp">Profesores del curso</h3>
+			</div>
+			<div class="row">
+				<c:if test="${not empty profesores }">
+					<c:forEach items="${profesores }" var="profesor">
+						<c:if
+							test="${profesor.curso_idcurso.idcurso == sessionScope.curso.idcurso }">
+							<div class="col-md-3 col-sm-6 team-member">
+								<div class="effect effects wow fadeInUp">
+									<div class="img">
+										<c:choose>
+											<c:when test="${not empty alumno.username.imagen }">
+												<img src="${alumno.username.imagen }" class="img-responsive"
+													alt="" />
+											</c:when>
+											<c:otherwise>
+												<img src="img/clients/client-1.png" class="img-responsive"
+													alt="" />
+											</c:otherwise>
+										</c:choose>
+										<div class="overlay">
+											<ul class="expand">
+												<li class="social-icon"><a
+													href="usuarios?idusuario=${alumno.username.username }"><i
+														class="icon-eye"></i></a></li>
+												<c:if
+													test="${sessionScope.usuario.tipoUsuario.idtipoUsuario == 2 }">
+													<li class="social-icon"><a
+														href="usuarios?idusuario=${alumno.username.username }"><i
+															class="ion-edit"></i></a></li>
+													<li class="social-icon"><a
+														href="usuarios?idusuario=${alumno.username.username }"><i
+															class="ion-trash-a"></i></a></li>
+												</c:if>
+											</ul>
+											<a class="close-overlay hidden">x</a>
+										</div>
+									</div>
+								</div>
+								<div class="member-info wow fadeInUp">
+									<h4></h4>
+									<p>${alumno.username.username }</p>
+								</div>
+							</div>
+						</c:if>
+					</c:forEach>
+				</c:if>
+			</div>
+			<div style="margin-top: 30px; margin-left: 45%;">
+				<a href="cursos" class="boton">AÑADIR ALUMNO</a>
 			</div>
 		</div>
 		</section>
