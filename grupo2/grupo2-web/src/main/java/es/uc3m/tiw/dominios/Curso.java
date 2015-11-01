@@ -1,7 +1,6 @@
 package es.uc3m.tiw.dominios;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 
 public class Curso implements Serializable{
@@ -13,7 +12,6 @@ public class Curso implements Serializable{
 	String titulo;
 	String descripcion;
 	int horas;
-	Profesor profesor_titular;
 	String imagen;
 	String certificado;
 	int destacado;
@@ -23,7 +21,7 @@ public class Curso implements Serializable{
 	Oferta oferta;
 	Categoria categoria;
 	TipoDificultad dificultad;
-	ArrayList<Profesor> listado_profesores;
+	String profesor_titular;
 	
 	
 	public Curso() {
@@ -32,16 +30,15 @@ public class Curso implements Serializable{
 	}
 
 	public Curso(int idcurso, String titulo, String descripcion, int horas,
-			Profesor profesor_titular, String imagen, String certificado,
+			String imagen, String certificado,
 			int destacado, int validado, double precio_inicial,
 			double precio_final, Oferta oferta, Categoria categoria,
-			TipoDificultad dificultad, ArrayList<Profesor> listado_profesores) {
+			TipoDificultad dificultad) {
 		super();
 		this.idcurso = idcurso;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.horas = horas;
-		this.profesor_titular = profesor_titular;
 		this.imagen = imagen;
 		this.certificado = certificado;
 		this.destacado = destacado;
@@ -51,7 +48,28 @@ public class Curso implements Serializable{
 		this.oferta = oferta;
 		this.categoria = categoria;
 		this.dificultad = dificultad;
-		this.listado_profesores= listado_profesores;
+	}
+	
+	public Curso(int idcurso, String titulo, String descripcion, int horas,
+			String imagen, String certificado,
+			int destacado, int validado, double precio_inicial,
+			double precio_final, Oferta oferta, Categoria categoria,
+			TipoDificultad dificultad, String profesor_titular) {
+		super();
+		this.idcurso = idcurso;
+		this.titulo = titulo;
+		this.descripcion = descripcion;
+		this.horas = horas;
+		this.imagen = imagen;
+		this.certificado = certificado;
+		this.destacado = destacado;
+		this.validado = validado;
+		this.precio_inicial = precio_inicial;
+		this.precio_final = precio_final;
+		this.oferta = oferta;
+		this.categoria = categoria;
+		this.dificultad = dificultad;
+		this.profesor_titular = profesor_titular;
 	}
 
 	public int getIdcurso() {
@@ -84,14 +102,6 @@ public class Curso implements Serializable{
 
 	public void setHoras(int horas) {
 		this.horas = horas;
-	}
-
-	public Profesor getProfesor_titular() {
-		return profesor_titular;
-	}
-
-	public void setProfesor_titular(Profesor profesor_titular) {
-		this.profesor_titular = profesor_titular;
 	}
 
 	public String getImagen() {
@@ -162,22 +172,15 @@ public class Curso implements Serializable{
 		return dificultad;
 	}
 
+	public final String getProfesor_titular() {
+		return profesor_titular;
+	}
+
+	public final void setProfesor_titular(String profesor_titular) {
+		this.profesor_titular = profesor_titular;
+	}
+
 	public void setDificultad(TipoDificultad dificultad) {
 		this.dificultad = dificultad;
-	}
-
-	/**
-	 * @return the listado_profesores
-	 */
-	public final ArrayList<Profesor> getListado_profesores() {
-		return listado_profesores;
-	}
-
-	/**
-	 * @param listado_profesores the listado_profesores to set
-	 */
-	public final void setListado_profesores(ArrayList<Profesor> listado_profesores) {
-		this.listado_profesores = listado_profesores;
-	}
-	
+	}	
 }

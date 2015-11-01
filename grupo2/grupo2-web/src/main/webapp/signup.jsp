@@ -18,6 +18,20 @@
 <!-- Skin Color -->
 <link rel="stylesheet" href="css/colors/green.css" id="color-skins" />
 </head>
+<script>
+function mostrarPago(eleccion)
+{
+	if (eleccion == 'true')
+	{
+		document.getElementById("pagos").style.display = "";
+	}
+	else
+	{
+		document.getElementById("pagos").style.display = "none";
+		document.getElementById("paypal").checked = "";
+	}
+}
+</script>
 <body>
 	<!--Start Header-->
 	<header> <nav class="navbar navbar-default" role="navigation">
@@ -80,8 +94,8 @@
 						roles:</label>
 					<fieldset>
 						Alumno:<input name="tipouser" type="radio" id="tipouser"
-							value="alumno" checked="checked"> Profesor<input
-							name="tipouser" type="radio" id="tipouser" value="profesor">
+							value="alumno" checked="checked" onclick="mostrarPago('false');"> Profesor<input
+							name="tipouser" type="radio" id="tipouser" value="profesor" onclick="mostrarPago('true');">
 					</fieldset>
 					<fieldset>
 						<input name="nombre" type="text" id="nombre" placeholder="Nombre*" />
@@ -100,7 +114,7 @@
 						<textarea name="descripcion" cols="40" rows="3" id="descripcion"
 							placeholder="Descripcion"></textarea>
 					</fieldset>
-					<fieldset>
+					<fieldset id="pagos" style="display: none;">
 						<label for="pagos">Permite el uso de sus datos para sus
 							cobros</label> <input name="paypal" type="checkbox" id="paypal">
 					</fieldset>

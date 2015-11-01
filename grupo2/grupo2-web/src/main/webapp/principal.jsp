@@ -87,81 +87,6 @@
 								<a href="#features" class="btn btn-primary btn-scroll">ACCEDER</a>
 							</div>
 						</div></li>
-
-					<!-- SLIDE 2 -->
-					<li data-transition="fade" data-slotamount="7"
-						data-masterspeed="2000" data-thumb="img/backgrounds/bg-1.jpg"
-						data-delay="10000" data-saveperformance="on"
-						data-title="Digital Agency"><img
-						src="img/backgrounds/bg-1.jpg" alt="slidebg1"
-						data-bgposition="center top" data-bgfit="cover"
-						data-bgrepeat="no-repeat"> <!-- Home Heading -->
-						<div class="tp-caption sft" data-x="center" data-y="260"
-							data-speed="1200" data-start="1100"
-							data-easing="Power3.easeInOut" data-splitin="none"
-							data-splitout="none" data-elementdelay="0.1"
-							data-endelementdelay="0.1" data-endspeed="300"
-							style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
-							<h2 class="home-heading op-2">A Digital Design Agency</h2>
-						</div> <!-- Home Subheading -->
-						<div class="tp-caption home-subheading sft fadeout"
-							data-x="center" data-y="360" data-speed="1200" data-start="1350"
-							data-easing="Power3.easeInOut" data-splitin="none"
-							data-splitout="none" data-elementdelay="0.1"
-							data-endelementdelay="0.1" data-endspeed="300"
-							style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
-							<div class="op-2">2015 · BRAND POSITIONING · IDENTITY
-								DESIGN · VISUAL DESIGN</div>
-						</div> <!-- Home Button -->
-						<div class="tp-caption home-button sft fadeout" data-x="center"
-							data-y="400" data-speed="1200" data-start="1550"
-							data-easing="Power3.easeInOut" data-splitin="none"
-							data-splitout="none" data-elementdelay="0.1"
-							data-endelementdelay="0.1" data-endspeed="300"
-							style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
-							<div class="op-2">
-								<a href="#about" class="btn btn-primary btn-scroll">WHAT WE
-									DO</a>
-							</div>
-						</div></li>
-
-					<!-- SLIDE 3 -->
-					<li data-transition="fade" data-slotamount="7"
-						data-masterspeed="2000" data-thumb="img/backgrounds/bg-3.jpg"
-						data-delay="10000" data-saveperformance="on"
-						data-title="Creative Coders"><img
-						src="img/backgrounds/bg-3.jpg" alt="slidebg1"
-						data-bgposition="center top" data-bgfit="cover"
-						data-bgrepeat="no-repeat"> <!-- Home Heading -->
-						<div class="tp-caption sft" data-x="center" data-y="260"
-							data-speed="1200" data-start="1100"
-							data-easing="Power3.easeInOut" data-splitin="none"
-							data-splitout="none" data-elementdelay="0.1"
-							data-endelementdelay="0.1" data-endspeed="300"
-							style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
-							<h2 class="home-heading op-3">Creative Coders</h2>
-						</div> <!-- Home Subheading -->
-						<div class="tp-caption home-subheading sft fadeout"
-							data-x="center" data-y="360" data-speed="1200" data-start="1350"
-							data-easing="Power3.easeInOut" data-splitin="none"
-							data-splitout="none" data-elementdelay="0.1"
-							data-endelementdelay="0.1" data-endspeed="300"
-							style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
-							<div class="op-3">2015 · BRAND POSITIONING · IDENTITY
-								DESIGN · VISUAL DESIGN</div>
-						</div> <!-- Home Button -->
-						<div class="tp-caption home-button sft fadeout" data-x="center"
-							data-y="400" data-speed="1200" data-start="1550"
-							data-easing="Power3.easeInOut" data-splitin="none"
-							data-splitout="none" data-elementdelay="0.1"
-							data-endelementdelay="0.1" data-endspeed="300"
-							style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
-							<div class="op-3">
-								<a href="#team" class="btn btn-primary btn-scroll">MEET THE
-									TEAM</a>
-							</div>
-						</div></li>
-
 				</ul>
 				<div class="tp-bannertimer"></div>
 			</div>
@@ -180,6 +105,81 @@
 	<!-- End Home Revolution Slider Parallax Section -->
 
 	<div class="site-wrapper content">
+
+		<!-- Start Testimonials Section -->
+		<section id="testimonials" class="parallax-section-7">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-12 text-center">
+					<h3 class="section-title white wow fadeInUp">Cursos Destacados</h3>
+					<p class="subheading grey wow fadeInUp">
+						Estos son nuestros cursos con mas <span class="highlight">exito</span>
+					</p>
+				</div>
+
+				<div class="clients">
+					<c:if test="${not empty cursos }">
+						<c:forEach items="${cursos }" var="curso">
+							<c:if test="${curso.validado == 1 }">
+								<c:if test="${curso.destacado == 1 }">
+									<div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
+										<c:choose>
+											<c:when test="${not empty curso.imagen }">
+												<a href="cursos?idcurso=${curso.idcurso }">
+													<div class="logo-dark">
+														<img src="${curso.imagen }" class="img-responsive"
+															alt="client">
+													</div>
+													<div class="logo-light">
+														<p class="text-center">${curso.titulo }</p>
+														<p class="text-center">Precio inicial:
+															${curso.precio_inicial } €</p>
+														<c:if test="${curso.oferta.tipoOferta.idtipoOferta == 1}">
+															<p class="text-center">Descuento:
+																${curso.oferta.valor} €</p>
+														</c:if>
+														<c:if test="${curso.oferta.tipoOferta.idtipoOferta == 2}">
+															<p class="text-center">Descuento:
+																${curso.oferta.valor} %</p>
+														</c:if>
+														<p class="text-center">Precio final:
+															${curso.precio_final } €</p>
+													</div>
+												</a>
+											</c:when>
+											<c:otherwise>
+												<a href="cursos?idcurso=${curso.idcurso }">
+													<div class="logo-dark">
+														<img src="img/portfolio/1.jpg" class="img-responsive"
+															alt="client">
+													</div>
+													<div class="logo-light">
+														<p class="text-center">${curso.titulo }</p>
+														<p class="text-center">Precio inicial:
+															${curso.precio_inicial } €</p>
+														<c:if test="${curso.oferta.tipoOferta.idtipoOferta == 1}">
+															<p class="text-center">Descuento:
+																${curso.oferta.valor} €</p>
+														</c:if>
+														<c:if test="${curso.oferta.tipoOferta.idtipoOferta == 2}">
+															<p class="text-center">Descuento:
+																${curso.oferta.valor} %</p>
+														</c:if>
+														<p class="text-center">Precio final:
+															${curso.precio_final } €</p>
+													</div>
+												</a>
+											</c:otherwise>
+										</c:choose>
+									</div>
+								</c:if>
+							</c:if>
+						</c:forEach>
+					</c:if>
+				</div>
+		</section>
+		<!-- End Testimonials Section -->
 
 		<!-- Start Portfolio Section -->
 		<section id="portfolio" style="position: relative;">
@@ -228,38 +228,64 @@
 									<li
 										class="cbp-item effect effects ${curso.categoria.descripcion_categoria }">
 										<c:choose>
-										<c:when test="${not empty curso.imagen }">
-										<div class="img">
-											<img src="${curso.imagen }" class="img-responsive" alt=""
-												style="width: 100%; height: 100%;" />
-											<div class="overlay">
-												<ul class="expand">
-													<li class="cbp-l-caption-title">${curso.titulo }</li>
-													<li class="cbp-l-caption-desc">by
-														${curso.profesor_titular.usuario_username.nombre }</li>
-													<li class="cbp-l-icon"><a
-														href="cursos?idcurso=${curso.idcurso }"><i
-															class="icon-info"></i></a></li>
-												</ul>
-											</div>
-										</div>
-										</c:when>
-										<c:otherwise>
-										<div class="img">
-											<img src="img/portfolio/1.jpg" class="img-responsive" alt=""
-												style="width: 100%; height: 100%;" />
-											<div class="overlay">
-												<ul class="expand">
-													<li class="cbp-l-caption-title">${curso.titulo }</li>
-													<li class="cbp-l-caption-desc">by
-														${curso.profesor_titular.usuario_username.nombre }</li>
-													<li class="cbp-l-icon"><a
-														href="cursos?idcurso=${curso.idcurso }"><i
-															class="icon-info"></i></a></li>
-												</ul>
-											</div>
-										</div>
-										</c:otherwise>
+											<c:when test="${not empty curso.imagen }">
+												<div class="img">
+													<img src="${curso.imagen }" class="img-responsive" alt=""
+														style="width: 100%; height: 100%;" />
+													<div class="overlay">
+														<ul class="expand">
+															<li class="cbp-l-caption-title">${curso.titulo }</li>
+															<li class="cbp-l-caption-desc">by
+																${curso.profesor_titular }</li>
+															<li class="cbp-l-icon"><a
+																href="cursos?idcurso=${curso.idcurso }"><i
+																	class="icon-info"></i></a></li>
+															<li class="cbp-l-caption-desc">Precio inicial:
+																${curso.precio_inicial } €</li>
+															<c:if test="${curso.oferta.tipoOferta.idtipoOferta == 1}">
+																<li class="cbp-l-caption-desc">Descuento:
+																	${curso.oferta.valor} €</li>
+															</c:if>
+															<c:if test="${curso.oferta.tipoOferta.idtipoOferta == 2}">
+																<li class="cbp-l-caption-desc">Descuento:
+																	${curso.oferta.valor} %</li>
+															</c:if>
+															<li class="cbp-l-caption-desc">Precio final:
+																${curso.precio_final } €</li>
+
+														</ul>
+													</div>
+												</div>
+											</c:when>
+											<c:otherwise>
+												<div class="img">
+													<img src="img/portfolio/1.jpg" class="img-responsive"
+														alt="" style="width: 100%; height: 100%;" />
+													<div class="overlay">
+														<ul class="expand">
+															<li class="cbp-l-caption-title">${curso.titulo }</li>
+															<li class="cbp-l-caption-desc">by
+																${curso.profesor_titular }</li>
+															<li class="cbp-l-icon"><a
+																href="cursos?idcurso=${curso.idcurso }"><i
+																	class="icon-info"></i></a></li>
+															<li class="cbp-l-caption-desc">Precio inicial:
+																${curso.precio_inicial } €</li>
+															<c:if test="${curso.oferta.tipoOferta.idtipoOferta == 1}">
+																<li class="cbp-l-caption-desc">Descuento:
+																	${curso.oferta.valor} €</li>
+															</c:if>
+															<c:if test="${curso.oferta.tipoOferta.idtipoOferta == 2}">
+																<li class="cbp-l-caption-desc">Descuento:
+																	${curso.oferta.valor} %</li>
+															</c:if>
+															<li class="cbp-l-caption-desc">Precio final:
+																${curso.precio_final } €</li>
+
+														</ul>
+													</div>
+												</div>
+											</c:otherwise>
 										</c:choose>
 									</li>
 								</c:when>
@@ -275,57 +301,6 @@
 		</div>
 		</section>
 		<!-- End Portfolio Section -->
-
-		<!-- Start Testimonials Section -->
-		<section id="testimonials" class="parallax-section-7">
-		<div class="container">
-			<div class="row">
-
-				<div class="col-md-12 text-center">
-					<h3 class="section-title white wow fadeInUp">Cursos Destacados</h3>
-					<p class="subheading grey wow fadeInUp">
-						Estos son nuestros cursos con mas <span class="highlight">exito</span>
-					</p>
-				</div>
-
-				<div class="clients">
-					<c:if test="${not empty cursos }">
-						<c:forEach items="${cursos }" var="curso">
-							<c:if test="${curso.validado == 1 }">
-								<c:if test="${curso.destacado == 1 }">
-									<div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
-										<c:choose>
-											<c:when test="${not empty curso.imagen }">
-												<a href="cursos?idcurso=${curso.idcurso }">
-													<div class="logo-dark">
-														<img src="${curso.imagen }" class="img-responsive"
-															alt="client">
-													</div>
-													<div class="logo-light">
-														<p class="text-center">${curso.titulo }</p>
-													</div>
-												</a>
-											</c:when>
-											<c:otherwise>
-												<a href="cursos?idcurso=${curso.idcurso }">
-													<div class="logo-dark">
-														<img src="img/portfolio/1.jpg" class="img-responsive"
-															alt="client">
-													</div>
-													<div class="logo-light">
-														<p class="text-center">${curso.titulo }</p>
-													</div>
-												</a>
-											</c:otherwise>
-										</c:choose>
-									</div>
-								</c:if>
-							</c:if>
-						</c:forEach>
-					</c:if>
-				</div>
-		</section>
-		<!-- End Testimonials Section -->
 
 		<!-- Start Footer 1 -->
 		<footer id="footer">

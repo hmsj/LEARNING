@@ -245,7 +245,7 @@
 											</div>
 										</div>
 										<div class="member-info wow fadeInUp">
-											<h4>${cursado.profesor_titular.nombre }</h4>
+											<h4>${cursado.profesor_titular }</h4>
 											<h5 class="highlight">${cursado.titulo }</h5>
 											<p>${cursado.descripcion }</p>
 										</div>
@@ -279,7 +279,7 @@
 							<c:when test="${not empty cursos }">
 								<c:forEach items="${cursos }" var="curso">
 									<c:if
-										test="${curso.profesor_titular.username == sessionScope.usuario.username }">
+										test="${curso.profesor_titular == sessionScope.usuario.username }">
 										<div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
 											<c:choose>
 												<c:when test="${not empty curso.imagen }">

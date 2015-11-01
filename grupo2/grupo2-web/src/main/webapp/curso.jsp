@@ -81,7 +81,7 @@
 							data-splitout="none" data-elementdelay="0.1"
 							data-endelementdelay="0.1" data-endspeed="300"
 							style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
-							<div class="op-1">${sessionScope.curso.profesor_titular.usuario_username.nombre }</div>
+							<div class="op-1">${sessionScope.curso.profesor_titular }</div>
 						</div> <!-- Home Button -->
 						<div class="tp-caption home-button sft fadeout" data-x="center"
 							data-y="400" data-speed="1200" data-start="1550"
@@ -216,10 +216,12 @@
 													href="usuarios?idusuario=${alumno.username.username }"><i
 														class="icon-eye"></i></a></li>
 												<c:if
-													test="${sessionScope.usuario.username == sessionScope.curso.profesor_titular.usuario_username.username  }">
+													test="${sessionScope.usuario.username == sessionScope.curso.profesor_titular  }">
+													<c:if test="${sessionScope.usuario.tipoUsuario ==3 }">
 													<li class="social-icon"><a
 														href="cursos?idcurso=${sessionScope.curso.idcurso }&accion=modifyAlumno&target=${alumno.username.username }"><i
 															class="ion-edit"></i></a></li>
+													</c:if>
 													<li class="social-icon"><a
 														href="cursos?idcurso=${sessionScope.curso.idcurso }&accion=deleteAlumno&target=${alumno.username.username }"><i
 															class="ion-trash-a"></i></a></li>
@@ -238,7 +240,7 @@
 					</c:forEach>
 				</c:if>
 				<c:if
-					test="${sessionScope.usuario.username == sessionScope.curso.profesor_titular.usuario_username.username }">
+					test="${sessionScope.usuario.username == sessionScope.curso.profesor_titular }">
 					<div class="col-md-12 text-center">
 						<p class="subheading wow fadeInUp">
 							<span class="highlight">Añada un nuevo alumno a su curso</span>
@@ -323,36 +325,69 @@
 			<div class="row">
 				<c:if test="${not empty profesores }">
 					<c:forEach items="${profesores }" var="profesor">
-						<div class="col-md-4 col-sm-4 team-member">
-							<div class="effect effects wow fadeInUp">
-								<div class="img">
-									<img src="img/team-1.jpg" class="img-responsive" alt="" />
-									<div class="overlay">
-										<ul class="expand">
-											<li class="social-icon"><a href="#"
-												onClick="return false;"><i class="icon-social-facebook"></i></a></li>
-											<li class="social-icon"><a href="#"
-												onClick="return false;"><i class="icon-social-twitter"></i></a></li>
-											<li class="social-icon"><a href="#"
-												onClick="return false;"><i class="icon-social-youtube"></i></a></li>
-											<li class="social-icon"><a href="#"
-												onClick="return false;"><i class="icon-social-dribbble"></i></a></li>
-											<li class="social-icon"><a href="#"
-												onClick="return false;"><i class=" icon-envelope-open"></i></a></li>
-										</ul>
-										<a class="close-overlay hidden">x</a>
+						<c:if
+							test="${profesor.curso_idcurso.idcurso == sessionScope.curso.idcurso }">
+							<div class="col-md-4 col-sm-4 team-member">
+								<div class="effect effects wow fadeInUp">
+									<div class="img">
+										<c:choose>
+											<c:when test="${not empty profesor.usuario_username.imagen }">
+												<img src="${profesor.usuario_username.imagen }" class="img-responsive"
+													alt="" />
+											</c:when>
+											<c:otherwise>
+												<img src="img/clients/client-1.png" class="img-responsive"
+													alt="" />
+											</c:otherwise>
+										</c:choose>
+										<div class="overlay">
+											<ul class="expand">
+												<li class="social-icon"><a
+													href="usuarios?idusuario=${alumno.username.username }"><i
+														class="icon-eye"></i></a></li>
+												<c:if
+													test="${sessionScope.usuario.username == sessionScope.curso.profesor_titular  }">
+													<c:if test="${sessionScope.usuario.tipoUsuario ==3 }">
+													<li class="social-icon"><a
+														href="cursos?idcurso=${sessionScope.curso.idcurso }&accion=modifyAlumno&target=${alumno.username.username }"><i
+															class="ion-edit"></i></a></li>
+													</c:if>
+													<li class="social-icon"><a
+														href="cursos?idcurso=${sessionScope.curso.idcurso }&accion=deleteAlumno&target=${alumno.username.username }"><i
+															class="ion-trash-a"></i></a></li>
+												</c:if>
+											</ul>
+											<a class="close-overlay hidden">x</a>
+										</div>
 									</div>
 								</div>
+								<div class="member-info wow fadeInUp">
+									<h4>${profesor.usuario_username.username }</h4>
+								</div>
 							</div>
-							<div class="member-info wow fadeInUp">
-								<h4>John Vossen</h4>
-								<h5 class="highlight">CEO / Founder</h5>
-								<p>Vivamus motestues phasellus enim sed orci eu pharetra.
-									Donec posuere nunc vitae tortor sagittis feugiat in non massa.
-									Quisqueeas sed mi nec.</p>
-							</div>
-						</div>
+						</c:if>
 					</c:forEach>
+				</c:if>
+				<c:if
+					test="${sessionScope.usuario.username == sessionScope.curso.profesor_titular }">
+					<div class="col-md-12 text-center">
+						<p class="subheading wow fadeInUp">
+							<span class="highlight">Añada un nuevo alumno a su curso</span>
+						</p>
+					</div>
+					<div id="contact">
+						<div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+							<form method="post" action="cursos" name="addAlumnform"
+								id="addAlumnform">
+								<input name="target" type="text" id="target"
+									placeholder="Nombre de usuario del alumno" /> <input
+									name="accion" id="accion" type="hidden" value="addAlumno" /> <input
+									name="idcurso" id="idcurso" type="hidden"
+									value="${sessionScope.curso.idcurso }" /> <input type="submit"
+									class="submit" id="submit" value="AÑADIR ALUMNO" />
+							</form>
+						</div>
+					</div>
 				</c:if>
 			</div>
 		</div>
