@@ -49,7 +49,7 @@ public class InicioServlet extends HttpServlet {
 	private ArrayList<Leccion> lecciones = new ArrayList<Leccion>();
 	private ArrayList<Material> materiales = new ArrayList<Material>();
 	private ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
-	private ArrayList<Profesor> pInvitados = new ArrayList<Profesor>();
+	private ArrayList<Profesor> profesores = new ArrayList<Profesor>();
 	private ArrayList<Seccion> secciones = new ArrayList<Seccion>();
     private ArrayList<TipoDificultad> tipoDificultades = new ArrayList<TipoDificultad>();
     private ArrayList<TipoLogro> tipoLogros = new ArrayList<TipoLogro>();
@@ -153,13 +153,17 @@ public class InicioServlet extends HttpServlet {
 		usuarios.add(usuario4);
 		usuarios.add(usuario5);
 		
+		Profesor profesor = new Profesor(usuario2, null);
+		Profesor profesor1 = new Profesor(usuario4, null);
+		profesores.add(profesor);
+		profesores.add(profesor1);
+		
 		Oferta oferta1 = new Oferta(1, tipoOferta2, 30, "31/10/2015");
 		ofertas.add(oferta1);
 		
 		double precioInicial = 50;
 		double preciofinal = calcularPrecio(precioInicial, oferta1);
 		
-		Profesor profesor = new Profesor(usuario2, null);
 		
 		Curso curso1 = new Curso(1, "Curso de diseño photoshop", "Aprende el manejo basico de Photoshop", 25, profesor, null, "", destacado, validado, precioInicial, preciofinal, oferta1, categoria4, tipoDificultad1, null);
 		Curso curso2 = new Curso(2, "Curso de diseño de videojuegos", "Diseño de juegos y simulacion con 3d Unity", 25, profesor, "img/courses/DiseñoVideojuegos.jpg", "", destacado, validado, precioInicial, preciofinal, oferta1, categoria4, tipoDificultad1, null);
@@ -208,8 +212,7 @@ public class InicioServlet extends HttpServlet {
 		Material material1 = new Material(1, tipoMaterial1, leccion1, "", "material 1"); 
 		materiales.add(material1);
 		
-		Profesor profeInvitado = new Profesor(usuario4, curso1);
-		pInvitados.add(profeInvitado);
+		
 		
 		contexto.getServletContext().setAttribute("alumnos", alumnos);
 		contexto.getServletContext().setAttribute("calificaciones", calificaciones);
@@ -220,7 +223,7 @@ public class InicioServlet extends HttpServlet {
 		contexto.getServletContext().setAttribute("lecciones", lecciones);
 		contexto.getServletContext().setAttribute("materiales", materiales);
 		contexto.getServletContext().setAttribute("ofertas", ofertas);
-		contexto.getServletContext().setAttribute("profesInvitados",pInvitados);
+		contexto.getServletContext().setAttribute("profesores",profesores);
 		contexto.getServletContext().setAttribute("secciones", secciones);
 		contexto.getServletContext().setAttribute("tipoDificultades", tipoDificultades);
 		contexto.getServletContext().setAttribute("tipoLogros", tipoLogros);

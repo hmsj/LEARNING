@@ -27,7 +27,10 @@ import es.uc3m.tiw.dominios.Usuario;
  */
 @WebServlet(value = "/cursos")
 public class CursosServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5079331756861773626L;
 	ArrayList<Curso> cursos = new ArrayList<Curso>();
 	ArrayList<Categoria> categorias = new ArrayList<Categoria>();
 	ArrayList<Seccion> secciones = new ArrayList<Seccion>();
@@ -85,48 +88,7 @@ public class CursosServlet extends HttpServlet {
 		if (idCurso != null && !"".equals(idCurso)) {
 			Curso course = obtenerCurso(idCurso);
 			if (course != null) {				
-				if (accion != null && "addAlumno".equalsIgnoreCase(accion))
-				{
-					String nombreAlumno = "";
-					if(request.getParameter("target") != null && !"".equalsIgnoreCase(request.getParameter("target")))
-					{
-						nombreAlumno = request.getParameter("target");
-						Alumno alumn = comprobarAlumno(nombreAlumno);
-						if (alumn != null) {		
-							Curso cursado = comprobarCursado(alumn, course);
-							if (cursado != null)
-								mensaje = "El alumno ya ha cursado este curso";
-							Curso matriculado = comprobarMatricula(alumn,									
-									course);
-							if (matriculado != null)
-								mensaje = "El alumno ya está matriculado en este curso";	
-							boolean yaEstaMatriculado = comprobarYaMatriculado(alumn);
-							if (yaEstaMatriculado)
-								mensaje = "El alumno ya está matriculado en otro curso";
-							
-							if (mensaje == null)
-							{
-								for (int i = 0; i < alumnos.size(); i++)
-								{
-									if(alumnos.get(i).getUsername().getUsername().equalsIgnoreCase(alumn.getUsername().getUsername()))
-									{
-											alumnos.get(i).setCurso_actual(course);
-											this.getServletContext().setAttribute("alumnos", alumnos);
-											mensaje = "El alumno ya se ha matriculado en el curso";
-									}
-								}
-							}								
-						}						
-						else
-						{
-							mensaje = "El alumno que desea añadir no existe en el sistema";
-						}						
-					}else
-					{
-						mensaje = "No ha seleccionado una alumno al que añadir al curso";
-					}
-					forwardJSP = "/curso.jsp";
-				}else if(accion != null && "deleteAlumno".equalsIgnoreCase(accion))
+				if(accion != null && "deleteAlumno".equalsIgnoreCase(accion))
 				{
 					String nombreAlumno = "";
 					if(request.getParameter("target") != null && !"".equalsIgnoreCase(request.getParameter("target")))
@@ -168,40 +130,6 @@ public class CursosServlet extends HttpServlet {
 				}else if(accion != null && "deleteTem".equalsIgnoreCase(accion))
 				{
 					
-				}else if(accion != null && "addProfesor".equalsIgnoreCase(accion))
-				{
-					String nombreProfesor = "";
-					if(request.getParameter("target") != null && !"".equalsIgnoreCase(request.getParameter("target")))
-					{
-						nombreProfesor = request.getParameter("target");
-						Profesor profe = comprobarProfesor(nombreProfesor);
-						if (profe != null) {		
-							boolean yaEnCurso = comprobarProfesorYaEnCurso(profe, course);
-							if (yaEnCurso)
-								mensaje = "El profesor ya esta dado de alta en el curso";
-														
-							if (mensaje == null)
-							{
-								for (int i = 0; i < cursos.size(); i++)
-								{
-									if (course.getIdcurso() == cursos.get(i).getIdcurso())
-									{
-										cursos.get(i).getListado_profesores().add(profe);
-										this.getServletContext().setAttribute("cursos", cursos);
-										mensaje = "El profesor ya se ha añadido en el curso";										
-									}
-								}
-							}								
-						}						
-						else
-						{
-							mensaje = "El profesor que desea añadir no existe en el sistema";
-						}						
-					}else
-					{
-						mensaje = "No ha seleccionado una profesor al que añadir al curso";
-					}
-					forwardJSP = "/curso.jsp";
 				}else if(accion != null && "deleteProfesor".equalsIgnoreCase(accion))
 				{
 					String nombreProfesor = "";
@@ -312,7 +240,6 @@ public class CursosServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String idCurso = request.getParameter("idcurso");
 		String mensaje = null;
-		forwardJSP = "/listadoCursos.jsp";
 		String accion = request.getParameter("accion");
 		if (idCurso != null && !"".equals(idCurso)) {
 			Curso course = obtenerCurso(idCurso);
