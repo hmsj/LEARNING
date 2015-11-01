@@ -81,7 +81,7 @@
 							data-splitout="none" data-elementdelay="0.1"
 							data-endelementdelay="0.1" data-endspeed="300"
 							style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
-							<div class="op-1">${sessionScope.curso.profesor_titular.nombre }</div>
+							<div class="op-1">${sessionScope.curso.profesor_titular.usuario_username.nombre }</div>
 						</div> <!-- Home Button -->
 						<div class="tp-caption home-button sft fadeout" data-x="center"
 							data-y="400" data-speed="1200" data-start="1550"
@@ -187,6 +187,11 @@
 					<span class="highlight">Estos son los alumnos matriculados
 						en el curso ${sessionScop.curso.titulo }</span>
 				</p>
+				<c:if test="${not empty mensaje }">
+					<div id="message">
+						<p class="error_message">${mensaje }</p>
+					</div>
+				</c:if>
 			</div>
 			<div class="row">
 				<c:if test="${not empty alumnos }">
@@ -213,11 +218,11 @@
 														class="icon-eye"></i></a></li>
 												<c:if
 													test="${sessionScope.usuario.tipoUsuario.idtipoUsuario == 2 }">
-													<li class="social-icon"><a
-														href="usuarios?idusuario=${alumno.username.username }"><i
+													<li class="social-icon"><a method="post"
+														href="cursos?idcurso=${sessionScope.curso.idcurso }&accion=modifyAlumno&target=${alumno.username.username }"><i
 															class="ion-edit"></i></a></li>
-													<li class="social-icon"><a
-														href="usuarios?idusuario=${alumno.username.username }"><i
+													<li class="social-icon"><a method="post"
+														href="cursos?idcurso=${sessionScope.curso.idcurso }&accion=deleteAlumno&target=${alumno.username.username }"><i
 															class="ion-trash-a"></i></a></li>
 												</c:if>
 											</ul>
@@ -233,13 +238,31 @@
 						</c:if>
 					</c:forEach>
 				</c:if>
-			</div>
-			<div style="margin-top: 30px; margin-left: 45%;">
-				<a href="cursos" class="boton">AÑADIR ALUMNO</a>
+				<div class="col-md-12 text-center">
+					<p class="subheading wow fadeInUp">
+						<span class="highlight">Añada un nuevo alumno a su curso</span>
+					</p>
+				</div>
+				<div id="contact">
+					<div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+						<form method="post" action="cursos" name="addAlumnform"
+							id="addAlumnform">
+							<fieldset>
+								<input name="target" type="text" id="target"
+									placeholder="Nombre de usuario del alumno" /> <input
+									type="hidden" id="accion" value="addAlumno" /> <input
+									type="hidden" id="idcurso"
+									value="${sessionScope.curso.idcurso }" />
+							</fieldset>
+
+							<input type="submit" class="submit" id="submit"
+								value="AÑADIR ALUMNO" />
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 		</section>
-
 		<section id="price-list" class="parallax-section-6">
 		<div class="container">
 			<div class="col-md-12 text-center">
@@ -290,7 +313,7 @@
 		</div>
 		</section>
 
-<section id="alumnosMatriculados">
+		<section id="profesoresCurso">
 		<div class="container">
 			<div class="col-md-12 text-center">
 				<h3 class="section-title wow fadeInUp">Profesores del curso</h3>
@@ -342,7 +365,7 @@
 				</c:if>
 			</div>
 			<div style="margin-top: 30px; margin-left: 45%;">
-				<a href="cursos" class="boton">AÑADIR ALUMNO</a>
+				<a href="cursos" class="boton">AÑADIR PROFESOR</a>
 			</div>
 		</div>
 		</section>

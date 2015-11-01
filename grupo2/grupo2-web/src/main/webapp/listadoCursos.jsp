@@ -156,7 +156,7 @@
 													</div>
 												</div>
 												<div class="member-info wow fadeInUp">
-													<h4 style="color: white;">${curso.profesor_titular.nombre }</h4>
+													<h4 style="color: white;">${curso.profesor_titular.usuario_username.nombre }</h4>
 													<p>${curso.descripcion }</p>
 												</div>
 											</div>
@@ -206,7 +206,7 @@
 													</div>
 												</div>
 												<div class="member-info wow fadeInUp">
-													<h4>${curso.profesor_titular.nombre }</h4>
+													<h4>${curso.profesor_titular.usuario_username.nombre }</h4>
 													<p>${curso.descripcion }</p>
 												</div>
 											</div>
@@ -256,7 +256,7 @@
 													</div>
 												</div>
 												<div class="member-info wow fadeInUp">
-													<h4 style="color: white;">${curso.profesor_titular.nombre }</h4>
+													<h4 style="color: white;">${curso.profesor_titular.usuario_username.nombre }</h4>
 													<p>${curso.descripcion }</p>
 												</div>
 											</div>
@@ -306,7 +306,7 @@
 													</div>
 												</div>
 												<div class="member-info wow fadeInUp">
-													<h4>${curso.profesor_titular.nombre }</h4>
+													<h4>${curso.profesor_titular.usuario_username.nombre }</h4>
 													<p>${curso.descripcion }</p>
 												</div>
 											</div>
@@ -356,7 +356,7 @@
 													</div>
 												</div>
 												<div class="member-info wow fadeInUp">
-													<h4 style="color: white;">${curso.profesor_titular.nombre }</h4>
+													<h4 style="color: white;">${curso.profesor_titular.usuario_username.nombre }</h4>
 													<p>${curso.descripcion }</p>
 												</div>
 											</div>
@@ -406,7 +406,7 @@
 													</div>
 												</div>
 												<div class="member-info wow fadeInUp">
-													<h4>${curso.profesor_titular.nombre }</h4>
+													<h4>${curso.profesor_titular.usuario_username.nombre }</h4>
 													<p>${curso.descripcion }</p>
 												</div>
 											</div>

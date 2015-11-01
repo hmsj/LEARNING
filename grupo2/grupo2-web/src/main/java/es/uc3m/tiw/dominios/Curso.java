@@ -1,14 +1,19 @@
 package es.uc3m.tiw.dominios;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 public class Curso implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 909137388436387672L;
 	int idcurso;
 	String titulo;
 	String descripcion;
 	int horas;
-	Usuario profesor_titular;
+	Profesor profesor_titular;
 	String imagen;
 	String certificado;
 	int destacado;
@@ -18,6 +23,8 @@ public class Curso implements Serializable{
 	Oferta oferta;
 	Categoria categoria;
 	TipoDificultad dificultad;
+	ArrayList<Profesor> listado_profesores;
+	
 	
 	public Curso() {
 		super();
@@ -25,10 +32,10 @@ public class Curso implements Serializable{
 	}
 
 	public Curso(int idcurso, String titulo, String descripcion, int horas,
-			Usuario profesor_titular, String imagen, String certificado,
+			Profesor profesor_titular, String imagen, String certificado,
 			int destacado, int validado, double precio_inicial,
 			double precio_final, Oferta oferta, Categoria categoria,
-			TipoDificultad dificultad) {
+			TipoDificultad dificultad, ArrayList<Profesor> listado_profesores) {
 		super();
 		this.idcurso = idcurso;
 		this.titulo = titulo;
@@ -44,6 +51,7 @@ public class Curso implements Serializable{
 		this.oferta = oferta;
 		this.categoria = categoria;
 		this.dificultad = dificultad;
+		this.listado_profesores= listado_profesores;
 	}
 
 	public int getIdcurso() {
@@ -78,11 +86,11 @@ public class Curso implements Serializable{
 		this.horas = horas;
 	}
 
-	public Usuario getProfesor_titular() {
+	public Profesor getProfesor_titular() {
 		return profesor_titular;
 	}
 
-	public void setProfesor_titular(Usuario profesor_titular) {
+	public void setProfesor_titular(Profesor profesor_titular) {
 		this.profesor_titular = profesor_titular;
 	}
 
@@ -156,6 +164,20 @@ public class Curso implements Serializable{
 
 	public void setDificultad(TipoDificultad dificultad) {
 		this.dificultad = dificultad;
+	}
+
+	/**
+	 * @return the listado_profesores
+	 */
+	public final ArrayList<Profesor> getListado_profesores() {
+		return listado_profesores;
+	}
+
+	/**
+	 * @param listado_profesores the listado_profesores to set
+	 */
+	public final void setListado_profesores(ArrayList<Profesor> listado_profesores) {
+		this.listado_profesores = listado_profesores;
 	}
 	
 }
