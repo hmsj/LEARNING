@@ -33,7 +33,7 @@
 										perfil</a></li>
 								<c:if
 									test="${sessionScope.usuario.tipoUsuario.idtipoUsuario == 2 || sessionScope.usuario.tipoUsuario.idtipoUsuario == 3}">
-									<li><a href="crearCurso.jsp">Añadir curso</a></li>
+									<li><a href="nuevoCurso">Añadir curso</a></li>
 								</c:if>
 								<li><a href="login?accion=salir">Logout</a></li>
 							</ul></li>

@@ -47,11 +47,11 @@ public class RegistroCursoServlet extends HttpServlet {
 	@Override
 	public void init(ServletConfig contexto) throws ServletException {
 		// TODO Auto-generated method stub
-		super.init(contexto);
+		super.init(contexto);		
 		alumnos = (ArrayList<Alumno>) this.getServletContext().getAttribute(
 				"alumnos");
 		cursos = (ArrayList<Curso>) this.getServletContext().getAttribute(
-				"curos");
+				"cursos");
 		profesores = (ArrayList<Profesor>) this.getServletContext()
 				.getAttribute("profesores");
 		secciones = (ArrayList<Seccion>) this.getServletContext().getAttribute(
@@ -62,7 +62,6 @@ public class RegistroCursoServlet extends HttpServlet {
 				.getAttribute("materiales");
 		categorias = (ArrayList<Categoria>) this.getServletContext()
 				.getAttribute("categorias");
-
 	}
 
 	/**
@@ -72,7 +71,7 @@ public class RegistroCursoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String forwardJSP = "/signup.jsp";
+		String forwardJSP = "/crearCurso.jsp";
 		forward(request, response, forwardJSP);
 	}
 
@@ -82,6 +81,7 @@ public class RegistroCursoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		
 		// TODO Auto-generated method stub
 		Curso nuevoCurso = new Curso();
 		Seccion nuevaSeccion = new Seccion();
@@ -89,7 +89,8 @@ public class RegistroCursoServlet extends HttpServlet {
 		Material nuevoMaterial = new Material();
 		Categoria nuevaCategoria = new Categoria();
 		boolean estaVacio = false;
-		String forwardJSP = "";
+		String forwardJSP = "/crearCurso.jsp";
+		String mensaje = null;
 		HttpSession sesion = request.getSession(true);
 
 		if (request.getParameter("tituloCurso") != null
@@ -103,12 +104,12 @@ public class RegistroCursoServlet extends HttpServlet {
 				if (request.getParameter("categoriaCurso") != null
 						&& !"".equalsIgnoreCase(request
 								.getParameter("categoriaCurso"))) {
+					
 					if (request.getParameter("categoriaCurso")
 							.equalsIgnoreCase("programacion")) {
 						nuevaCategoria.setDescripcion_categoria("programacion");
 						nuevaCategoria.setIdcategoria(1);
 						categorias.add(nuevaCategoria);
-
 					} else if (request.getParameter("categoriaCurso")
 							.equalsIgnoreCase("fotografia")) {
 						nuevaCategoria.setDescripcion_categoria("fotografia");
@@ -140,7 +141,7 @@ public class RegistroCursoServlet extends HttpServlet {
 						categorias.add(nuevaCategoria);
 					}
 					nuevoCurso.setCategoria(nuevaCategoria);
-					cursos.add(nuevoCurso);
+					this.getServletContext().setAttribute("categorias", categorias);
 
 					if (request.getParameter("tituloSeccion") != null
 							&& !"".equalsIgnoreCase(request
@@ -149,6 +150,7 @@ public class RegistroCursoServlet extends HttpServlet {
 								.getParameter("tituloSeccion"));
 						nuevaSeccion.setCurso(nuevoCurso);
 						secciones.add(nuevaSeccion);
+						this.getServletContext().setAttribute("secciones", secciones);
 
 						if (request.getParameter("tituloLeccion") != null
 								&& !"".equalsIgnoreCase(request
@@ -162,6 +164,7 @@ public class RegistroCursoServlet extends HttpServlet {
 										.getParameter("descripcionLeccion"));
 								nuevaLeccion.setSeccion(nuevaSeccion);
 								lecciones.add(nuevaLeccion);
+								this.getServletContext().setAttribute("lecciones", lecciones);
 
 								if (request.getParameter("file") != null
 										&& !"".equalsIgnoreCase(request
@@ -175,24 +178,62 @@ public class RegistroCursoServlet extends HttpServlet {
 												.setTitulo(request
 														.getParameter("tituloMaterial"));
 										nuevoMaterial.setLeccion(nuevaLeccion);
-										secciones.add(nuevaSeccion);
-										forwardJSP = "/principal.jsp";
-										String mensaje = "Ha creado un nuevo curso";
-										sesion.setAttribute("mensaje", mensaje);
-										forward(request, response, forwardJSP);
+										materiales.add(nuevoMaterial);
+										this.getServletContext().setAttribute("materiales", materiales);
+										
+										cursos.add(nuevoCurso);
+										this.getServletContext().setAttribute("cursos", cursos);
+										
+										mensaje = "Ha creado un nuevo curso";
+									}
+									else
+									{
+										estaVacio = true;
 									}
 								}
+								else
+								{
+									estaVacio = true;
+								}
+							}
+							else
+							{
+								estaVacio = true;
 							}
 						}
+						else
+						{
+							estaVacio = true;
+						}
+					}
+					else
+					{
+						estaVacio = true;
 					}
 				}
+				else
+				{
+					estaVacio = true;
+				}
+			}
+			else
+			{
+				estaVacio = true;
 			}
 		}
-		forwardJSP = "/crearCurso.jsp";
-		String mensaje = "Se ha producido un error al crear el curso";
-		sesion.setAttribute("mensaje", mensaje);
+		else
+		{
+			estaVacio = true;
+		}
+		
+		if (estaVacio) {
+			mensaje = "Debe rellenar los datos marcados con *";
+		}
+		
+		if (mensaje != null)
+			sesion.setAttribute("mensaje", mensaje);	
+		
 		forward(request, response, forwardJSP);
-
 	}
 
 	protected void forward(HttpServletRequest request,

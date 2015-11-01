@@ -87,9 +87,9 @@
 			</div>
 
 			<div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
-				<c:if test="${not empty mensajeError }">
+				<c:if test="${not empty mensaje }">
 					<div id="message">
-						<p class="error_message">${mensajeError }</p>
+						<p class="error_message">${mensaje }</p>
 					</div>
 				</c:if>
 				<form method="post" action="nuevoCurso" name="cursoForm"
@@ -99,15 +99,16 @@
 						<input name="tituloCurso" type="text" id="tituloCurso"
 							placeholder="Titulo del curso*" />
 						<input name="categoriaCurso" type="text" id="categoriaCurso"
-							placeholder="Caregoria del curso*" />
+							placeholder="Categoria del curso*" />
 						<textarea name="descripcionCurso" cols="40" rows="3"
-							id="descripcionCurso" placeholder="Descripcion del curso"></textarea>
-						<input name="tituloSeccion" type="text" id="tituloSeccion" placeholder="Titulo de seccion" /> 
-						<input name="tituloLeccion" type="text" id="tituloLeccion" placeholder="Titulo de leccion" />
+							id="descripcionCurso" placeholder="Descripcion del curso*"></textarea>
+						<input name="tituloSeccion" type="text" id="tituloSeccion" placeholder="Titulo de seccion*" /> 
+						<input name="tituloLeccion" type="text" id="tituloLeccion" placeholder="Titulo de leccion*" />
 						<textarea name="descripcionLeccion" cols="40" rows="3" id="descripcionLeccion"
-							placeholder="Descripcion de la leccion"></textarea>
-						<input name="tituloMaterial" type="text" id="tituloMaterial" placeholder="Titulo del material" />
-						<input type="file" name="file" size="60" placeholder="seleccione el archivo que desea subir"/>
+							placeholder="Descripcion de la leccion*"></textarea>
+						<input name="tituloMaterial" type="text" id="tituloMaterial" placeholder="Titulo del material*" />
+						<label for="file">Fichero asociado al material*</label>
+						<input type="file" name="file" id="file" size="60" placeholder="seleccione el archivo que desea subir"/>
        
 					</fieldset>
 					<input type="submit" class="submit" id="submit"
