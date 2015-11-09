@@ -4,7 +4,7 @@
   <parent>
         <artifactId>grupo2</artifactId>
         <groupId>es.uc3m.tiw</groupId>
-        <version>1.0</version>
+        <version>2.0</version>
         <relativePath>../pom.xml</relativePath>
   </parent>
 
@@ -40,6 +40,10 @@
             <artifactId>grupo2-ejb</artifactId>
             </ejbModule> -->
             <!-- 4.5.3. Include Web Application Module. -->
+            <jarModule>
+            <groupId>es.uc3m.tiw.model</groupId>
+            <artifactId>grupo2-model</artifactId>
+            </jarModule>
             <webModule>
             <groupId>es.uc3m.tiw.web</groupId>
             <artifactId>grupo2-web</artifactId>
@@ -71,10 +75,15 @@
   		<type>ejb</type>
   	</dependency> -->
   	<dependency>
+  		<groupId>es.uc3m.tiw.model</groupId>
+  		<artifactId>grupo2-model</artifactId>
+  		<version>2.0</version>
+  	</dependency>
+  	<dependency>
   		<groupId>es.uc3m.tiw.web</groupId>
   		<artifactId>grupo2-web</artifactId>
-  		<version>1.0</version>
+  		<version>2.0</version>
   		<type>war</type>
   	</dependency>
   </dependencies>
-</project>
+  </project>
