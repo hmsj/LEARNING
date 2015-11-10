@@ -83,9 +83,9 @@ function mostrarPago(eleccion)
 			</div>
 
 			<div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
-				<c:if test="${not empty mensajeError }">
+				<c:if test="${not empty mensaje }">
 					<div id="message">
-						<p class="error_message">${mensajeError }</p>
+						<p class="error_message">${mensaje }</p>
 					</div>
 				</c:if>
 				<form method="post" action="registro"
