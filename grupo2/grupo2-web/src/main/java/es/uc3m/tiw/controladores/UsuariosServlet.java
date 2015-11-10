@@ -81,10 +81,15 @@ public class UsuariosServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		Usuario usuarioModificado = new Usuario();
+		
+		
 		String username = request.getParameter("username");
 		String mensaje = "";
 		HttpSession sesion = request.getSession(true);
 		Usuario usuarioLogado = (Usuario) sesion.getAttribute("usuario");
+		
 		if (usuarioLogado != null) {
 			if (username != null && !"".equals(username)
 					&& usuarioLogado.getUsername().equals(username)) {

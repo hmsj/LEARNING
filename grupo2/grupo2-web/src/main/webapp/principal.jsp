@@ -83,9 +83,6 @@
 							data-splitout="none" data-elementdelay="0.1"
 							data-endelementdelay="0.1" data-endspeed="300"
 							style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
-							<div class="op-1">
-								<a href="#features" class="btn btn-primary btn-scroll">ACCEDER</a>
-							</div>
 						</div></li>
 				</ul>
 				<div class="tp-bannertimer"></div>

@@ -42,7 +42,65 @@
 </style>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<!--Start Header-->
+	<header>  
+		<nav class ="navbar navbar-default " role="navigation">
+
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#main-nav">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<!--  <a class="navbar-brand to-top" rel="home" href="#">
+                        	<img src="img/assets/logo-dark.png" alt="Dokulearning" class="logo-big">
+                            <img src="img/assets/logo-dark.png" alt="Dokulearning" class="logo-small">
+                        </a>-->
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="main-nav">
+			<ul class="nav navbar-nav  navbar-right">
+
+				<li><a class="to-section" href="principal.jsp">Home</a></li>
+
+				<c:choose>
+					<c:when test="${sessionScope.usuario != null }">
+						<li class="dropdown"><span class="dropdown-toggle"
+							data-toggle="dropdown">Mi cuenta <b class="caret"></b></span>
+							<ul class="dropdown-menu" role="menu">
+								<li class="active"><a
+									href="usuarios?username=${sessionScope.usuario.username }">Mi
+										perfil</a></li>
+								<c:if
+									test="${sessionScope.usuario.tipoUsuario.idtipoUsuario == 2 || sessionScope.usuario.tipoUsuario.idtipoUsuario == 3}">
+									<li><a href="nuevoCurso">Añadir curso</a></li>
+								</c:if>
+								<li><a href="login?accion=salir">Logout</a></li>
+							</ul></li>
+					</c:when>
+					<c:otherwise>
+						<li class="to-section"><a href="login">Login</a></li>
+						<li class="to-section"><a href="registro">Registrarse</a></li>
+					</c:otherwise>
+				</c:choose>
+
+				<li><a class="social-icon" href="http://www.twitter.com"><i
+						class="icon icon-social-twitter"></i></a></li>
+				<li><a class="social-icon" href="http://www.facebook.com"><i
+						class="icon icon-social-facebook"></i></a></li>
+				<li><a class="social-icon" href="http://www.google.com"><i
+						class="icon icon-support"></i></a></li>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container -->
+	</header>
+	<!--End Header-->
 
 	<!-- Start Home Revolution Slider Parallax Section -->
 	<section id="home-revolution-slider">
@@ -55,7 +113,8 @@
 						data-masterspeed="2000"
 						data-thumb="img/backgrounds/bg-home-fullscreen.jpg"
 						data-delay="10000" data-saveperformance="on"
-						data-title="We Are Vossen"><c:choose>
+						data-title="We Are Vossen"
+						><c:choose>
 							<c:when test="${not empty sessionScope.curso.imagen }">
 								<img src="${sessionScope.curso.imagen }" alt="slidebg1"
 									data-bgposition="center top" data-bgfit="cover"
@@ -66,7 +125,8 @@
 									data-bgposition="center top" data-bgfit="cover"
 									data-bgrepeat="no-repeat">
 							</c:otherwise>
-						</c:choose> <!-- Home Heading -->
+						</c:choose> 
+						<!-- Home Heading -->
 						<div class="tp-caption sft" data-x="center" data-y="260"
 							data-speed="1200" data-start="1100"
 							data-easing="Power3.easeInOut" data-splitin="none"
@@ -401,7 +461,7 @@
 
 					<div class="col-md-6 col-sm-12">
 						<p>
-							© 2015 Vossen Theme by <a href="inicio" class="logo">Vossen
+							© 2015 Theme by <a href="inicio" class="logo">TIW
 								Design.</a> All Rights Reserved.
 						</p>
 					</div>
