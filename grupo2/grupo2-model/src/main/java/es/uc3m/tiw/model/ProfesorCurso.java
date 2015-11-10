@@ -17,7 +17,7 @@ public class ProfesorCurso implements Serializable {
 	@EmbeddedId
 	private ProfesorCursoPK id;
 
-	private Object titular;
+	private boolean titular;
 
 	//bi-directional many-to-one association to Curso
 	@ManyToOne
@@ -40,11 +40,11 @@ public class ProfesorCurso implements Serializable {
 		this.id = id;
 	}
 
-	public Object getTitular() {
+	public boolean getTitular() {
 		return this.titular;
 	}
 
-	public void setTitular(Object titular) {
+	public void setTitular(boolean titular) {
 		this.titular = titular;
 	}
 
