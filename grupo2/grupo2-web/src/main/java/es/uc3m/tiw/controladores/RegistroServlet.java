@@ -68,6 +68,7 @@ public class RegistroServlet extends HttpServlet {
 		boolean estaVacio = false;
 		String forwardJSP = "";
 		HttpSession sesion = request.getSession(true);
+		
 		if (request.getParameter("tipouser") != null
 				&& !"".equals(request.getParameter("tipouser"))) {
 			if (request.getParameter("tipouser").equalsIgnoreCase("alumno")) {
@@ -78,15 +79,15 @@ public class RegistroServlet extends HttpServlet {
 				estaVacio = true;
 			}
 			if (request.getParameter("nombre") != null && !"".equalsIgnoreCase(request.getParameter("nombre"))) {
-				nuevoUsuario.setNombre(request.getParameter("nombre"));
+				nuevoUsuario.setNombre(request.getParameter("nombre").toString());
 				if (request.getParameter("apellidos") != null && !"".equalsIgnoreCase(request.getParameter("apellidos"))) {
-					nuevoUsuario.setApellidos(request.getParameter("apellidos"));
+					nuevoUsuario.setApellidos(request.getParameter("apellidos").toString());
 					if (request.getParameter("username") != null && !"".equalsIgnoreCase(request.getParameter("username"))) {
-						nuevoUsuario.setUsername(request.getParameter("username"));
+						nuevoUsuario.setUsername(request.getParameter("username").toString());
 						if (request.getParameter("email") != null && !"".equalsIgnoreCase(request.getParameter("email"))) {
-								nuevoUsuario.setEmail(request.getParameter("email"));
+								nuevoUsuario.setEmail(request.getParameter("email").toString());
 								if (request.getParameter("password") != null && !"".equalsIgnoreCase(request.getParameter("password"))) {
-									nuevoUsuario.setPassword(request.getParameter("password"));
+									nuevoUsuario.setPassword(request.getParameter("password").toString());
 								}else {
 									estaVacio = true;
 								}
