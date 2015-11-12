@@ -124,13 +124,25 @@ public class RegistroServlet extends HttpServlet {
 				nuevoUsuario.setDescripcion(request.getParameter("descripcion"));
 			}
 			if (request.getParameter("telefono")!=null && !"".equalsIgnoreCase(request.getParameter("telefono"))) {
+				if(request.getParameter("telefono").length()==9){
 				nuevoUsuario.setTelefono(request.getParameter("telefono"));
+				}
+				else{
+					forwardJSP = "/signup.jsp";
+					String mensaje = "El telefono no es correcto";
+					request.setAttribute("mensaje", mensaje);
+					forward(request, response, forwardJSP);
+					
+				}
+				
 			}
 			usuarios.add(nuevoUsuario);
 			if(nuevoUsuario.getTipoUsuario().getIdtipoUsuario()==1){
 				Alumno nuevoAlumno = new Alumno(nuevoUsuario, null, null);
 				alumnos.add(nuevoAlumno);
-				forwardJSP = "/principal.jsp";	
+				forwardJSP = "/principal.jsp";
+				String mensaje = "Se ha registrado correctamente";
+				request.setAttribute("mensaje", mensaje);
 				sesion.setAttribute("usuario", nuevoUsuario);
 				sesion.setAttribute("acceso", "ok");
 				forward(request, response, forwardJSP);
@@ -139,7 +151,9 @@ public class RegistroServlet extends HttpServlet {
 			{
 				Profesor nuevoProfesor = new Profesor(nuevoUsuario, null);
 				profesores.add(nuevoProfesor);
-				forwardJSP = "/principal.jsp";	
+				forwardJSP = "/principal.jsp";
+				String mensaje = "Se ha registrado correctamente";
+				request.setAttribute("mensaje", mensaje);
 				sesion.setAttribute("usuario", nuevoUsuario);
 				sesion.setAttribute("acceso", "ok");
 				forward(request, response, forwardJSP);

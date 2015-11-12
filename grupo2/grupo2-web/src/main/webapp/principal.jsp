@@ -18,6 +18,20 @@
 <!-- Skin Color -->
 <link rel="stylesheet" href="css/colors/green.css" id="color-skins" />
 <style type="text/css">
+.ok_message {
+    top: -10px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 22px;
+    text-align: center;
+    padding: 15px 15px 15px 15px;
+    color: #f4f4f4;
+    -webkit-border-radius: 3px;
+    background-color: #90ee90;
+    /*background-image: url(../img/error.gif);*/
+    background-position: 10px center;
+    background-repeat: no-repeat;
+}
 .boton {
 	-webkit-border-radius: 4;
 	-moz-border-radius: 4;
@@ -42,10 +56,19 @@
 </style>
 </head>
 <body>
-	<c:if test="${not empty mensaje }">
-		<p class="error_message">${mensaje }</p>
-	</c:if>
+
 	<jsp:include page="header.jsp"></jsp:include>
+	
+		<c:if test="${not empty mensaje }">
+			<c:choose>
+			<c:when test="${acceso == 'ok' }">
+				<p class="ok_message">${mensaje }</p>
+			</c:when>
+			<c:otherwise>
+				<p class="error_message">${mensaje }</p>
+			</c:otherwise>
+			</c:choose>
+		</c:if>
 
 	<!-- Start Home Revolution Slider Parallax Section -->
 	<section id="home-revolution-slider">
