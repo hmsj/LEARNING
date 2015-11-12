@@ -9,16 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-public class ProfesorCurso implements Serializable{
+public class ListaDeseos implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idProfesorCurso;
-	
-	@Column(nullable=false)
-	private boolean titular;
+	private Long idListaDeseos;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Usuario idUsuario;
@@ -26,32 +23,23 @@ public class ProfesorCurso implements Serializable{
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Curso idCurso;
 
-	public ProfesorCurso() {
+	public ListaDeseos() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProfesorCurso(boolean titular, Usuario idUsuario, Curso idCurso) {
+	public ListaDeseos(Usuario idUsuario, Curso idCurso) {
 		super();
-		this.titular = titular;
 		this.idUsuario = idUsuario;
 		this.idCurso = idCurso;
 	}
 
-	public Long getIdProfesorCurso() {
-		return idProfesorCurso;
+	public Long getIdListaDeseos() {
+		return idListaDeseos;
 	}
 
-	public void setIdProfesorCurso(Long idProfesorCurso) {
-		this.idProfesorCurso = idProfesorCurso;
-	}
-
-	public boolean isTitular() {
-		return titular;
-	}
-
-	public void setTitular(boolean titular) {
-		this.titular = titular;
+	public void setIdListaDeseos(Long idListaDeseos) {
+		this.idListaDeseos = idListaDeseos;
 	}
 
 	public Usuario getIdUsuario() {

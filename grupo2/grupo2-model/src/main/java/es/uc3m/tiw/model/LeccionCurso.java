@@ -1,117 +1,73 @@
 package es.uc3m.tiw.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-/**
- * The persistent class for the leccionCurso database table.
- * 
- */
-@Entity
-@Table(name="leccionCurso")
-@NamedQuery(name="LeccionCurso.findAll", query="SELECT l FROM LeccionCurso l")
-public class LeccionCurso implements Serializable {
+public class LeccionCurso implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int idLeccion;
-
-	private String descripcion;
-
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long idLeccion;
+	
+	@Column(nullable=false)
 	private String titulo;
-
-	//bi-directional many-to-one association to AlumnoLeccion
-	@OneToMany(mappedBy="leccionCurso")
-	private List<AlumnoLeccion> alumnoLeccions;
-
-	//bi-directional many-to-one association to SeccionCurso
-	@ManyToOne
-	@JoinColumn(name="idSeccion")
-	private SeccionCurso seccionCurso;
-
-	//bi-directional many-to-one association to MaterialLeccion
-	@OneToMany(mappedBy="leccionCurso")
-	private List<MaterialLeccion> materialLeccions;
+	
+	@Column(nullable=false)
+	private String descripcion;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private SeccionCurso idSeccion;
 
 	public LeccionCurso() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public int getIdLeccion() {
-		return this.idLeccion;
+	public LeccionCurso(String titulo, String descripcion,
+			SeccionCurso idSeccion) {
+		super();
+		this.titulo = titulo;
+		this.descripcion = descripcion;
+		this.idSeccion = idSeccion;
 	}
 
-	public void setIdLeccion(int idLeccion) {
+	public Long getIdLeccion() {
+		return idLeccion;
+	}
+
+	public void setIdLeccion(Long idLeccion) {
 		this.idLeccion = idLeccion;
 	}
 
-	public String getDescripcion() {
-		return this.descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
 	public String getTitulo() {
-		return this.titulo;
+		return titulo;
 	}
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
 
-	public List<AlumnoLeccion> getAlumnoLeccions() {
-		return this.alumnoLeccions;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setAlumnoLeccions(List<AlumnoLeccion> alumnoLeccions) {
-		this.alumnoLeccions = alumnoLeccions;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
-	public AlumnoLeccion addAlumnoLeccion(AlumnoLeccion alumnoLeccion) {
-		getAlumnoLeccions().add(alumnoLeccion);
-		alumnoLeccion.setLeccionCurso(this);
-
-		return alumnoLeccion;
+	public SeccionCurso getIdSeccion() {
+		return idSeccion;
 	}
 
-	public AlumnoLeccion removeAlumnoLeccion(AlumnoLeccion alumnoLeccion) {
-		getAlumnoLeccions().remove(alumnoLeccion);
-		alumnoLeccion.setLeccionCurso(null);
-
-		return alumnoLeccion;
-	}
-
-	public SeccionCurso getSeccionCurso() {
-		return this.seccionCurso;
-	}
-
-	public void setSeccionCurso(SeccionCurso seccionCurso) {
-		this.seccionCurso = seccionCurso;
-	}
-
-	public List<MaterialLeccion> getMaterialLeccions() {
-		return this.materialLeccions;
-	}
-
-	public void setMaterialLeccions(List<MaterialLeccion> materialLeccions) {
-		this.materialLeccions = materialLeccions;
-	}
-
-	public MaterialLeccion addMaterialLeccion(MaterialLeccion materialLeccion) {
-		getMaterialLeccions().add(materialLeccion);
-		materialLeccion.setLeccionCurso(this);
-
-		return materialLeccion;
-	}
-
-	public MaterialLeccion removeMaterialLeccion(MaterialLeccion materialLeccion) {
-		getMaterialLeccions().remove(materialLeccion);
-		materialLeccion.setLeccionCurso(null);
-
-		return materialLeccion;
+	public void setIdSeccion(SeccionCurso idSeccion) {
+		this.idSeccion = idSeccion;
 	}
 
 }

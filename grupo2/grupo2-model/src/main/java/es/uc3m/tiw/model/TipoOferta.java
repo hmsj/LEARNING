@@ -1,68 +1,48 @@
 package es.uc3m.tiw.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-/**
- * The persistent class for the tipoOferta database table.
- * 
- */
-@Entity
-@Table(name="tipoOferta")
-@NamedQuery(name="TipoOferta.findAll", query="SELECT t FROM TipoOferta t")
-public class TipoOferta implements Serializable {
+public class TipoOferta implements Serializable{
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int idTipoOferta;
-
+	@GeneratedValue
+	private Long idTipoOferta;
+	
+	@Column(nullable=false)
 	private String descripcionTipoOferta;
 
-	//bi-directional many-to-one association to Oferta
-	@OneToMany(mappedBy="tipoOfertaBean")
-	private List<Oferta> ofertas;
-
 	public TipoOferta() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public int getIdTipoOferta() {
-		return this.idTipoOferta;
+	public TipoOferta(Long idTipoOferta, String descripcionTipoOferta) {
+		super();
+		this.idTipoOferta = idTipoOferta;
+		this.descripcionTipoOferta = descripcionTipoOferta;
 	}
 
-	public void setIdTipoOferta(int idTipoOferta) {
+	public Long getIdTipoOferta() {
+		return idTipoOferta;
+	}
+
+	public void setIdTipoOferta(Long idTipoOferta) {
 		this.idTipoOferta = idTipoOferta;
 	}
 
 	public String getDescripcionTipoOferta() {
-		return this.descripcionTipoOferta;
+		return descripcionTipoOferta;
 	}
 
 	public void setDescripcionTipoOferta(String descripcionTipoOferta) {
 		this.descripcionTipoOferta = descripcionTipoOferta;
-	}
-
-	public List<Oferta> getOfertas() {
-		return this.ofertas;
-	}
-
-	public void setOfertas(List<Oferta> ofertas) {
-		this.ofertas = ofertas;
-	}
-
-	public Oferta addOferta(Oferta oferta) {
-		getOfertas().add(oferta);
-		oferta.setTipoOfertaBean(this);
-
-		return oferta;
-	}
-
-	public Oferta removeOferta(Oferta oferta) {
-		getOfertas().remove(oferta);
-		oferta.setTipoOfertaBean(null);
-
-		return oferta;
 	}
 
 }

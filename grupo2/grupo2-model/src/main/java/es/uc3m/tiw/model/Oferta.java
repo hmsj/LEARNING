@@ -1,64 +1,72 @@
 package es.uc3m.tiw.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-/**
- * The persistent class for the oferta database table.
- * 
- */
-@Entity
-@Table(name="oferta")
-@NamedQuery(name="Oferta.findAll", query="SELECT o FROM Oferta o")
-public class Oferta implements Serializable {
+public class Oferta implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int idOferta;
-
-	private String fechaFin;
-
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long idOferta;
+	
+	@Column(nullable=false)
 	private double valor;
-
-	//bi-directional many-to-one association to TipoOferta
-	@ManyToOne
-	@JoinColumn(name="tipoOferta")
-	private TipoOferta tipoOfertaBean;
+	
+	@Column(nullable=false)
+	private String fechaFin;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private TipoOferta tipoOferta;
 
 	public Oferta() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public int getIdOferta() {
-		return this.idOferta;
+	public Oferta(double valor, String fechaFin, TipoOferta tipoOferta) {
+		super();
+		this.valor = valor;
+		this.fechaFin = fechaFin;
+		this.tipoOferta = tipoOferta;
 	}
 
-	public void setIdOferta(int idOferta) {
+	public Long getIdOferta() {
+		return idOferta;
+	}
+
+	public void setIdOferta(Long idOferta) {
 		this.idOferta = idOferta;
 	}
 
-	public String getFechaFin() {
-		return this.fechaFin;
-	}
-
-	public void setFechaFin(String fechaFin) {
-		this.fechaFin = fechaFin;
-	}
-
 	public double getValor() {
-		return this.valor;
+		return valor;
 	}
 
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
 
-	public TipoOferta getTipoOfertaBean() {
-		return this.tipoOfertaBean;
+	public String getFechaFin() {
+		return fechaFin;
 	}
 
-	public void setTipoOfertaBean(TipoOferta tipoOfertaBean) {
-		this.tipoOfertaBean = tipoOfertaBean;
+	public void setFechaFin(String fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
+	public TipoOferta getTipoOferta() {
+		return tipoOferta;
+	}
+
+	public void setTipoOferta(TipoOferta tipoOferta) {
+		this.tipoOferta = tipoOferta;
 	}
 
 }

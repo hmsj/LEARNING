@@ -1,89 +1,100 @@
 package es.uc3m.tiw.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-/**
- * The persistent class for the direccion database table.
- * 
- */
-@Entity
-@Table(name="direccion")
-@NamedQuery(name="Direccion.findAll", query="SELECT d FROM Direccion d")
-public class Direccion implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Direccion implements Serializable{
 
+private static final long serialVersionUID = 1L;
+	
 	@Id
-	private int idDireccion;
-
-	private String calle;
-
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long idDireccion;
+	
+	@Column(nullable=false)
+	private String pais;
+	
+	@Column(nullable=false)
 	private String ciudad;
-
+	
+	@Column(nullable=false)
+	private String calle;
+	
+	@Column(nullable=false)
+	private int numero;
+	
+	@Column(nullable=true)
+	private String piso;
+	
+	@Column(nullable=true)
+	private String telefono;
+	
+	@Column(nullable=false)
 	private String codigoPostal;
 
-	private int numero;
-
-	private String pais;
-
-	private String piso;
-
-	private String telefono;
-
 	public Direccion() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public int getIdDireccion() {
-		return this.idDireccion;
-	}
-
-	public void setIdDireccion(int idDireccion) {
-		this.idDireccion = idDireccion;
-	}
-
-	public String getCalle() {
-		return this.calle;
-	}
-
-	public void setCalle(String calle) {
-		this.calle = calle;
-	}
-
-	public String getCiudad() {
-		return this.ciudad;
-	}
-
-	public void setCiudad(String ciudad) {
+	public Direccion(String pais, String ciudad, String calle, int numero,
+			String piso, String telefono, String codigoPostal) {
+		super();
+		this.pais = pais;
 		this.ciudad = ciudad;
-	}
-
-	public String getCodigoPostal() {
-		return this.codigoPostal;
-	}
-
-	public void setCodigoPostal(String codigoPostal) {
+		this.calle = calle;
+		this.numero = numero;
+		this.piso = piso;
+		this.telefono = telefono;
 		this.codigoPostal = codigoPostal;
 	}
 
-	public int getNumero() {
-		return this.numero;
+	public Long getIdDireccion() {
+		return idDireccion;
 	}
 
-	public void setNumero(int numero) {
-		this.numero = numero;
+	public void setIdDireccion(Long idDireccion) {
+		this.idDireccion = idDireccion;
 	}
 
 	public String getPais() {
-		return this.pais;
+		return pais;
 	}
 
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
 
+	public String getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
+
+	public String getCalle() {
+		return calle;
+	}
+
+	public void setCalle(String calle) {
+		this.calle = calle;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
 	public String getPiso() {
-		return this.piso;
+		return piso;
 	}
 
 	public void setPiso(String piso) {
@@ -91,11 +102,19 @@ public class Direccion implements Serializable {
 	}
 
 	public String getTelefono() {
-		return this.telefono;
+		return telefono;
 	}
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
+	public String getCodigoPostal() {
+		return codigoPostal;
+	}
+
+	public void setCodigoPostal(String codigoPostal) {
+		this.codigoPostal = codigoPostal;
+	}
+	
 }

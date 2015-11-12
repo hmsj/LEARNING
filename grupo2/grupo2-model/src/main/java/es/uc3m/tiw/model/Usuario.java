@@ -1,190 +1,146 @@
 package es.uc3m.tiw.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-/**
- * The persistent class for the usuario database table.
- * 
- */
-@Entity
-@Table(name="usuario")
-@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
-public class Usuario implements Serializable {
+public class Usuario implements Serializable{
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
-	private int idUsuario;
-
-	private String apellido;
-
-	private int cuenta;
-
-	private String descripcion;
-
-	private int direccion;
-
-	private String intereses;
-
-	private String listaDeseos;
-
-	private String nombre;
-
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long idUsuario;
+	
+	@Column(nullable=false, unique=true)
 	private String username;
-
-	//bi-directional many-to-one association to AlumnoCurso
-	@OneToMany(mappedBy="usuario")
-	private List<AlumnoCurso> alumnoCursos;
-
-	//bi-directional many-to-one association to AlumnoLeccion
-	@OneToMany(mappedBy="usuario")
-	private List<AlumnoLeccion> alumnoLeccions;
-
-	//bi-directional many-to-one association to ProfesorCurso
-	@OneToMany(mappedBy="usuario")
-	private List<ProfesorCurso> profesorCursos;
+	
+	@Column(nullable=false)
+	private String nombre;
+	
+	@Column(nullable=false)
+	private String apellido;
+	
+	@Column(nullable=true)
+	private String descripcion;
+	
+	@Column(nullable=true)
+	private String intereses;
+	
+	@Column(nullable=true)
+	private String imagen;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Oferta idOferta;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Direccion idDireccion;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Banco idBanco;
 
 	public Usuario() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public int getIdUsuario() {
-		return this.idUsuario;
+	public Usuario(String username, String nombre, String apellido,
+			String descripcion, String intereses, String imagen,
+			Oferta idOferta, Direccion idDireccion, Banco idBanco) {
+		super();
+		this.username = username;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.descripcion = descripcion;
+		this.intereses = intereses;
+		this.imagen = imagen;
+		this.idOferta = idOferta;
+		this.idDireccion = idDireccion;
+		this.idBanco = idBanco;
 	}
 
-	public void setIdUsuario(int idUsuario) {
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 
-	public String getApellido() {
-		return this.apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public int getCuenta() {
-		return this.cuenta;
-	}
-
-	public void setCuenta(int cuenta) {
-		this.cuenta = cuenta;
-	}
-
-	public String getDescripcion() {
-		return this.descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public int getDireccion() {
-		return this.direccion;
-	}
-
-	public void setDireccion(int direccion) {
-		this.direccion = direccion;
-	}
-
-	public String getIntereses() {
-		return this.intereses;
-	}
-
-	public void setIntereses(String intereses) {
-		this.intereses = intereses;
-	}
-
-	public String getListaDeseos() {
-		return this.listaDeseos;
-	}
-
-	public void setListaDeseos(String listaDeseos) {
-		this.listaDeseos = listaDeseos;
-	}
-
-	public String getNombre() {
-		return this.nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
 	public String getUsername() {
-		return this.username;
+		return username;
 	}
 
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
-	public List<AlumnoCurso> getAlumnoCursos() {
-		return this.alumnoCursos;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setAlumnoCursos(List<AlumnoCurso> alumnoCursos) {
-		this.alumnoCursos = alumnoCursos;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public AlumnoCurso addAlumnoCurso(AlumnoCurso alumnoCurso) {
-		getAlumnoCursos().add(alumnoCurso);
-		alumnoCurso.setUsuario(this);
-
-		return alumnoCurso;
+	public String getApellido() {
+		return apellido;
 	}
 
-	public AlumnoCurso removeAlumnoCurso(AlumnoCurso alumnoCurso) {
-		getAlumnoCursos().remove(alumnoCurso);
-		alumnoCurso.setUsuario(null);
-
-		return alumnoCurso;
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 
-	public List<AlumnoLeccion> getAlumnoLeccions() {
-		return this.alumnoLeccions;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setAlumnoLeccions(List<AlumnoLeccion> alumnoLeccions) {
-		this.alumnoLeccions = alumnoLeccions;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
-	public AlumnoLeccion addAlumnoLeccion(AlumnoLeccion alumnoLeccion) {
-		getAlumnoLeccions().add(alumnoLeccion);
-		alumnoLeccion.setUsuario(this);
-
-		return alumnoLeccion;
+	public String getIntereses() {
+		return intereses;
 	}
 
-	public AlumnoLeccion removeAlumnoLeccion(AlumnoLeccion alumnoLeccion) {
-		getAlumnoLeccions().remove(alumnoLeccion);
-		alumnoLeccion.setUsuario(null);
-
-		return alumnoLeccion;
+	public void setIntereses(String intereses) {
+		this.intereses = intereses;
 	}
 
-	public List<ProfesorCurso> getProfesorCursos() {
-		return this.profesorCursos;
+	public String getImagen() {
+		return imagen;
 	}
 
-	public void setProfesorCursos(List<ProfesorCurso> profesorCursos) {
-		this.profesorCursos = profesorCursos;
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
-	public ProfesorCurso addProfesorCurso(ProfesorCurso profesorCurso) {
-		getProfesorCursos().add(profesorCurso);
-		profesorCurso.setUsuario(this);
-
-		return profesorCurso;
+	public Oferta getIdOferta() {
+		return idOferta;
 	}
 
-	public ProfesorCurso removeProfesorCurso(ProfesorCurso profesorCurso) {
-		getProfesorCursos().remove(profesorCurso);
-		profesorCurso.setUsuario(null);
+	public void setIdOferta(Oferta idOferta) {
+		this.idOferta = idOferta;
+	}
 
-		return profesorCurso;
+	public Direccion getIdDireccion() {
+		return idDireccion;
+	}
+
+	public void setIdDireccion(Direccion idDireccion) {
+		this.idDireccion = idDireccion;
+	}
+
+	public Banco getIdBanco() {
+		return idBanco;
+	}
+
+	public void setIdBanco(Banco idBanco) {
+		this.idBanco = idBanco;
 	}
 
 }

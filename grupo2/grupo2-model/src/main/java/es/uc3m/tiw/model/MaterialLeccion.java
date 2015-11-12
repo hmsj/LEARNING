@@ -1,46 +1,65 @@
 package es.uc3m.tiw.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-/**
- * The persistent class for the materialLeccion database table.
- * 
- */
-@Entity
-@Table(name="materialLeccion")
-@NamedQuery(name="MaterialLeccion.findAll", query="SELECT m FROM MaterialLeccion m")
-public class MaterialLeccion implements Serializable {
+public class MaterialLeccion implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int idMaterial;
-
-	private String descripcion;
-
-	private String fichero;
-
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long idMaterial;
+	
+	@Column(nullable=false)
 	private String titulo;
-
-	//bi-directional many-to-one association to LeccionCurso
-	@ManyToOne
-	@JoinColumn(name="idLeccion")
-	private LeccionCurso leccionCurso;
-
+	
+	@Column(nullable=false)
+	private String descripcion;
+	
+	@Column(nullable=false)
+	private String fichero;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private LeccionCurso idLeccion;
+	
 	public MaterialLeccion() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public int getIdMaterial() {
-		return this.idMaterial;
+	public MaterialLeccion(String titulo, String descripcion, String fichero,
+			LeccionCurso idLeccion) {
+		super();
+		this.titulo = titulo;
+		this.descripcion = descripcion;
+		this.fichero = fichero;
+		this.idLeccion = idLeccion;
 	}
 
-	public void setIdMaterial(int idMaterial) {
+	public Long getIdMaterial() {
+		return idMaterial;
+	}
+
+	public void setIdMaterial(Long idMaterial) {
 		this.idMaterial = idMaterial;
 	}
 
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
 	public String getDescripcion() {
-		return this.descripcion;
+		return descripcion;
 	}
 
 	public void setDescripcion(String descripcion) {
@@ -48,27 +67,20 @@ public class MaterialLeccion implements Serializable {
 	}
 
 	public String getFichero() {
-		return this.fichero;
+		return fichero;
 	}
 
 	public void setFichero(String fichero) {
 		this.fichero = fichero;
 	}
 
-	public String getTitulo() {
-		return this.titulo;
+	public LeccionCurso getIdLeccion() {
+		return idLeccion;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setIdLeccion(LeccionCurso idLeccion) {
+		this.idLeccion = idLeccion;
 	}
 
-	public LeccionCurso getLeccionCurso() {
-		return this.leccionCurso;
-	}
-
-	public void setLeccionCurso(LeccionCurso leccionCurso) {
-		this.leccionCurso = leccionCurso;
-	}
-
+	
 }

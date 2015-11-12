@@ -1,160 +1,147 @@
 package es.uc3m.tiw.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
-/**
- * The persistent class for the curso database table.
- * 
- */
-@Entity
-@Table(name="curso")
-@NamedQuery(name="Curso.findAll", query="SELECT c FROM Curso c")
-public class Curso implements Serializable {
+public class Curso implements Serializable{
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
-	private int idCurso;
-
-	private String descripcion;
-
-	private Object destacado;
-
-	private Object estado;
-
-	private double precioInicial;
-
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long idCurso;
+	
+	@Column(nullable=false)
 	private String titulo;
-
-	//bi-directional many-to-one association to AlumnoCurso
-	@OneToMany(mappedBy="curso")
-	private List<AlumnoCurso> alumnoCursos;
-
-	//bi-directional many-to-one association to ProfesorCurso
-	@OneToMany(mappedBy="curso")
-	private List<ProfesorCurso> profesorCursos;
-
-	//bi-directional many-to-one association to SeccionCurso
-	@OneToMany(mappedBy="curso")
-	private List<SeccionCurso> seccionCursos;
+	
+	@Column(nullable=false)
+	private String descripcion;
+	
+	@Column(nullable=false)
+	private double precioInicial;
+	
+	@Column(nullable=false)
+	private boolean estado;
+	
+	@Column(nullable=false)
+	private boolean destacado;
+	
+	@Column(nullable=true)
+	private String imagen;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Oferta idOferta;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Categoria idCategoria;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Dificultad idDificultad;
 
 	public Curso() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public int getIdCurso() {
-		return this.idCurso;
+	public Curso(String titulo, String descripcion, double precioInicial,
+			boolean estado, boolean destacado, String imagen, Oferta idOferta,
+			Categoria idCategoria, Dificultad idDificultad) {
+		super();
+		this.titulo = titulo;
+		this.descripcion = descripcion;
+		this.precioInicial = precioInicial;
+		this.estado = estado;
+		this.destacado = destacado;
+		this.imagen = imagen;
+		this.idOferta = idOferta;
+		this.idCategoria = idCategoria;
+		this.idDificultad = idDificultad;
 	}
 
-	public void setIdCurso(int idCurso) {
+	public Long getIdCurso() {
+		return idCurso;
+	}
+
+	public void setIdCurso(Long idCurso) {
 		this.idCurso = idCurso;
 	}
 
-	public String getDescripcion() {
-		return this.descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public Object getDestacado() {
-		return this.destacado;
-	}
-
-	public void setDestacado(Object destacado) {
-		this.destacado = destacado;
-	}
-
-	public Object getEstado() {
-		return this.estado;
-	}
-
-	public void setEstado(Object estado) {
-		this.estado = estado;
-	}
-
-	public double getPrecioInicial() {
-		return this.precioInicial;
-	}
-
-	public void setPrecioInicial(double precioInicial) {
-		this.precioInicial = precioInicial;
-	}
-
 	public String getTitulo() {
-		return this.titulo;
+		return titulo;
 	}
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
 
-	public List<AlumnoCurso> getAlumnoCursos() {
-		return this.alumnoCursos;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setAlumnoCursos(List<AlumnoCurso> alumnoCursos) {
-		this.alumnoCursos = alumnoCursos;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
-	public AlumnoCurso addAlumnoCurso(AlumnoCurso alumnoCurso) {
-		getAlumnoCursos().add(alumnoCurso);
-		alumnoCurso.setCurso(this);
-
-		return alumnoCurso;
+	public double getPrecioInicial() {
+		return precioInicial;
 	}
 
-	public AlumnoCurso removeAlumnoCurso(AlumnoCurso alumnoCurso) {
-		getAlumnoCursos().remove(alumnoCurso);
-		alumnoCurso.setCurso(null);
-
-		return alumnoCurso;
+	public void setPrecioInicial(double precioInicial) {
+		this.precioInicial = precioInicial;
 	}
 
-	public List<ProfesorCurso> getProfesorCursos() {
-		return this.profesorCursos;
+	public boolean isEstado() {
+		return estado;
 	}
 
-	public void setProfesorCursos(List<ProfesorCurso> profesorCursos) {
-		this.profesorCursos = profesorCursos;
+	public void setEstado(boolean estado) {
+		this.estado = estado;
 	}
 
-	public ProfesorCurso addProfesorCurso(ProfesorCurso profesorCurso) {
-		getProfesorCursos().add(profesorCurso);
-		profesorCurso.setCurso(this);
-
-		return profesorCurso;
+	public boolean isDestacado() {
+		return destacado;
 	}
 
-	public ProfesorCurso removeProfesorCurso(ProfesorCurso profesorCurso) {
-		getProfesorCursos().remove(profesorCurso);
-		profesorCurso.setCurso(null);
-
-		return profesorCurso;
+	public void setDestacado(boolean destacado) {
+		this.destacado = destacado;
 	}
 
-	public List<SeccionCurso> getSeccionCursos() {
-		return this.seccionCursos;
+	public String getImagen() {
+		return imagen;
 	}
 
-	public void setSeccionCursos(List<SeccionCurso> seccionCursos) {
-		this.seccionCursos = seccionCursos;
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
-	public SeccionCurso addSeccionCurso(SeccionCurso seccionCurso) {
-		getSeccionCursos().add(seccionCurso);
-		seccionCurso.setCurso(this);
-
-		return seccionCurso;
+	public Oferta getIdOferta() {
+		return idOferta;
 	}
 
-	public SeccionCurso removeSeccionCurso(SeccionCurso seccionCurso) {
-		getSeccionCursos().remove(seccionCurso);
-		seccionCurso.setCurso(null);
-
-		return seccionCurso;
+	public void setIdOferta(Oferta idOferta) {
+		this.idOferta = idOferta;
 	}
 
+	public Categoria getIdCategoria() {
+		return idCategoria;
+	}
+
+	public void setIdCategoria(Categoria idCategoria) {
+		this.idCategoria = idCategoria;
+	}
+
+	public Dificultad getIdDificultad() {
+		return idDificultad;
+	}
+
+	public void setIdDificultad(Dificultad idDificultad) {
+		this.idDificultad = idDificultad;
+	}
+	
 }

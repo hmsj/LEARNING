@@ -1,37 +1,44 @@
 package es.uc3m.tiw.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-/**
- * The persistent class for the categoria database table.
- * 
- */
-@Entity
-@Table(name="categoria")
-@NamedQuery(name="Categoria.findAll", query="SELECT c FROM Categoria c")
-public class Categoria implements Serializable {
+public class Categoria implements Serializable{
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int idCategoria;
-
+	@GeneratedValue
+	private Long idCategoria;
+	
+	@Column(nullable=false)
 	private String descripcionCategoria;
 
 	public Categoria() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public int getIdCategoria() {
-		return this.idCategoria;
+	public Categoria(Long idCategoria, String descripcionCategoria) {
+		super();
+		this.idCategoria = idCategoria;
+		this.descripcionCategoria = descripcionCategoria;
 	}
 
-	public void setIdCategoria(int idCategoria) {
+	public Long getIdCategoria() {
+		return idCategoria;
+	}
+
+	public void setIdCategoria(Long idCategoria) {
 		this.idCategoria = idCategoria;
 	}
 
 	public String getDescripcionCategoria() {
-		return this.descripcionCategoria;
+		return descripcionCategoria;
 	}
 
 	public void setDescripcionCategoria(String descripcionCategoria) {

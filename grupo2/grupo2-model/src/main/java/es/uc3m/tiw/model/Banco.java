@@ -1,39 +1,48 @@
 package es.uc3m.tiw.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-/**
- * The persistent class for the banco database table.
- * 
- */
-@Entity
-@Table(name="banco")
-@NamedQuery(name="Banco.findAll", query="SELECT b FROM Banco b")
-public class Banco implements Serializable {
+public class Banco implements Serializable{
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
-	private int idBanco;
-
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long idBanco;
+	
+	@Column(nullable=false)
 	private String cuentaBancaria;
-
+	
+	@Column(nullable=false)
 	private String titularCuenta;
 
 	public Banco() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public int getIdBanco() {
-		return this.idBanco;
+	public Banco(String cuentaBancaria, String titularCuenta) {
+		super();
+		this.cuentaBancaria = cuentaBancaria;
+		this.titularCuenta = titularCuenta;
 	}
 
-	public void setIdBanco(int idBanco) {
+	public Long getIdBanco() {
+		return idBanco;
+	}
+
+	public void setIdBanco(Long idBanco) {
 		this.idBanco = idBanco;
 	}
 
 	public String getCuentaBancaria() {
-		return this.cuentaBancaria;
+		return cuentaBancaria;
 	}
 
 	public void setCuentaBancaria(String cuentaBancaria) {
@@ -41,11 +50,11 @@ public class Banco implements Serializable {
 	}
 
 	public String getTitularCuenta() {
-		return this.titularCuenta;
+		return titularCuenta;
 	}
 
 	public void setTitularCuenta(String titularCuenta) {
 		this.titularCuenta = titularCuenta;
 	}
-
+	
 }

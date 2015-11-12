@@ -1,67 +1,93 @@
 package es.uc3m.tiw.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
-
-/**
- * The persistent class for the alumnoCurso database table.
- * 
- */
-@Entity
-@Table(name="alumnoCurso")
-@NamedQuery(name="AlumnoCurso.findAll", query="SELECT a FROM AlumnoCurso a")
-public class AlumnoCurso implements Serializable {
+public class AlumnoCurso implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
-
-	@EmbeddedId
-	private AlumnoCursoPK id;
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long idAlumnoCurso;
+	
+	@Column(nullable=true)
 	private double notaMedia;
-
-	//bi-directional many-to-one association to Curso
-	@ManyToOne
-	@JoinColumn(name="idCurso")
-	private Curso curso;
-
-	//bi-directional many-to-one association to Usuario
-	@ManyToOne
-	@JoinColumn(name="idUsuario")
-	private Usuario usuario;
+	
+	@Column(nullable=true)
+	private boolean enCurso;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Usuario idUsuario;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Curso idCurso;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Logro idLogro;
 
 	public AlumnoCurso() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public AlumnoCursoPK getId() {
-		return this.id;
+	public AlumnoCurso(double notaMedia,boolean enCurso, Usuario idUsuario, Curso idCurso,
+			Logro idLogro) {
+		super();
+		this.notaMedia = notaMedia;
+		this.enCurso = enCurso;
+		this.idUsuario = idUsuario;
+		this.idCurso = idCurso;
+		this.idLogro = idLogro;
 	}
 
-	public void setId(AlumnoCursoPK id) {
-		this.id = id;
+	public Long getIdAlumnoCurso() {
+		return idAlumnoCurso;
+	}
+
+	public void setIdAlumnoCurso(Long idAlumnoCurso) {
+		this.idAlumnoCurso = idAlumnoCurso;
 	}
 
 	public double getNotaMedia() {
-		return this.notaMedia;
+		return notaMedia;
 	}
 
 	public void setNotaMedia(double notaMedia) {
 		this.notaMedia = notaMedia;
 	}
-
-	public Curso getCurso() {
-		return this.curso;
+	
+	public boolean isEnCurso() {
+		return enCurso;
 	}
 
-	public void setCurso(Curso curso) {
-		this.curso = curso;
+	public void setEnCurso(boolean enCurso) {
+		this.enCurso = enCurso;
 	}
 
-	public Usuario getUsuario() {
-		return this.usuario;
+	public Usuario getIdUsuario() {
+		return idUsuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setIdUsuario(Usuario idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public Curso getIdCurso() {
+		return idCurso;
+	}
+
+	public void setIdCurso(Curso idCurso) {
+		this.idCurso = idCurso;
+	}
+
+	public Logro getIdLogro() {
+		return idLogro;
+	}
+
+	public void setIdLogro(Logro idLogro) {
+		this.idLogro = idLogro;
 	}
 
 }

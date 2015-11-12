@@ -1,67 +1,73 @@
 package es.uc3m.tiw.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-/**
- * The persistent class for the alumnoLeccion database table.
- * 
- */
-@Entity
-@Table(name="alumnoLeccion")
-@NamedQuery(name="AlumnoLeccion.findAll", query="SELECT a FROM AlumnoLeccion a")
-public class AlumnoLeccion implements Serializable {
+public class AlumnoLeccion implements Serializable{
 	private static final long serialVersionUID = 1L;
-
-	@EmbeddedId
-	private AlumnoLeccionPK id;
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long idAlumnoLeccion;
+	
+	@Column(nullable=true)
 	private double notaLeccion;
-
-	//bi-directional many-to-one association to LeccionCurso
-	@ManyToOne
-	@JoinColumn(name="idLeccion")
-	private LeccionCurso leccionCurso;
-
-	//bi-directional many-to-one association to Usuario
-	@ManyToOne
-	@JoinColumn(name="idUsuario")
-	private Usuario usuario;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Usuario idUsuario;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private LeccionCurso idLeccion;
 
 	public AlumnoLeccion() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public AlumnoLeccionPK getId() {
-		return this.id;
+	public AlumnoLeccion(double notaLeccion, Usuario idUsuario,
+			LeccionCurso idLeccion) {
+		super();
+		this.notaLeccion = notaLeccion;
+		this.idUsuario = idUsuario;
+		this.idLeccion = idLeccion;
 	}
 
-	public void setId(AlumnoLeccionPK id) {
-		this.id = id;
+	public Long getIdAlumnoLeccion() {
+		return idAlumnoLeccion;
+	}
+
+	public void setIdAlumnoLeccion(Long idAlumnoLeccion) {
+		this.idAlumnoLeccion = idAlumnoLeccion;
 	}
 
 	public double getNotaLeccion() {
-		return this.notaLeccion;
+		return notaLeccion;
 	}
 
 	public void setNotaLeccion(double notaLeccion) {
 		this.notaLeccion = notaLeccion;
 	}
 
-	public LeccionCurso getLeccionCurso() {
-		return this.leccionCurso;
+	public Usuario getIdUsuario() {
+		return idUsuario;
 	}
 
-	public void setLeccionCurso(LeccionCurso leccionCurso) {
-		this.leccionCurso = leccionCurso;
+	public void setIdUsuario(Usuario idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
-	public Usuario getUsuario() {
-		return this.usuario;
+	public LeccionCurso getIdLeccion() {
+		return idLeccion;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setIdLeccion(LeccionCurso idLeccion) {
+		this.idLeccion = idLeccion;
 	}
-
+	
 }

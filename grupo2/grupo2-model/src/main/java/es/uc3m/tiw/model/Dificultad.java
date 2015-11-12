@@ -1,41 +1,47 @@
 package es.uc3m.tiw.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-/**
- * The persistent class for the dificultad database table.
- * 
- */
-@Entity
-@Table(name="dificultad")
-@NamedQuery(name="Dificultad.findAll", query="SELECT d FROM Dificultad d")
-public class Dificultad implements Serializable {
+public class Dificultad implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int idDificultad;
-
+	@GeneratedValue
+	private Long idDificultad;
+	
+	@Column(nullable=false)
 	private String descripcionDificultad;
 
 	public Dificultad() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public int getIdDificultad() {
-		return this.idDificultad;
+	public Dificultad(Long idDificultad, String descripcionDificultad) {
+		super();
+		this.idDificultad = idDificultad;
+		this.descripcionDificultad = descripcionDificultad;
 	}
 
-	public void setIdDificultad(int idDificultad) {
+	public Long getIdDificultad() {
+		return idDificultad;
+	}
+
+	public void setIdDificultad(Long idDificultad) {
 		this.idDificultad = idDificultad;
 	}
 
 	public String getDescripcionDificultad() {
-		return this.descripcionDificultad;
+		return descripcionDificultad;
 	}
 
 	public void setDescripcionDificultad(String descripcionDificultad) {
 		this.descripcionDificultad = descripcionDificultad;
 	}
-
+	
 }
