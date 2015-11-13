@@ -90,34 +90,32 @@ function mostrarPago(eleccion)
 				</c:if>
 				<form method="post" action="registro"
 					name="signupform" id="signupform">
-					<label for="tipouser">Selecciona uno de los siguientes
-						roles:</label>
+					
 					<fieldset>
-						Alumno:<input name="tipouser" type="radio" id="tipouser"
-							value="alumno" checked="checked" onclick="mostrarPago('false');"> Profesor<input
-							name="tipouser" type="radio" id="tipouser" value="profesor" onclick="mostrarPago('true');">
-					</fieldset>
-					<fieldset>
-						<input name="nombre" type="text" id="nombre" placeholder="Nombre*" />
-						<input name="apellidos" type="text" id="apellidos"
-							placeholder="Apellidos*" /> <input name="username" type="text"
-							id="username" placeholder="Nombre de usuario*" /> <input
-							name="email" type="email" id="email" placeholder="Email*" /> <input
-							name="password" type="password" id="password"
-							placeholder="Contraseña*" /> <input name="telefono" type="tel"
-							id="telefono" placeholder="Telefono"> <input name="edad"
-							type="number" id="edad" placeholder="Edad" />
+							<input name="nombre" type="text" id="nombre" placeholder="Nombre*" />
+							<input name="apellidos" type="text" id="apellidos" placeholder="Apellidos*" /> 
+							<input name="username" type="text" id="username" placeholder="Nombre de usuario*" /> 
+							<input name="telefono" type="tel" id="telefono" placeholder="Telefono"> 
+							<input name="edad" type="number" id="edad" placeholder="Edad" />
+							<input name="email" type="email" id="email" placeholder="Email*" /> 
+							<input name="pais" type="text" id="pais" placeholder="Pais*" /> 
+							<input name="ciudad" type="text" id="ciudad" placeholder="Ciudad*" />
+							<input name="calle" type="text" id="calle" placeholder="Calle*" />
+							<input name="numero" type="number" id="numero" placeholder="Numero*" />
+							<input name="piso" type="text" id="piso" placeholder="Piso" />
+							<input name="postal" type="number" id="postal" placeholder="Codio Postal*" />
+							<input name="cuenta" type="text" id="cuenta" placeholder="Cuenta Bancaria*" />
+							<input name="titular" type="text" id="titular" placeholder="Titular*" />
+							<input name="password" type="password" id="password" placeholder="Contraseña*" /> 
 					</fieldset>
 					<fieldset>
 						<textarea name="intereses" cols="40" rows="3" id="intereses"
 							placeholder="Intereses"></textarea>
 						<textarea name="descripcion" cols="40" rows="3" id="descripcion"
-							placeholder="Descripcion"></textarea>
+							placeholder="Descripcion"></textarea> 
+						<input type="file" name="file" id="file" size="60" placeholder="seleccione el archivo que desea subir"/>
 					</fieldset>
-					<fieldset id="pagos" style="display: none;">
-						<label for="pagos">Permite el uso de sus datos para sus
-							cobros</label> <input name="paypal" type="checkbox" id="paypal">
-					</fieldset>
+					
 					<input type="submit" class="submit" id="submit"
 						value="CREAR USUARIO" />
 				</form>

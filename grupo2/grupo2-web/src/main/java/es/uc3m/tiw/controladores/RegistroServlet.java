@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import es.uc3m.tiw.dominios.Alumno;
+import es.uc3m.tiw.dominios.Direccion;
 import es.uc3m.tiw.dominios.Profesor;
 import es.uc3m.tiw.dominios.TipoUsuario;
 import es.uc3m.tiw.dominios.Usuario;
+import es.uc3m.tiw.dominios.DatosBancarios;
 
 /**
  * Servlet implementation class RegistroServlet
@@ -26,16 +28,15 @@ public class RegistroServlet extends HttpServlet {
 	ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	ArrayList<Profesor> profesores = new ArrayList<Profesor>();
 	ArrayList<TipoUsuario> tipoUsuarios = new ArrayList<TipoUsuario>();
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RegistroServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-    
-    
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public RegistroServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void init(ServletConfig contexto) throws ServletException {
 		// TODO Auto-generated method stub
@@ -48,120 +49,186 @@ public class RegistroServlet extends HttpServlet {
 				.getAttribute("tipoUsuarios");
 	}
 
-
-
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String forwardJSP = "/signup.jsp";
 		forward(request, response, forwardJSP);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Usuario nuevoUsuario = new Usuario();
+		Direccion direccion = new Direccion();
+		//DatosBancarios banco = new DatosBancarios();
 		boolean estaVacio = false;
 		String forwardJSP = "";
 		HttpSession sesion = request.getSession(true);
-		
-		if (request.getParameter("tipouser") != null
-				&& !"".equals(request.getParameter("tipouser"))) {
-			if (request.getParameter("tipouser").equalsIgnoreCase("alumno")) {
-				nuevoUsuario.setTipoUsuario(new TipoUsuario(1, "alumno"));
-			} else if (request.getParameter("tipouser").equalsIgnoreCase("profesor")) {
-				nuevoUsuario.setTipoUsuario(new TipoUsuario(2, "profesor"));
+
+		if (request.getParameter("nombre") != null
+				&& !"".equalsIgnoreCase(request.getParameter("nombre"))) {
+			nuevoUsuario.setNombre(request.getParameter("nombre").toString());
+			if (request.getParameter("apellidos") != null
+					&& !"".equalsIgnoreCase(request.getParameter("apellidos"))) {
+				nuevoUsuario.setApellidos(request.getParameter("apellidos")
+						.toString());
+				if (request.getParameter("username") != null
+						&& !"".equalsIgnoreCase(request
+								.getParameter("username"))) {
+					nuevoUsuario.setUsername(request.getParameter("username")
+							.toString());
+					if (request.getParameter("email") != null
+							&& !"".equalsIgnoreCase(request
+									.getParameter("email"))) {
+						nuevoUsuario.setEmail(request.getParameter("email")
+								.toString());
+						if (request.getParameter("pais") != null
+								&& !"".equalsIgnoreCase(request
+										.getParameter("pais"))) {
+							direccion.setPais(request.getParameter("pais")
+									.toString());
+							if (request.getParameter("ciudad") != null
+									&& !"".equalsIgnoreCase(request
+											.getParameter("ciudad"))) {
+								direccion.setCiudad(request.getParameter(
+										"ciudad").toString());
+								if (request.getParameter("calle") != null
+										&& !"".equalsIgnoreCase(request
+												.getParameter("calle"))) {
+									direccion.setCalle(request.getParameter(
+											"calle").toString());
+									if (request.getParameter("numero") != null
+											&& !"".equalsIgnoreCase(request
+													.getParameter("numero"))) {
+										if (Integer.parseInt(request.getParameter("numero")) > 0){
+										direccion.setNumero(Integer
+												.parseInt(request.getParameter(
+														"numero").toString()));}
+										else {
+											forwardJSP = "/signup.jsp";
+											String mensaje = "El numero de la calle no puede ser negativo";
+											request.setAttribute("mensaje", mensaje);
+											forward(request, response, forwardJSP);
+										}
+										if (request.getParameter("postal") != null
+												&& !"".equalsIgnoreCase(request
+														.getParameter("postal"))) {
+											if (Integer.parseInt(request.getParameter("postal")) > 0){
+											direccion.setCodigoPostal(request
+													.getParameter("postal")
+													.toString());}
+											else {
+												forwardJSP = "/signup.jsp";
+												String mensaje = "El codigo postal no puede ser negativo";
+												request.setAttribute("mensaje", mensaje);
+												forward(request, response, forwardJSP);
+											}
+									//añadir datos bancarios
+											if (request
+													.getParameter("password") != null
+													&& !"".equalsIgnoreCase(request
+															.getParameter("password"))) {
+												nuevoUsuario
+														.setPassword(request
+																.getParameter(
+																		"password")
+																.toString());
+											} else {
+												estaVacio = true;
+											}
+										} else {
+											estaVacio = true;
+										}
+									} else {
+										estaVacio = true;
+									}
+								} else {
+									estaVacio = true;
+								}
+							} else {
+								estaVacio = true;
+							}
+						} else {
+							estaVacio = true;
+						}
+					} else {
+						estaVacio = true;
+					}
+				} else {
+					estaVacio = true;
+				}
 			} else {
 				estaVacio = true;
 			}
-			if (request.getParameter("nombre") != null && !"".equalsIgnoreCase(request.getParameter("nombre"))) {
-				nuevoUsuario.setNombre(request.getParameter("nombre").toString());
-				if (request.getParameter("apellidos") != null && !"".equalsIgnoreCase(request.getParameter("apellidos"))) {
-					nuevoUsuario.setApellidos(request.getParameter("apellidos").toString());
-					if (request.getParameter("username") != null && !"".equalsIgnoreCase(request.getParameter("username"))) {
-						nuevoUsuario.setUsername(request.getParameter("username").toString());
-						if (request.getParameter("email") != null && !"".equalsIgnoreCase(request.getParameter("email"))) {
-								nuevoUsuario.setEmail(request.getParameter("email").toString());
-								if (request.getParameter("password") != null && !"".equalsIgnoreCase(request.getParameter("password"))) {
-									nuevoUsuario.setPassword(request.getParameter("password").toString());
-								}else {
-									estaVacio = true;
-								}
-						}else {
-							estaVacio = true;
-						}
-					}else {
-						estaVacio = true;
-					}
-				}else {
-					estaVacio = true;
-				}
-			}else {
-				estaVacio = true;
-			}
-
-		}else {
+		} else {
 			estaVacio = true;
 		}
+
 		if (estaVacio) {
 			forwardJSP = "/signup.jsp";
 			String mensaje = "Debe rellenar los datos marcados con *";
 			request.setAttribute("mensaje", mensaje);
 			forward(request, response, forwardJSP);
-		}else {
-			if(request.getParameter("edad")!=null && !"".equalsIgnoreCase(request.getParameter("edad"))){
-				int nuevaEdad = Integer.parseInt(request.getParameter("edad"));
-				nuevoUsuario.setEdad(nuevaEdad);
+		} else {
+			if (request.getParameter("edad") != null
+					&& !"".equalsIgnoreCase(request.getParameter("edad"))) {
+				if (Integer.parseInt(request.getParameter("edad"))>0) {
+					int nuevaEdad = Integer.parseInt(request.getParameter("edad"));
+					nuevoUsuario.setEdad(nuevaEdad);
+				} else {
+					forwardJSP = "/signup.jsp";
+					String mensaje = "La edad no puede ser negativa";
+					request.setAttribute("mensaje", mensaje);
+					forward(request, response, forwardJSP);
+
+				}
+			
 			}
-			if (request.getParameter("intereses")!=null && !"".equalsIgnoreCase(request.getParameter("intereses"))) {
+			if (request.getParameter("intereses") != null
+					&& !"".equalsIgnoreCase(request.getParameter("intereses"))) {
 				nuevoUsuario.setIntereses(request.getParameter("intereses"));
 			}
-			if(request.getParameter("descripcion")!=null && !"".equalsIgnoreCase(request.getParameter("descripcion"))){
-				nuevoUsuario.setDescripcion(request.getParameter("descripcion"));
+			if (request.getParameter("descripcion") != null
+					&& !"".equalsIgnoreCase(request.getParameter("descripcion"))) {
+				nuevoUsuario
+						.setDescripcion(request.getParameter("descripcion"));
 			}
-			if (request.getParameter("telefono")!=null && !"".equalsIgnoreCase(request.getParameter("telefono"))) {
-				if(request.getParameter("telefono").length()==9){
-				nuevoUsuario.setTelefono(request.getParameter("telefono"));
-				}
-				else{
+			if (request.getParameter("telefono") != null
+					&& !"".equalsIgnoreCase(request.getParameter("telefono"))) {
+				if (request.getParameter("telefono").length() == 9) {
+					nuevoUsuario.setTelefono(request.getParameter("telefono"));
+				} else {
 					forwardJSP = "/signup.jsp";
 					String mensaje = "El telefono no es correcto";
 					request.setAttribute("mensaje", mensaje);
 					forward(request, response, forwardJSP);
-					
+
 				}
-				
 			}
+			
+			nuevoUsuario.setDireccion(direccion);
 			usuarios.add(nuevoUsuario);
-			if(nuevoUsuario.getTipoUsuario().getIdtipoUsuario()==1){
-				Alumno nuevoAlumno = new Alumno(nuevoUsuario, null, null);
-				alumnos.add(nuevoAlumno);
-				forwardJSP = "/principal.jsp";
-				String mensaje = "Se ha registrado correctamente";
-				request.setAttribute("mensaje", mensaje);
-				sesion.setAttribute("usuario", nuevoUsuario);
-				sesion.setAttribute("acceso", "ok");
-				forward(request, response, forwardJSP);
-			}
-			else if (nuevoUsuario.getTipoUsuario().getIdtipoUsuario()==2)
-			{
-				Profesor nuevoProfesor = new Profesor(nuevoUsuario, null);
-				profesores.add(nuevoProfesor);
-				forwardJSP = "/principal.jsp";
-				String mensaje = "Se ha registrado correctamente";
-				request.setAttribute("mensaje", mensaje);
-				sesion.setAttribute("usuario", nuevoUsuario);
-				sesion.setAttribute("acceso", "ok");
-				forward(request, response, forwardJSP);
-			}
+
+			forwardJSP = "/principal.jsp";
+			String mensaje = "Se ha registrado correctamente";
+			request.setAttribute("mensaje", mensaje);
+			sesion.setAttribute("usuario", nuevoUsuario);
+			sesion.setAttribute("acceso", "ok");
+			forward(request, response, forwardJSP);
+
 		}
-		
+
 	}
-	
+
 	protected void forward(HttpServletRequest request,
 			HttpServletResponse response, String uri) {
 		try {
