@@ -237,7 +237,55 @@
 		</div>
 		</section>
 
-
+		<section id="price-list" class="parallax-section-6">
+		<div class="container">
+			<div class="col-md-12 text-center">
+				<h3 class="section-title white wow fadeInUp">Temario</h3>
+			</div>
+			<div class="row wow fadeInUp">
+				<c:choose>
+					<c:when test="${not empty secciones }">
+						<c:forEach items="${secciones }" var="seccion">
+							<c:if
+								test="${seccion.curso.idcurso == sessionScope.curso.idcurso }">
+								<div class="col-md-3 col-sm-6 price-list-box">
+									<div class="price-box">
+										<div class="price-table">
+											<h3 class="label">${seccion.titulo }</h3>
+											<c:if test="${not empty lecciones }">
+												<c:forEach items="${lecciones }" var="leccion">
+													<c:if
+														test="${leccion.seccion.idseccion == seccion.idseccion }">
+														<p class="price grey">
+															<span class="pricing">${leccion.titulo }
+														</p>
+														<c:if test="${not empty sessionScope.usuario }">
+															<c:forEach items="${alumnos }" var="alumno">
+																<c:if
+																	test="${sessionScope.usuario.username == alumno.username.username && sessionScope.curso.idcurso == alumno.curso_actual.idcurso }">
+																	<c:if test="${not empty materiales }">
+																		<c:forEach items="${materiales }" var="material">
+																			<p class="features grey">
+																				<a class="feature" href="${material.archivo }">${material.titulo }</a>
+																			</p>
+																		</c:forEach>
+																	</c:if>
+																</c:if>
+															</c:forEach>
+														</c:if>
+													</c:if>
+												</c:forEach>
+											</c:if>
+										</div>
+									</div>
+								</div>
+							</c:if>
+						</c:forEach>
+					</c:when>
+				</c:choose>
+			</div>
+		</div>
+		</section>
 		<section id="alumnosMatriculados">
 		<div class="container">
 			<div class="col-md-12 text-center">
@@ -323,55 +371,7 @@
 			</div>
 		</div>
 		</section>
-		<section id="price-list" class="parallax-section-6">
-		<div class="container">
-			<div class="col-md-12 text-center">
-				<h3 class="section-title white wow fadeInUp">Temario</h3>
-			</div>
-			<div class="row wow fadeInUp">
-				<c:choose>
-					<c:when test="${not empty secciones }">
-						<c:forEach items="${secciones }" var="seccion">
-							<c:if
-								test="${seccion.curso.idcurso == sessionScope.curso.idcurso }">
-								<div class="col-md-3 col-sm-6 price-list-box">
-									<div class="price-box">
-										<div class="price-table">
-											<h3 class="label">${seccion.titulo }</h3>
-											<c:if test="${not empty lecciones }">
-												<c:forEach items="${lecciones }" var="leccion">
-													<c:if
-														test="${leccion.seccion.idseccion == seccion.idseccion }">
-														<p class="price grey">
-															<span class="pricing">${leccion.titulo }
-														</p>
-														<c:if test="${not empty sessionScope.usuario }">
-															<c:forEach items="${alumnos }" var="alumno">
-																<c:if
-																	test="${sessionScope.usuario.username == alumno.username.username && sessionScope.curso.idcurso == alumno.curso_actual.idcurso }">
-																	<c:if test="${not empty materiales }">
-																		<c:forEach items="${materiales }" var="material">
-																			<p class="features grey">
-																				<a class="feature" href="${material.archivo }">${material.titulo }</a>
-																			</p>
-																		</c:forEach>
-																	</c:if>
-																</c:if>
-															</c:forEach>
-														</c:if>
-													</c:if>
-												</c:forEach>
-											</c:if>
-										</div>
-									</div>
-								</div>
-							</c:if>
-						</c:forEach>
-					</c:when>
-				</c:choose>
-			</div>
-		</div>
-		</section>
+		
 
 		<section id="profesoresCurso">
 		<div class="container">

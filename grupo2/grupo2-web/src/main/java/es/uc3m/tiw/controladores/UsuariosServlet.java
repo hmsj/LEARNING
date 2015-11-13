@@ -81,10 +81,7 @@ public class UsuariosServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		Usuario usuarioModificado = new Usuario();
-		
-		
+				
 		String username = request.getParameter("username");
 		String mensaje = "";
 		HttpSession sesion = request.getSession(true);
@@ -129,6 +126,43 @@ public class UsuariosServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		Usuario usuarioModificado = new Usuario();
+		
+		//String username = request.getParameter("username");
+		String mensaje = "";
+		HttpSession sesion = request.getSession(true);
+		Usuario usuarioLogado = (Usuario) sesion.getAttribute("usuario");
+		
+		if (request.getParameter("nombreEdit") != null && !"".equalsIgnoreCase(request.getParameter("nombreEdit"))) {
+			usuarioModificado.setNombre(request.getParameter("nombreEdit").toString());
+		}
+		if (request.getParameter("apellidosEdit") != null && !"".equalsIgnoreCase(request.getParameter("apellidosEdit"))) {
+			usuarioModificado.setApellidos(request.getParameter("apellidosEdit").toString());
+		}
+		if (request.getParameter("usernameEdit") != null && !"".equalsIgnoreCase(request.getParameter("usernameEdit"))) {
+			usuarioModificado.setUsername(request.getParameter("usernameEdit").toString());
+		}
+		if (request.getParameter("edadEdit") != null && !"".equalsIgnoreCase(request.getParameter("edadEdit"))) {
+			usuarioModificado.setEdad(Integer.parseInt(request.getParameter("edadEdit")));
+		}
+		if (request.getParameter("phoneEdit") != null && !"".equalsIgnoreCase(request.getParameter("phoneEdit"))) {
+			usuarioModificado.setTelefono(request.getParameter("phoneEdit").toString());
+		}
+		if (request.getParameter("interesEdit1") != null && !"".equalsIgnoreCase(request.getParameter("interesEdit1"))) {
+			usuarioModificado.setIntereses(request.getParameter("interesEdit1").toString());
+		}
+		if (request.getParameter("descripcionEdit") != null && !"".equalsIgnoreCase(request.getParameter("descripcionEdit"))) {
+			usuarioModificado.setDescripcion(request.getParameter("descripcionEdit").toString());
+		}
+
+		
+		usuarioLogado = usuarioModificado; 
+		mensaje = "Los datos se han editado correctamente";
+		request.setAttribute("mensaje", mensaje);
+		forwardJSP = "/editUser.jsp";
+		forward(request, response, forwardJSP);
+
 		
 	}
 
