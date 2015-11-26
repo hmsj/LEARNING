@@ -3,6 +3,9 @@ package es.uc3m.tiw.controladores;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -11,8 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
 
-import es.uc3m.tiw.dominios.Usuario;
+import es.uc3m.tiw.daos.*;
+import es.uc3m.tiw.model.*;
 
 /**
  * Servlet implementation class LoginServlet
@@ -20,7 +25,15 @@ import es.uc3m.tiw.dominios.Usuario;
 @WebServlet(value="/login")//No se necesita loadonstartup
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	ArrayList<Usuario> usuarios = new ArrayList<Usuario>(); 
+	//ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+	Usuario usuario;
+	
+	@PersistenceContext(unitName = "grupo2-model")
+	private EntityManager em;
+	@Resource
+	private UserTransaction ut;
+	
+	private UsuarioDaoImpl usuarioDao;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -33,7 +46,8 @@ public class LoginServlet extends HttpServlet {
 	public void init(ServletConfig contexto) throws ServletException {
 		// TODO Auto-generated method stub
 		super.init(contexto);
-		usuarios = (ArrayList<Usuario>) this.getServletContext().getAttribute("usuarios");
+		//usuarios = (ArrayList<Usuario>) this.getServletContext().getAttribute("usuarios");
+		usuarioDao = new UsuarioDaoImpl(em, ut);
 	}
 
 	/**
@@ -58,9 +72,16 @@ public class LoginServlet extends HttpServlet {
 		String forwardJSP = "";
 		String mensaje = "";
 		HttpSession sesion = request.getSession(true);
+		usuarioDao = new UsuarioDaoImpl(em, ut);
 		String usuario = request.getParameter("username");
 		String password = request.getParameter("password");
-		Usuario user = comprobarUsuario(usuario, password);
+		Usuario user = null;//comprobarUsuario(usuario, password);
+		try {
+			user = usuarioDao.comprobarUsuarioUsernamePass(usuario, password);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(user!=null){
 			forwardJSP = "/principal.jsp";	
 			sesion.setAttribute("usuario", user);
@@ -89,7 +110,7 @@ public class LoginServlet extends HttpServlet {
 		}
 	}
 	
-	
+	/*
 	private Usuario comprobarUsuario(String username, String password){
 		Usuario user = null;
 			for (Usuario usuario : usuarios){
@@ -101,5 +122,5 @@ public class LoginServlet extends HttpServlet {
 		return user;
 		
 	}
-
+	*/
 }

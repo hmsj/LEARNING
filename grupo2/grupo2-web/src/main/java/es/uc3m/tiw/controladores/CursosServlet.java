@@ -2,7 +2,11 @@ package es.uc3m.tiw.controladores;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
 
+
+/*
 import es.uc3m.tiw.dominios.Alumno;
 import es.uc3m.tiw.dominios.Categoria;
 import es.uc3m.tiw.dominios.Curso;
@@ -21,6 +28,27 @@ import es.uc3m.tiw.dominios.Seccion;
 import es.uc3m.tiw.dominios.TipoDificultad;
 import es.uc3m.tiw.dominios.TipoUsuario;
 import es.uc3m.tiw.dominios.Usuario;
+*/
+import es.uc3m.tiw.daos.AlumnoCursoDaoImpl;
+import es.uc3m.tiw.daos.CategoriaDaoImpl;
+import es.uc3m.tiw.daos.CursoDao;
+import es.uc3m.tiw.daos.CursoDaoImpl;
+import es.uc3m.tiw.daos.DificultadDaoImpl;
+import es.uc3m.tiw.daos.LeccionCursoDaoImpl;
+import es.uc3m.tiw.daos.MaterialLeccionDaoImpl;
+import es.uc3m.tiw.daos.ProfesorCursoDaoImpl;
+import es.uc3m.tiw.daos.SeccionCursoDaoImpl;
+import es.uc3m.tiw.dominios.Alumno;
+import es.uc3m.tiw.model.AlumnoCurso;
+import es.uc3m.tiw.model.Categoria;
+import es.uc3m.tiw.model.Curso;
+import es.uc3m.tiw.model.Dificultad;
+import es.uc3m.tiw.model.LeccionCurso;
+import es.uc3m.tiw.model.MaterialLeccion;
+import es.uc3m.tiw.model.ProfesorCurso;
+import es.uc3m.tiw.model.SeccionCurso;
+import es.uc3m.tiw.model.Usuario;
+
 
 /**
  * Servlet implementation class CursosServlet
@@ -31,15 +59,41 @@ public class CursosServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 5079331756861773626L;
-	ArrayList<Curso> cursos = new ArrayList<Curso>();
-	ArrayList<Categoria> categorias = new ArrayList<Categoria>();
-	ArrayList<Seccion> secciones = new ArrayList<Seccion>();
-	ArrayList<Leccion> lecciones = new ArrayList<Leccion>();
-	ArrayList<Material> materiales = new ArrayList<Material>();
-	ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
-	ArrayList<Profesor> profesores = new ArrayList<Profesor>();
-	ArrayList<TipoDificultad> dificultades = new ArrayList<TipoDificultad>();
-	ArrayList<TipoUsuario> tipoUsuarios = new ArrayList<TipoUsuario>();
+	
+	private Curso curso;
+	private Categoria categoria;
+	private SeccionCurso seccion;
+	private LeccionCurso leccion;
+	private MaterialLeccion material;
+	private AlumnoCurso alumno;
+	private ProfesorCurso profesor;
+	private Dificultad dificultad;
+	
+	List<Curso> cursos = new ArrayList<Curso>();
+	List<Categoria> categorias = new ArrayList<Categoria>();
+	List<SeccionCurso> secciones = new ArrayList<SeccionCurso>();
+	List<LeccionCurso> lecciones = new ArrayList<LeccionCurso>();
+	List<MaterialLeccion> materiales = new ArrayList<MaterialLeccion>();
+	List<AlumnoCurso> alumnos = new ArrayList<AlumnoCurso>();
+	//	ArrayList<Profesor> profesores = new ArrayList<Profesor>();
+	List<ProfesorCurso> profesoresCurso = new ArrayList<ProfesorCurso>();
+	List<Dificultad> dificultades = new ArrayList<Dificultad>();
+	//List<TipoUsuario> tipoUsuarios = new ArrayList<TipoUsuario>();
+	
+	@PersistenceContext(unitName = "grupo2-model")
+	private EntityManager em;
+	@Resource
+	private UserTransaction ut;
+	
+	private CursoDao cursoDao;
+	private CategoriaDaoImpl categoriaDao;
+	private SeccionCursoDaoImpl seccionDao;
+	private LeccionCursoDaoImpl leccionDao;
+	private MaterialLeccionDaoImpl materialDao;
+	private AlumnoCursoDaoImpl alumnoCursoDao;
+	private ProfesorCursoDaoImpl profeDao;
+	private DificultadDaoImpl dificultadDao;
+	
 	String forwardJSP = "";
 
 	/**
@@ -54,6 +108,7 @@ public class CursosServlet extends HttpServlet {
 	public void init(ServletConfig contexto) throws ServletException {
 		// TODO Auto-generated method stub
 		super.init(contexto);
+		/*
 		cursos = (ArrayList<Curso>) this.getServletContext().getAttribute("cursos");
 		categorias = (ArrayList<Categoria>) this.getServletContext().getAttribute("categorias");
 		secciones = (ArrayList<Seccion>) this.getServletContext().getAttribute("secciones");
@@ -62,6 +117,50 @@ public class CursosServlet extends HttpServlet {
 		alumnos = (ArrayList<Alumno>) this.getServletContext().getAttribute("alumnos");
 		tipoUsuarios = (ArrayList<TipoUsuario>) this.getServletContext().getAttribute("tipoUsuarios");
 		profesores = (ArrayList<Profesor>) this.getServletContext().getAttribute("profesores");
+		*/
+		cursoDao = new CursoDaoImpl(em, ut);
+		try {
+			cursos = cursoDao.findAll();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			categorias = categoriaDao.findAll();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			secciones = seccionDao.findAll();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			lecciones = leccionDao.findAll();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			materiales = materialDao.findAll();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			alumnos = alumnoCursoDao.findAll();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			profesoresCurso = profeDao.findAll();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -71,33 +170,48 @@ public class CursosServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String idCurso = request.getParameter("idcurso");
+		String idCursoParam = request.getParameter("idcurso");
 		String mensaje = null;
 		HttpSession sesion = request.getSession(true);
 		Usuario usuarioLogado = (Usuario) sesion.getAttribute("usuario");
 		forwardJSP = "/listadoCursos.jsp";
 		String accion = request.getParameter("accion");
-		if (idCurso != null && !"".equals(idCurso)) {
-			Curso course = obtenerCurso(idCurso);
+		
+		if (idCursoParam != null && !"".equals(idCursoParam)) {
+			long idCurso = Integer.parseInt(idCursoParam);
+			Curso course = null;
+			try {
+				course = cursoDao.findById(idCurso);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if (course != null) {
 				if (usuarioLogado != null) {
-					TipoUsuario tipoUser = comprobarUsuario(usuarioLogado);
+					//TipoUsuario tipoUser = comprobarUsuario(usuarioLogado);
 					if (accion != null && "deleteAlumno".equalsIgnoreCase(accion)) {
 						String nombreAlumno = "";
 						if (request.getParameter("target") != null
 								&& !"".equalsIgnoreCase(request.getParameter("target"))) {
 							nombreAlumno = request.getParameter("target");
-							Alumno alumn = comprobarAlumno(nombreAlumno);
+							AlumnoCurso alumn = null;//comprobarAlumno(nombreAlumno);
+							try {
+								alumn = alumnoCursoDao.comprobarAlumno(
+										nombreAlumno, idCurso);
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 							if (alumn != null) {
-								Curso matriculado = comprobarMatricula(alumn, course);
-								if (matriculado == null)
+								//Curso matriculado = comprobarMatricula(alumn, course);
+								if (!alumn.isEnCurso())//(matriculado == null)
 									mensaje = "El alumno no está matriculado en este curso";
 
 								if (mensaje == null) {
 									for (int i = 0; i < alumnos.size(); i++) {
-										if (alumnos.get(i).getUsername().getUsername()
-												.equalsIgnoreCase(alumn.getUsername().getUsername())) {
-											alumnos.get(i).setCurso_actual(null);
+										if (alumnos.get(i).getIdUsuario().getUsername()
+												.equalsIgnoreCase(alumn.getIdUsuario().getUsername())) {
+											alumnos.get(i).setEnCurso(false);//setCurso_actual(null);
 											this.getServletContext().setAttribute("alumnos", alumnos);
 											mensaje = "El alumno se ha eliminado del curso";
 										}
@@ -119,24 +233,25 @@ public class CursosServlet extends HttpServlet {
 						if (request.getParameter("target") != null
 								&& !"".equalsIgnoreCase(request.getParameter("target"))) {
 							nombreProfesor = request.getParameter("target");
-							Profesor profe = comprobarExisteProfesor(nombreProfesor);
-							if (profe != null) {
-								boolean yaEnCurso = comprobarProfesorYaEnCurso(profe, course);
-								if (yaEnCurso) {
-									for (int i = 0; i < profesores.size(); i++) {
-										if (course.getIdcurso() == profesores.get(i).getCurso_idcurso().getIdcurso()) {
-											if (profe.getUsuario_username().getUsername().equalsIgnoreCase(
-													profesores.get(i).getUsuario_username().getUsername())) {
+							ProfesorCurso profeAyudante = null; //comprobarExisteProfesor(nombreProfesor);
+							if (profeAyudante != null) {
+								//boolean yaEnCurso = comprobarProfesorYaEnCurso(profe, course);
+								if (profeAyudante.isTitular()) {
+									for (int i = 0; i < profesoresCurso.size(); i++) {
+										if (course.getIdCurso() == profesoresCurso.get(i).getIdCurso().getIdCurso()) {
+											if (profeAyudante.getIdUsuario().getUsername().equalsIgnoreCase(
+													profesoresCurso.get(i).getIdUsuario().getUsername())) {
 												//un profesor no podria eliminar al profesor titular del curso salvo el administrador
-												if (!profesores.get(i).isEsTitular()) {
-													profesores.remove(i);
+												if (!profesoresCurso.get(i).isTitular()) {
+													profesoresCurso.remove(i);
 													mensaje = "El profesor ya se ha eliminado del curso";
-													this.getServletContext().setAttribute("profesores", profesores);
-												} else {
+													this.getServletContext().setAttribute("profesores", profesoresCurso);
+												}
+											else {
 													if (tipoUser.getIdtipoUsuario() == 3) {
 														profesores.remove(i);													
 														for (int i1 = 0; i1 < cursos.size(); i1++) {
-															if (cursos.get(i1).getIdcurso() == course.getIdcurso()) {
+															if (cursos.get(i1).getIdCurso() == course.getIdCurso()) {
 																cursos.get(i1).setProfesor_titular(null);
 																this.getServletContext().setAttribute("cursos", cursos);
 																mensaje = "El alumno se ha eliminado del curso";
@@ -221,24 +336,42 @@ public class CursosServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String idCurso = request.getParameter("idcurso");
+		String idCursoParam = request.getParameter("idcurso");
 		String mensaje = null;
 		String accion = request.getParameter("accion");
-		if (idCurso != null && !"".equals(idCurso)) {
-			Curso course = obtenerCurso(idCurso);
+		if (idCursoParam != null && !"".equals(idCursoParam)) {
+			//Curso course = obtenerCurso(idCurso);
+			long idCurso = Integer.parseInt(idCursoParam);
+			Curso course = null;
+			try {
+				course = cursoDao.findById(idCurso);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			if (course != null) {
 				if (accion != null && "addAlumno".equalsIgnoreCase(accion)) {
 					String nombreAlumno = "";
 					if (request.getParameter("target") != null
 							&& !"".equalsIgnoreCase(request.getParameter("target"))) {
 						nombreAlumno = request.getParameter("target");
-						Alumno alumn = comprobarAlumno(nombreAlumno);
+						AlumnoCurso alumn = null;//comprobarAlumno(nombreAlumno);
+						try {
+							alumn = alumnoCursoDao.comprobarAlumno(nombreAlumno, idCurso);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						if (alumn != null) {
-							Curso cursado = comprobarCursado(alumn, course);
+							/*Curso cursado = comprobarCursado(alumn, course);
 							if (cursado != null)
+							*/
+							if(!alumn.isEnCurso())
 								mensaje = "El alumno ya ha cursado este curso";
-							Curso matriculado = comprobarMatricula(alumn, course);
-							if (matriculado != null)
+							//Curso matriculado = comprobarMatricula(alumn, course);
+							if(alumn.isEnCurso())
+								mensaje = "El alumno ya ha cursado este curso";
+							/*if (matriculado != null)
 								mensaje = "El alumno ya está matriculado en este curso";
 							boolean yaEstaMatriculado = comprobarYaMatriculado(alumn);
 							if (yaEstaMatriculado)
@@ -253,7 +386,24 @@ public class CursosServlet extends HttpServlet {
 										mensaje = "El alumno ya se ha matriculado en el curso";
 									}
 								}
+							}*/
+							if (mensaje == null) {
+								for (int i = 0; i < alumnos.size(); i++) {
+									if (alumnos
+											.get(i)
+											.getIdUsuario()
+											.getUsername()
+											.equalsIgnoreCase(
+													alumn.getIdUsuario()
+															.getUsername())) {
+										alumnos.get(i).setIdCurso(course);
+										this.getServletContext().setAttribute(
+												"alumnos", alumnos);
+										mensaje = "El alumno ya se ha matriculado en el curso";
+									}
+								}
 							}
+							
 						} else {
 							mensaje = "El alumno que desea añadir no existe en el sistema";
 						}
@@ -266,15 +416,24 @@ public class CursosServlet extends HttpServlet {
 					if (request.getParameter("target") != null
 							&& !"".equalsIgnoreCase(request.getParameter("target"))) {
 						nombreProfesor = request.getParameter("target");
-						Profesor profe = comprobarExisteProfesor(nombreProfesor);
+						ProfesorCurso profe = null;//comprobarExisteProfesor(nombreProfesor);
+						try {
+							profe = profeDao.findByUsername(nombreProfesor);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						if (profe != null) {
-							boolean yaEnCurso = comprobarProfesorYaEnCurso(profe, course);
-							if (yaEnCurso)
+							//boolean yaEnCurso = comprobarProfesorYaEnCurso(profe, course);
+							if (profe.getIdCurso().getIdCurso()==course.getIdCurso())
 								mensaje = "El profesor ya esta dado de alta en el curso";
-
+							/*if (yaEnCurso)
+								mensaje = "El profesor ya esta dado de alta en el curso";
+							*/
 							if (mensaje == null) {
-								profe.setCurso_idcurso(course);
-								profesores.add(profe);
+								profe.setIdCurso(course);
+								profe.setTitular(false);
+								profesoresCurso.add(profe);
 								mensaje = "El profesor ya se ha añadido en el curso";
 								this.getServletContext().setAttribute("cursos", cursos);
 							}
@@ -306,12 +465,13 @@ public class CursosServlet extends HttpServlet {
 			ioe.printStackTrace();
 		}
 	}
-
+}
+/*
 	private Curso obtenerCurso(String parametro) {
 		Curso course = null;
 		int intCurso = Integer.parseInt(parametro);
 		for (Curso curso : cursos) {
-			if (intCurso == curso.getIdcurso()) {
+			if (intCurso == curso.getIdCurso()) {
 				course = new Curso();
 				course = curso;
 			}
@@ -346,7 +506,7 @@ public class CursosServlet extends HttpServlet {
 		Curso cursoRealizado = null;
 		if (alumno.getListado_cursos() != null) {
 			for (Curso cursado : alumno.getListado_cursos()) {
-				if (cursado.getIdcurso() == curso.getIdcurso()) {
+				if (cursado.getIdCurso() == curso.getIdCurso()) {
 					cursoRealizado = new Curso();
 					cursoRealizado = curso;
 					break;
@@ -359,7 +519,7 @@ public class CursosServlet extends HttpServlet {
 	private Curso comprobarMatricula(Alumno alumno, Curso curso) {
 		Curso cursoMatriculado = null;
 		if (alumno.getCurso_actual() != null) {
-			if (curso.getIdcurso() == alumno.getCurso_actual().getIdcurso()) {
+			if (curso.getIdCurso() == alumno.getCurso_actual().getIdcurso()) {
 				cursoMatriculado = new Curso();
 				cursoMatriculado = curso;
 			}
@@ -390,7 +550,7 @@ public class CursosServlet extends HttpServlet {
 	private boolean comprobarProfesorYaEnCurso(Profesor profe, Curso curso) {
 		boolean yaEstaComoProfe = false;
 		for (Profesor profesor : profesores) {
-			if (curso.getIdcurso() == profesor.getCurso_idcurso().getIdcurso()) {
+			if (curso.getIdCurso() == profesor.getCurso_idcurso().getIdcurso()) {
 				if (profe.getUsuario_username().getUsername()
 						.equalsIgnoreCase(profesor.getUsuario_username().getUsername())) {
 					yaEstaComoProfe = true;
@@ -417,7 +577,7 @@ public class CursosServlet extends HttpServlet {
 	protected boolean comprobarProfeCurso(Usuario usuario, Curso curso) {
 		boolean esProfe = false;
 		for (Profesor profesor : profesores) {
-			if (curso.getIdcurso() == profesor.getCurso_idcurso().getIdcurso()) {
+			if (curso.getIdCurso() == profesor.getCurso_idcurso().getIdcurso()) {
 				if (usuario.getUsername().equalsIgnoreCase(profesor.getUsuario_username().getUsername())) {
 					esProfe = true;
 					break;
@@ -427,3 +587,4 @@ public class CursosServlet extends HttpServlet {
 		return esProfe;
 	}
 }
+*/

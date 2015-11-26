@@ -20,11 +20,15 @@
     </properties>
 
     <dependencies>
+    	<dependency>
+    		<groupId>es.uc3m.tiw.model</groupId>
+    		<artifactId>grupo2-model</artifactId>
+    		<version>${project.parent.version}</version>
+    		<scope>provided</scope>
+    	</dependency>
         <dependency>
             <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-          
-            <scope>provided</scope>
+            <artifactId>javaee-api</artifactId>
         </dependency>
     </dependencies>
 
@@ -43,4 +47,4 @@
         </plugins>
     </build>
 
-</project>
+    </project>

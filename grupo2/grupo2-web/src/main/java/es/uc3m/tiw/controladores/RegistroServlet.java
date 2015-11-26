@@ -2,7 +2,11 @@ package es.uc3m.tiw.controladores;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,13 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
 
-import es.uc3m.tiw.dominios.Alumno;
-import es.uc3m.tiw.dominios.Direccion;
-import es.uc3m.tiw.dominios.Profesor;
-import es.uc3m.tiw.dominios.TipoUsuario;
-import es.uc3m.tiw.dominios.Usuario;
-import es.uc3m.tiw.dominios.DatosBancarios;
+import es.uc3m.tiw.daos.*;
+import es.uc3m.tiw.model.*;
 
 /**
  * Servlet implementation class RegistroServlet
@@ -24,11 +25,26 @@ import es.uc3m.tiw.dominios.DatosBancarios;
 @WebServlet("/registro")
 public class RegistroServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	/*
 	ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
 	ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	ArrayList<Profesor> profesores = new ArrayList<Profesor>();
 	ArrayList<TipoUsuario> tipoUsuarios = new ArrayList<TipoUsuario>();
+*/
+	private Usuario usuario;
+	private Direccion direccion;
+	
+	List<Usuario> usuarios = new ArrayList<Usuario>();
+	List<Direccion> direcciones = new ArrayList<Direccion>();
+	
+	@PersistenceContext(unitName = "grupo2-model")
+	private EntityManager em;
+	@Resource
+	private UserTransaction ut;
 
+	private UsuarioDaoImpl usuarioDao;
+	private DireccionDaoImpl direccionDao;
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -41,12 +57,20 @@ public class RegistroServlet extends HttpServlet {
 	public void init(ServletConfig contexto) throws ServletException {
 		// TODO Auto-generated method stub
 		super.init(contexto);
+		/*
 		alumnos = (ArrayList<Alumno>) this.getServletContext().getAttribute(
 				"alumnos");
 		usuarios = (ArrayList<Usuario>) this.getServletContext().getAttribute(
 				"usuarios");
 		tipoUsuarios = (ArrayList<TipoUsuario>) this.getServletContext()
 				.getAttribute("tipoUsuarios");
+				*/
+		try {
+			usuarios = usuarioDao.findAll();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -68,7 +92,7 @@ public class RegistroServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Usuario nuevoUsuario = new Usuario();
-		Direccion direccion = new Direccion();
+		Direccion nuevaDireccion = new Direccion();
 		//DatosBancarios banco = new DatosBancarios();
 		boolean estaVacio = false;
 		String forwardJSP = "";
@@ -76,41 +100,37 @@ public class RegistroServlet extends HttpServlet {
 
 		if (request.getParameter("nombre") != null
 				&& !"".equalsIgnoreCase(request.getParameter("nombre"))) {
-			nuevoUsuario.setNombre(request.getParameter("nombre").toString());
+			nuevoUsuario.setNombre(request.getParameter("nombre"));
 			if (request.getParameter("apellidos") != null
 					&& !"".equalsIgnoreCase(request.getParameter("apellidos"))) {
-				nuevoUsuario.setApellidos(request.getParameter("apellidos")
-						.toString());
+				nuevoUsuario.setApellido(request.getParameter("apellidos"));
 				if (request.getParameter("username") != null
 						&& !"".equalsIgnoreCase(request
 								.getParameter("username"))) {
-					nuevoUsuario.setUsername(request.getParameter("username")
-							.toString());
+					nuevoUsuario.setUsername(request.getParameter("username"));
 					if (request.getParameter("email") != null
 							&& !"".equalsIgnoreCase(request
 									.getParameter("email"))) {
-						nuevoUsuario.setEmail(request.getParameter("email")
-								.toString());
+						nuevoUsuario.setCorreo(request.getParameter("email"));
 						if (request.getParameter("pais") != null
 								&& !"".equalsIgnoreCase(request
 										.getParameter("pais"))) {
-							direccion.setPais(request.getParameter("pais")
-									.toString());
+							nuevaDireccion.setPais(request.getParameter("pais"));
 							if (request.getParameter("ciudad") != null
 									&& !"".equalsIgnoreCase(request
 											.getParameter("ciudad"))) {
-								direccion.setCiudad(request.getParameter(
-										"ciudad").toString());
+								nuevaDireccion.setCiudad(request.getParameter(
+										"ciudad"));
 								if (request.getParameter("calle") != null
 										&& !"".equalsIgnoreCase(request
 												.getParameter("calle"))) {
-									direccion.setCalle(request.getParameter(
-											"calle").toString());
+									nuevaDireccion.setCalle(request.getParameter(
+											"calle"));
 									if (request.getParameter("numero") != null
 											&& !"".equalsIgnoreCase(request
 													.getParameter("numero"))) {
 										if (Integer.parseInt(request.getParameter("numero")) > 0){
-										direccion.setNumero(Integer
+											nuevaDireccion.setNumero(Integer
 												.parseInt(request.getParameter(
 														"numero").toString()));}
 										else {
@@ -123,7 +143,7 @@ public class RegistroServlet extends HttpServlet {
 												&& !"".equalsIgnoreCase(request
 														.getParameter("postal"))) {
 											if (Integer.parseInt(request.getParameter("postal")) > 0){
-											direccion.setCodigoPostal(request
+												nuevaDireccion.setCodigoPostal(request
 													.getParameter("postal")
 													.toString());}
 											else {
@@ -140,8 +160,7 @@ public class RegistroServlet extends HttpServlet {
 												nuevoUsuario
 														.setPassword(request
 																.getParameter(
-																		"password")
-																.toString());
+																		"password"));
 											} else {
 												estaVacio = true;
 											}
@@ -205,7 +224,7 @@ public class RegistroServlet extends HttpServlet {
 			if (request.getParameter("telefono") != null
 					&& !"".equalsIgnoreCase(request.getParameter("telefono"))) {
 				if (request.getParameter("telefono").length() == 9) {
-					nuevoUsuario.setTelefono(request.getParameter("telefono"));
+					nuevaDireccion.setTelefono(request.getParameter("telefono"));
 				} else {
 					forwardJSP = "/signup.jsp";
 					String mensaje = "El telefono no es correcto";
@@ -214,17 +233,42 @@ public class RegistroServlet extends HttpServlet {
 
 				}
 			}
-			
-			nuevoUsuario.setDireccion(direccion);
+			/*
+			nuevoUsuario.setIdDireccion(nuevaDireccion);
 			usuarios.add(nuevoUsuario);
-
+*/
+			Direccion dirCreated = null;
+			try {
+				dirCreated = direccionDao.createDireccion(nuevaDireccion);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if(dirCreated!=null){
+				nuevoUsuario.setIdDireccion(nuevaDireccion);
+			}
+//********************************			nuevoUsuario.setAdmin(false);
+			Usuario userCreated = null;
+			try {
+				userCreated = usuarioDao.createUsuario(nuevoUsuario);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			if (userCreated!=null){
 			forwardJSP = "/principal.jsp";
-			String mensaje = "Se ha registrado correctamente";
-			request.setAttribute("mensaje", mensaje);
+			//String mensaje = "Se ha registrado correctamente";
+			//request.setAttribute("mensaje", mensaje);
 			sesion.setAttribute("usuario", nuevoUsuario);
 			sesion.setAttribute("acceso", "ok");
 			forward(request, response, forwardJSP);
-
+			}else{
+				forwardJSP = "/signup.jsp";
+				String mensaje = "Se ha producido un error al crear el perfil";
+				sesion.setAttribute("mensaje", mensaje);
+				forward(request, response, forwardJSP);
+			}
 		}
 
 	}
