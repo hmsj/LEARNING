@@ -38,7 +38,7 @@ import es.uc3m.tiw.daos.LeccionCursoDaoImpl;
 import es.uc3m.tiw.daos.MaterialLeccionDaoImpl;
 import es.uc3m.tiw.daos.ProfesorCursoDaoImpl;
 import es.uc3m.tiw.daos.SeccionCursoDaoImpl;
-import es.uc3m.tiw.dominios.Alumno;
+//import es.uc3m.tiw.dominios.Alumno;
 import es.uc3m.tiw.model.AlumnoCurso;
 import es.uc3m.tiw.model.Categoria;
 import es.uc3m.tiw.model.Curso;
@@ -247,7 +247,9 @@ public class CursosServlet extends HttpServlet {
 													mensaje = "El profesor ya se ha eliminado del curso";
 													this.getServletContext().setAttribute("profesores", profesoresCurso);
 												}
-											else {
+											/*
+											 * else{
+											 * 
 													if (tipoUser.getIdtipoUsuario() == 3) {
 														profesores.remove(i);													
 														for (int i1 = 0; i1 < cursos.size(); i1++) {
@@ -265,7 +267,9 @@ public class CursosServlet extends HttpServlet {
 													{
 														mensaje = "No se puede eliminar el profesor titular del curso";															
 													}
-												}
+												
+											 * }
+											 */
 											}
 										}
 									}
@@ -279,44 +283,7 @@ public class CursosServlet extends HttpServlet {
 							mensaje = "No ha seleccionado un profesor al que eliminar del curso";
 						}
 						forwardJSP = "/curso.jsp";
-					} else {
-						if (tipoUser.getIdtipoUsuario() == 1) {
-							Alumno alumn = comprobarAlumno(usuarioLogado);
-							if (alumn != null) {
-								Curso cursado = comprobarCursado(alumn, course);
-								Curso matriculado = comprobarMatricula(alumn, course);
-								if (matriculado != null) {
-									request.setAttribute("mensaje2", "El alumno esta matriculado en el curso");
-									sesion.setAttribute("curso", course);
-									forwardJSP = "/curso.jsp";
-								} else if (cursado != null) {
-									request.setAttribute("mensaje1", "El alumno ya ha realizado el curso");
-									sesion.setAttribute("curso", course);
-									forwardJSP = "/curso.jsp";
-								} else {
-									request.setAttribute("mensaje3", "El alumno no esta matriculado");
-									sesion.setAttribute("curso", course);
-									forwardJSP = "/curso.jsp";
-								}
-							}
-						} else if (tipoUser.getIdtipoUsuario() == 2) {
-							boolean esProfe = comprobarProfeCurso(usuarioLogado, course);
-							if (esProfe) {
-								request.setAttribute("mensaje4", "El usuario es profesor del curso");
-								sesion.setAttribute("curso", course);
-								forwardJSP = "/curso.jsp";
-							} else {
-								mensaje = "No es profesor de este curso";
-								sesion.setAttribute("curso", course);
-								forwardJSP = "/curso.jsp";
-							}
-
-						} else {
-							mensaje = "Los datos no son validos para realizar esta accion, por favor acceda de nuevo";
-							request.getSession().invalidate();
-							forwardJSP = "/login.jsp";
-						}
-					}
+					} 
 				} else {
 					sesion.setAttribute("curso", course);
 					forwardJSP = "/curso.jsp";
@@ -327,8 +294,8 @@ public class CursosServlet extends HttpServlet {
 			request.setAttribute("mensaje", mensaje);
 		}
 		forward(request, response, forwardJSP);
+							
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -363,6 +330,50 @@ public class CursosServlet extends HttpServlet {
 							e.printStackTrace();
 						}
 						if (alumn != null) {
+							
+							/*********************************************************************************************************
+							 * 
+							 * 
+							 * 
+						if (tipoUser.getIdtipoUsuario() == 1) {
+							AlumnoCurso alumn = comprobarAlumno(usuarioLogado);
+							if (alumn != null) {
+								Curso cursado = comprobarCursado(alumn, course);
+								Curso matriculado = comprobarMatricula(alumn, course);
+								if (matriculado != null) {
+									request.setAttribute("mensaje2", "El alumno esta matriculado en el curso");
+									sesion.setAttribute("curso", course);
+									forwardJSP = "/curso.jsp";
+								} else if (cursado != null) {
+									request.setAttribute("mensaje1", "El alumno ya ha realizado el curso");
+									sesion.setAttribute("curso", course);
+									forwardJSP = "/curso.jsp";
+								} else {
+									request.setAttribute("mensaje3", "El alumno no esta matriculado");
+									sesion.setAttribute("curso", course);
+									forwardJSP = "/curso.jsp";
+								}
+							}
+						} else if (tipoUser.getIdtipoUsuario() == 2) {
+							boolean esProfe = comprobarProfeCurso(usuarioLogado, course);
+							if (esProfe) {
+								request.setAttribute("mensaje4", "El usuario es profesor del curso");
+								sesion.setAttribute("curso", course);
+								forwardJSP = "/curso.jsp";
+							} else {
+								mensaje = "No es profesor de este curso";
+								sesion.setAttribute("curso", course);
+								forwardJSP = "/curso.jsp";
+							}
+
+						} else {
+							mensaje = "Los datos no son validos para realizar esta accion, por favor acceda de nuevo";
+							request.getSession().invalidate();
+							forwardJSP = "/login.jsp";
+						}
+					
+							 */
+							
 							/*Curso cursado = comprobarCursado(alumn, course);
 							if (cursado != null)
 							*/
