@@ -14,21 +14,39 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.UserTransaction;
 
+import es.uc3m.tiw.daos.AlumnoCursoDao;
 import es.uc3m.tiw.daos.AlumnoCursoDaoImpl;
+import es.uc3m.tiw.daos.AlumnoLeccionDao;
 import es.uc3m.tiw.daos.AlumnoLeccionDaoImpl;
+import es.uc3m.tiw.daos.BancoDao;
 import es.uc3m.tiw.daos.BancoDaoImpl;
+import es.uc3m.tiw.daos.CategoriaDao;
 import es.uc3m.tiw.daos.CategoriaDaoImpl;
+import es.uc3m.tiw.daos.CursoDao;
 import es.uc3m.tiw.daos.CursoDaoImpl;
+import es.uc3m.tiw.daos.DificultadDao;
 import es.uc3m.tiw.daos.DificultadDaoImpl;
+import es.uc3m.tiw.daos.DireccionDao;
 import es.uc3m.tiw.daos.DireccionDaoImpl;
+import es.uc3m.tiw.daos.LeccionCursoDao;
 import es.uc3m.tiw.daos.LeccionCursoDaoImpl;
+import es.uc3m.tiw.daos.ListaDeseosDao;
 import es.uc3m.tiw.daos.ListaDeseosDaoImpl;
+import es.uc3m.tiw.daos.LogroDao;
 import es.uc3m.tiw.daos.LogroDaoImpl;
+import es.uc3m.tiw.daos.MaterialLeccionDao;
 import es.uc3m.tiw.daos.MaterialLeccionDaoImpl;
 import es.uc3m.tiw.daos.OfertaDaoImpl;
+import es.uc3m.tiw.daos.ProfesorCursoDao;
 import es.uc3m.tiw.daos.ProfesorCursoDaoImpl;
+import es.uc3m.tiw.daos.PromocionDao;
+import es.uc3m.tiw.daos.PromocionDaoImpl;
+import es.uc3m.tiw.daos.SeccionCursoDao;
 import es.uc3m.tiw.daos.SeccionCursoDaoImpl;
 import es.uc3m.tiw.daos.TipoOfertaDaoImpl;
+import es.uc3m.tiw.daos.TipoPromocionDao;
+import es.uc3m.tiw.daos.TipoPromocionDaoImpl;
+import es.uc3m.tiw.daos.UsuarioDao;
 import es.uc3m.tiw.daos.UsuarioDaoImpl;
 import es.uc3m.tiw.model.AlumnoCurso;
 import es.uc3m.tiw.model.Banco;
@@ -41,8 +59,10 @@ import es.uc3m.tiw.model.Logro;
 import es.uc3m.tiw.model.MaterialLeccion;
 import es.uc3m.tiw.model.Oferta;
 import es.uc3m.tiw.model.ProfesorCurso;
+import es.uc3m.tiw.model.Promocion;
 import es.uc3m.tiw.model.SeccionCurso;
 import es.uc3m.tiw.model.TipoOferta;
+import es.uc3m.tiw.model.TipoPromocion;
 import es.uc3m.tiw.model.Usuario;
 
 /**
@@ -91,22 +111,22 @@ public class InicioServlet extends HttpServlet {
 	//private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
     */
 
-	AlumnoCursoDaoImpl alumnoCursoDao;
-	AlumnoLeccionDaoImpl alumnoLeccionDao;
-	BancoDaoImpl bancoDao;
-	CategoriaDaoImpl categoriaDao;
-	CursoDaoImpl cursoDao;
-	DificultadDaoImpl dificultadDao;
-	DireccionDaoImpl direccionDao;
-	LeccionCursoDaoImpl leccionCursoDao;
-	ListaDeseosDaoImpl listaDeseosDao;
-	LogroDaoImpl logroDao;
-	MaterialLeccionDaoImpl materialLeccionDao;
-	OfertaDaoImpl ofertaDao;
-	ProfesorCursoDaoImpl profesorCursoDao;
-	SeccionCursoDaoImpl seccionCursoDao;
-	TipoOfertaDaoImpl tipoOfertaDao;
-	UsuarioDaoImpl usuarioDao;
+	AlumnoCursoDao alumnoCursoDao;
+	AlumnoLeccionDao alumnoLeccionDao;
+	BancoDao bancoDao;
+	CategoriaDao categoriaDao;
+	CursoDao cursoDao;
+	DificultadDao dificultadDao;
+	DireccionDao direccionDao;
+	LeccionCursoDao leccionCursoDao;
+	ListaDeseosDao listaDeseosDao;
+	LogroDao logroDao;
+	MaterialLeccionDao materialLeccionDao;
+	PromocionDao promocionDao;
+	ProfesorCursoDao profesorCursoDao;
+	SeccionCursoDao seccionCursoDao;
+	TipoPromocionDao tipoPromocionDao;
+	UsuarioDao usuarioDao;
 	
 	/**
      * @see HttpServlet#HttpServlet()
@@ -289,7 +309,7 @@ public class InicioServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//super.init();
 		
-    	alumnoCursoDao = new AlumnoCursoDaoImpl(em, ut);
+		alumnoCursoDao = new AlumnoCursoDaoImpl(em, ut);
 		alumnoLeccionDao = new AlumnoLeccionDaoImpl(em, ut);
 		bancoDao = new BancoDaoImpl(em, ut);
 		categoriaDao = new CategoriaDaoImpl(em, ut);
@@ -300,17 +320,17 @@ public class InicioServlet extends HttpServlet {
 		listaDeseosDao = new ListaDeseosDaoImpl(em, ut);
 		logroDao = new LogroDaoImpl(em, ut);
 		materialLeccionDao = new MaterialLeccionDaoImpl(em, ut);
-		ofertaDao = new OfertaDaoImpl(em, ut);
+		promocionDao = new PromocionDaoImpl(em, ut);
 		profesorCursoDao = new ProfesorCursoDaoImpl(em, ut);
 		seccionCursoDao = new SeccionCursoDaoImpl(em, ut);
-		tipoOfertaDao = new TipoOfertaDaoImpl(em, ut);
+		tipoPromocionDao = new TipoPromocionDaoImpl(em, ut);
 		usuarioDao = new UsuarioDaoImpl(em, ut);
     	
-    	TipoOferta tipoOferta1 = new TipoOferta(1, "Fijo");
-		TipoOferta tipoOferta2 = new TipoOferta(2, "Porcentaje");
+		TipoPromocion tipoPromocion1 = new TipoPromocion(1, "Fijo");
+		TipoPromocion tipoPromocion2 = new TipoPromocion(2, "Porcentaje");
 		try {
-			tipoOfertaDao.createTipoOferta(tipoOferta1);
-			tipoOfertaDao.createTipoOferta(tipoOferta2);
+			tipoPromocionDao.createTipoPromocion(tipoPromocion1);
+			tipoPromocionDao.createTipoPromocion(tipoPromocion2);
 		} catch (Exception e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
@@ -415,28 +435,28 @@ public class InicioServlet extends HttpServlet {
 		}
 		
 		
-		Oferta oferta1 = new Oferta(30.0,"31/12/2015", tipoOferta1);
+		Promocion promocion1 = new Promocion("Promocion Inicial",30.0,"31/12/2015", tipoPromocion1);
 		try {
-			ofertaDao.createOferta(oferta1);
+			promocionDao.createPromocion(promocion1);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}		
 		
-		Curso curso1 = new Curso("Curso de diseño photoshop", "Aprende el manejo basico de Photoshop", 100, VALIDADO, DESTACADO, null, oferta1, categoria4, dificultad1);
-		Curso curso2 = new Curso("Curso de diseño de videojuegos", "Diseño de juegos y simulacion con 3d Unity", 250.0, VALIDADO, NODESTACADO, "img/courses/DiseñoVideojuegos.jpg", null, categoria4, dificultad1);
-		Curso curso3 = new Curso("Curso de fotografia: el enfoque", "Sacale el maximo partido a tu camara", 50.0, NOVALIDADO, NODESTACADO, "img/courses/FotografiaEnfocar.jpg", null, categoria2, dificultad1);
-		Curso curso4 = new Curso("Curso de fotografia nocturna", "Fotografia nocturna con tu camara digital", 100.0, VALIDADO, DESTACADO, "img/courses/FotografiaNocturna.jpg", null, categoria2, dificultad1);
-		Curso curso5 = new Curso("Curso de idiomas: Aleman", "Nivel intermedio de aleman con profesores nativos", 75.5, VALIDADO, DESTACADO, "img/courses/IdiomaAleman.jpg", oferta1, categoria5, dificultad1);
-		Curso curso6 = new Curso("Curso de idiomas: Ingles", "Aprende ingles con 1000 palabras, metodo mejorado", 25, VALIDADO, NODESTACADO,"img/courses/IdiomaIngles.jpg", oferta1, categoria5, dificultad1);
-		Curso curso7 = new Curso("Curso de marketing digital", "Marketing basado en conocimiento de community manager", 25, VALIDADO, DESTACADO, "img/courses/MarketingDigital.jpg", null,  categoria3, dificultad1);
-		Curso curso8 = new Curso("Curso de marketing directo", "Como conseguir la mejor impresion en las personas", 25, VALIDADO, DESTACADO, "img/courses/MarketingDirecto.jpg", oferta1, categoria3, dificultad1);
-		Curso curso9 = new Curso("Curso de negocios: inversion de bolsa", "Aprende  invertir en funcion de tu perfil de riesgo", 25, VALIDADO, DESTACADO, "img/courses/NegocioBolsa.jpg", oferta1, categoria6, dificultad1);
-		Curso curso10 = new Curso("Curso de negocios: estrategia", "Toma de decisiones en diferentes aspectos de mercado", 25, VALIDADO, NODESTACADO, "img/courses/NegociosEstrategia.jpg", null, categoria6, dificultad1);
-		Curso curso11 = new Curso("Curso para emprendedores", "Como hacer un plan de empresa desde cero", 25, VALIDADO, DESTACADO, "img/courses/OtrosEmprendimiento.jpg", oferta1, categoria7, dificultad1);
-		Curso curso12 = new Curso("Curso de ofimatica Microsoft", "Curso rapido de Word, Excell, Power Point", 25, NOVALIDADO, NODESTACADO, "img/courses/OtrosMicrosoft.jpg", null, categoria7, dificultad1);
-		Curso curso13 = new Curso("Curso de programacion en Android", "Crea tu propia aplicacion en menos de una semana", 25, VALIDADO, DESTACADO, "img/courses/ProgramacionAndroid.jpg", oferta1, categoria1, dificultad1);
-		Curso curso14 = new Curso("Curso de programacion web: HTML5", "Conceptos basicos e intermedios de programacion web", 25, NOVALIDADO, NODESTACADO, "img/courses/ProgramacionHtml5.jpg", null, categoria1, dificultad1);
+		Curso curso1 = new Curso("Curso de diseño photoshop", "Aprende el manejo basico de Photoshop", 100, VALIDADO, DESTACADO, null, promocion1,null, categoria4, dificultad1);
+		Curso curso2 = new Curso("Curso de diseño de videojuegos", "Diseño de juegos y simulacion con 3d Unity", 250.0, VALIDADO, NODESTACADO, "img/courses/DiseñoVideojuegos.jpg", null, null, categoria4, dificultad1);
+		Curso curso3 = new Curso("Curso de fotografia: el enfoque", "Sacale el maximo partido a tu camara", 50.0, NOVALIDADO, NODESTACADO, "img/courses/FotografiaEnfocar.jpg", null, null, categoria2, dificultad1);
+		Curso curso4 = new Curso("Curso de fotografia nocturna", "Fotografia nocturna con tu camara digital", 100.0, VALIDADO, DESTACADO, "img/courses/FotografiaNocturna.jpg", null, null, categoria2, dificultad1);
+		Curso curso5 = new Curso("Curso de idiomas: Aleman", "Nivel intermedio de aleman con profesores nativos", 75.5, VALIDADO, DESTACADO, "img/courses/IdiomaAleman.jpg", promocion1, null, categoria5, dificultad1);
+		Curso curso6 = new Curso("Curso de idiomas: Ingles", "Aprende ingles con 1000 palabras, metodo mejorado", 25, VALIDADO, NODESTACADO,"img/courses/IdiomaIngles.jpg", promocion1, null, categoria5, dificultad1);
+		Curso curso7 = new Curso("Curso de marketing digital", "Marketing basado en conocimiento de community manager", 25, VALIDADO, DESTACADO, "img/courses/MarketingDigital.jpg", null, null, categoria3, dificultad1);
+		Curso curso8 = new Curso("Curso de marketing directo", "Como conseguir la mejor impresion en las personas", 25, VALIDADO, DESTACADO, "img/courses/MarketingDirecto.jpg", promocion1, null, categoria3, dificultad1);
+		Curso curso9 = new Curso("Curso de negocios: inversion de bolsa", "Aprende  invertir en funcion de tu perfil de riesgo", 25, VALIDADO, DESTACADO, "img/courses/NegocioBolsa.jpg", promocion1, null, categoria6, dificultad1);
+		Curso curso10 = new Curso("Curso de negocios: estrategia", "Toma de decisiones en diferentes aspectos de mercado", 25, VALIDADO, NODESTACADO, "img/courses/NegociosEstrategia.jpg", null, null, categoria6, dificultad1);
+		Curso curso11 = new Curso("Curso para emprendedores", "Como hacer un plan de empresa desde cero", 25, VALIDADO, DESTACADO, "img/courses/OtrosEmprendimiento.jpg", promocion1, null, categoria7, dificultad1);
+		Curso curso12 = new Curso("Curso de ofimatica Microsoft", "Curso rapido de Word, Excell, Power Point", 25, NOVALIDADO, NODESTACADO, "img/courses/OtrosMicrosoft.jpg", null, null, categoria7, dificultad1);
+		Curso curso13 = new Curso("Curso de programacion en Android", "Crea tu propia aplicacion en menos de una semana", 25, VALIDADO, DESTACADO, "img/courses/ProgramacionAndroid.jpg", promocion1, null, categoria1, dificultad1);
+		Curso curso14 = new Curso("Curso de programacion web: HTML5", "Conceptos basicos e intermedios de programacion web", 25, NOVALIDADO, NODESTACADO, "img/courses/ProgramacionHtml5.jpg", null, null, categoria1, dificultad1);
 		try {
 			cursoDao.createCurso(curso1);
 			cursoDao.createCurso(curso2);
@@ -480,8 +500,10 @@ public class InicioServlet extends HttpServlet {
 		}	
 			
 		SeccionCurso seccion1 = new SeccionCurso("Seccion1", "Descripcion seccion1", curso1);
+		SeccionCurso seccion2 = new SeccionCurso("Seccion2", "Descripcion seccion2", curso1);
 		try {
 			seccionCursoDao.createSeccionCurso(seccion1);
+			seccionCursoDao.createSeccionCurso(seccion2);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -3,6 +3,7 @@ package es.uc3m.tiw.daos;
 import java.util.List;
 
 import es.uc3m.tiw.model.AlumnoCurso;
+import es.uc3m.tiw.model.Usuario;
 
 public interface AlumnoCursoDao {
 	
@@ -20,10 +21,16 @@ public interface AlumnoCursoDao {
 
 	public abstract AlumnoCurso comprobarAlumnoEnCurso(String alumnoUsername, long idCurso) throws Exception;
 	
-	public abstract List<AlumnoCurso> listadoAlumnosEnCurso(long idCurso) throws Exception;
+	public abstract List<AlumnoCurso> listadoAlumnosEnUnCurso(long idCurso) throws Exception;
 	
-	public abstract List<AlumnoCurso> listadoAlumnosCursado(long idCurso) throws Exception;
+	public abstract List<AlumnoCurso> listadoAlumnosUnCursado(long idCurso) throws Exception;;
 
-	public abstract AlumnoCurso comprobarAlumno(String nombreAlumno,
-			long idCurso);
+	public abstract List<AlumnoCurso> listadoAlumnosEnCurso() throws Exception;
+
+	public abstract List<AlumnoCurso> listadoAlumnosCursado() throws Exception;
+	
+	public abstract List<AlumnoCurso> listadoAlumnosEnCursoById(Long idUsuario) throws Exception;
+	
+	public abstract List<AlumnoCurso> listadoAlumnosCursadoById(Long idUsuario) throws Exception;
+
 }

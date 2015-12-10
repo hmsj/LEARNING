@@ -8,6 +8,7 @@ import javax.transaction.UserTransaction;
 import es.uc3m.tiw.model.AlumnoCurso;
 import es.uc3m.tiw.model.Curso;
 import es.uc3m.tiw.model.ProfesorCurso;
+import es.uc3m.tiw.model.Usuario;
 
 public class AlumnoCursoDaoImpl implements AlumnoCursoDao{
 	private EntityManager em;
@@ -78,26 +79,49 @@ public class AlumnoCursoDaoImpl implements AlumnoCursoDao{
 	}
 	
 	@Override
-	public List<AlumnoCurso> listadoAlumnosEnCurso(long idCurso) throws Exception {
+	public List<AlumnoCurso> listadoAlumnosEnUnCurso(long idCurso) throws Exception {
 		// TODO Auto-generated method stub
 		List<AlumnoCurso> listadoAlumnosEnCurso = em.createQuery("SELECT a FROM AlumnoCurso a WHERE a.idCurso.idCurso='"+ idCurso +"'AND a.enCurso='"+ true +"'", AlumnoCurso.class).getResultList();
 		return listadoAlumnosEnCurso;
 	}
 
 	@Override
-	public List<AlumnoCurso> listadoAlumnosCursado(long idCurso)
+	public List<AlumnoCurso> listadoAlumnosUnCursado(long idCurso)
 			throws Exception {
 		// TODO Auto-generated method stub
 		List<AlumnoCurso> listadoAlumnosCursado = em.createQuery("SELECT a FROM AlumnoCurso a WHERE a.idCurso.idCurso='"+ idCurso +"'AND a.enCurso='"+ false +"'", AlumnoCurso.class).getResultList();
 		return listadoAlumnosCursado;
 	}
+	
+	@Override
+	public List<AlumnoCurso> listadoAlumnosEnCurso() throws Exception {
+		// TODO Auto-generated method stub
+		List<AlumnoCurso> listadoAlumnosEnTodosCursos = em.createQuery("SELECT a FROM AlumnoCurso a WHERE a.enCurso='"+ true +"'", AlumnoCurso.class).getResultList();
+		return listadoAlumnosEnTodosCursos;
+	}
 
 	@Override
-	public AlumnoCurso comprobarAlumno(String nombreAlumno, long idCurso) {
+	public List<AlumnoCurso> listadoAlumnosCursado()
+			throws Exception {
 		// TODO Auto-generated method stub
-		AlumnoCurso alumno = null;
-		alumno = em.createQuery("SELECT a FROM AlumnoCurso a WHERE a.idUsuario.username='"+nombreAlumno+"' AND a.idCurso='"+idCurso+"'", AlumnoCurso.class).getSingleResult();
-		return alumno;
+		List<AlumnoCurso> listadoAlumnosCursado = em.createQuery("SELECT a FROM AlumnoCurso a WHERE a.enCurso='"+ false +"'", AlumnoCurso.class).getResultList();
+		return listadoAlumnosCursado;
+	}
+
+	@Override
+	public List<AlumnoCurso> listadoAlumnosEnCursoById(Long idUsuario)
+			throws Exception {
+		// TODO Auto-generated method stub
+		List<AlumnoCurso> listadoAlumnosEnCursoId = em.createQuery("SELECT a FROM AlumnoCurso a WHERE a.idUsuario.idUsuario='"+ idUsuario +"' AND a.enCurso='"+true+"'", AlumnoCurso.class).getResultList();
+		return listadoAlumnosEnCursoId;
+	}
+
+	@Override
+	public List<AlumnoCurso> listadoAlumnosCursadoById(Long idUsuario)
+			throws Exception {
+		// TODO Auto-generated method stub
+		List<AlumnoCurso> listadoAlumnosCursadoId = em.createQuery("SELECT a FROM AlumnoCurso a WHERE a.idUsuario.idUsuario='"+ idUsuario +"' AND a.enCurso='"+false+"'", AlumnoCurso.class).getResultList();
+		return listadoAlumnosCursadoId;
 	}
 
 }

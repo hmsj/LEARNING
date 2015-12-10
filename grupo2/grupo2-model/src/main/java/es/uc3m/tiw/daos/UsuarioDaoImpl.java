@@ -27,6 +27,23 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	}
 
 	@Override
+	public void removeUsuario(Usuario usuario) throws Exception {
+		// TODO Auto-generated method stub
+		ut.begin();
+		em.remove(em.merge(usuario));
+		ut.commit();
+	}
+
+	@Override
+	public Usuario modifyUsuario(Usuario usuario) throws Exception {
+		// TODO Auto-generated method stub
+		ut.begin();
+		em.merge(usuario);
+		ut.commit();
+		return usuario;
+	}
+	
+	@Override
 	public Usuario comprobarUsuarioUsernamePass(String username, String password)
 			throws Exception {
 		Usuario usuario =null;
@@ -41,17 +58,17 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	}
 
 	@Override
-	public void removeUsuario(Usuario usuario) throws Exception {
+	public Usuario findByUsername(String username) throws Exception {
 		// TODO Auto-generated method stub
-		ut.begin();
-		em.remove(em.merge(usuario));
-		ut.commit();
+		Usuario usuario =null;
+		usuario = em.createQuery("SELECT u FROM Usuario u where u.username='"+username+"'",Usuario.class).getSingleResult();
+		return usuario;
 	}
 
 	@Override
-	public Usuario findByUsername(String username) throws Exception {
+	public Usuario findById(Long id) throws Exception {
 		// TODO Auto-generated method stub
-		return em.find(Usuario.class, new String(username));
+		return em.find(Usuario.class, new Long(id));
 	}
 	
 }

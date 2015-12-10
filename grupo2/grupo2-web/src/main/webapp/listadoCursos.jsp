@@ -77,6 +77,7 @@
 							<div class="row">
 								<c:if test="${not empty cursos }">
 									<c:forEach items="${cursos }" var="curso">
+										<c:if test="${curso.validado }">
 										<c:if test="${curso.categoria.idcategoria == 1 }">
 											<div class="col-md-6 col-sm-4 team-member">
 												<div class="effect effects wow fadeInUp">
@@ -123,6 +124,7 @@
 													<p>${curso.descripcion }</p>
 												</div>
 											</div>
+										</c:if>
 										</c:if>
 									</c:forEach>
 								</c:if>

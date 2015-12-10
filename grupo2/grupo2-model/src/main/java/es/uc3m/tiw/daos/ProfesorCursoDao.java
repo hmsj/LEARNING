@@ -2,7 +2,9 @@ package es.uc3m.tiw.daos;
 
 import java.util.List;
 
+import es.uc3m.tiw.model.Curso;
 import es.uc3m.tiw.model.ProfesorCurso;
+import es.uc3m.tiw.model.Usuario;
 
 public interface ProfesorCursoDao {
 	
@@ -17,8 +19,16 @@ public interface ProfesorCursoDao {
 	public abstract ProfesorCurso comprobarProfesorInvitado(String profeInvUsername,
 			long idCurso) throws Exception;
 	
-	public abstract ProfesorCurso comprobarProfesorTitular(String profeTitUsername,
+	public abstract ProfesorCurso comprobarProfesorTitularUnCurso(String profeTitUsername,
 			long idCurso) throws Exception;
 	
-	public abstract List<ProfesorCurso> listadoProfesInvitados(long idCurso) throws Exception;
+	public abstract List<ProfesorCurso> listadoProfesInvitadosUnCurso(long idCurso) throws Exception;
+	
+	public abstract ProfesorCurso ProfeTitularCurso(long idCurso) throws Exception; 
+
+	public abstract List<ProfesorCurso> listadoProfesTitulares() throws Exception;
+	
+	public abstract List<ProfesorCurso> cursosByProfe(String username) throws Exception;
+	
+	public abstract List<ProfesorCurso> listadoTitularById (Long idUsuario) throws Exception;
 }

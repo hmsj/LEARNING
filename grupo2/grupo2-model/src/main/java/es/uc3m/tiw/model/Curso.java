@@ -30,7 +30,7 @@ public class Curso implements Serializable{
 	private double precioInicial;
 	
 	@Column(nullable=false)
-	private boolean estado;
+	private boolean validado;
 	
 	@Column(nullable=false)
 	private boolean destacado;
@@ -38,8 +38,11 @@ public class Curso implements Serializable{
 	@Column(nullable=true)
 	private String imagen;
 	
-	@OneToOne
-	private Oferta idOferta;
+	@OneToOne(optional = true) 
+	private Promocion idPromocion;
+	
+	@OneToOne(optional = true) 
+	private Vale idVale;
 	
 	@OneToOne
 	private Categoria idCategoria;
@@ -53,16 +56,17 @@ public class Curso implements Serializable{
 	}
 
 	public Curso(String titulo, String descripcion, double precioInicial,
-			boolean estado, boolean destacado, String imagen, Oferta idOferta,
+			boolean validado, boolean destacado, String imagen, Promocion idPromocion, Vale idVale,
 			Categoria idCategoria, Dificultad idDificultad) {
 		super();
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.precioInicial = precioInicial;
-		this.estado = estado;
+		this.validado = validado;
 		this.destacado = destacado;
 		this.imagen = imagen;
-		this.idOferta = idOferta;
+		this.idPromocion = idPromocion;
+		this.idVale = idVale;
 		this.idCategoria = idCategoria;
 		this.idDificultad = idDificultad;
 	}
@@ -99,12 +103,12 @@ public class Curso implements Serializable{
 		this.precioInicial = precioInicial;
 	}
 
-	public boolean isEstado() {
-		return estado;
+	public boolean isValidado() {
+		return validado;
 	}
 
-	public void setEstado(boolean estado) {
-		this.estado = estado;
+	public void setValidado(boolean validado) {
+		this.validado = validado;
 	}
 
 	public boolean isDestacado() {
@@ -123,12 +127,20 @@ public class Curso implements Serializable{
 		this.imagen = imagen;
 	}
 
-	public Oferta getIdOferta() {
-		return idOferta;
+	public Promocion getIdPromocion() {
+		return idPromocion;
 	}
 
-	public void setIdOferta(Oferta idOferta) {
-		this.idOferta = idOferta;
+	public void setIdPromocion(Promocion idPromocion) {
+		this.idPromocion = idPromocion;
+	}
+	
+	public Vale getIdVale() {
+		return idVale;
+	}
+
+	public void setIdVale(Vale idVale) {
+		this.idVale = idVale;
 	}
 
 	public Categoria getIdCategoria() {
