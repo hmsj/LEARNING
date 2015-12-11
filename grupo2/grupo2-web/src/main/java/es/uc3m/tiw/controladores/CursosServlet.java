@@ -9,12 +9,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
+
+
 
 
 /*
@@ -54,19 +57,26 @@ import es.uc3m.tiw.model.Usuario;
  * Servlet implementation class CursosServlet
  */
 @WebServlet(value = "/cursos")
+@MultipartConfig(
+        fileSizeThreshold   = 1024 * 1024 * 2,  // 2 MB
+        maxFileSize         = 1024 * 1024 * 10, // 10 MB
+        maxRequestSize      = 1024 * 1024 * 50, // 50 MB
+        location            = "/"
+)
 public class CursosServlet extends HttpServlet {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5079331756861773626L;
+	private static final String UPLOAD_DIR = "img/courses";
 	
 	private Curso curso;
 	private Categoria categoria;
-	private SeccionCurso seccion;
-	private LeccionCurso leccion;
-	private MaterialLeccion material;
-	private AlumnoCurso alumno;
-	private ProfesorCurso profesor;
+	private SeccionCurso seccionCurso;
+	private LeccionCurso leccionCurso;
+	private MaterialLeccion materialLeccion;
+	private AlumnoCurso alumnoCurso;
+	private ProfesorCurso profesorCurso;
 	private Dificultad dificultad;
 	
 	List<Curso> cursos = new ArrayList<Curso>();

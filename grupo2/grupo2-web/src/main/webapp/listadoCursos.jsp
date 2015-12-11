@@ -95,8 +95,9 @@
 														<div class="overlay">
 															<ul class="expand">
 																<li class="cbp-l-caption-title">${curso.titulo }</li>
-																<li class="cbp-l-caption-desc">by
+																<!--<li class="cbp-l-caption-desc">by
 																	${curso.profesor_titular }</li>
+																  -->
 																<li class="cbp-l-icon"><a
 																	href="cursos?idcurso=${curso.idcurso }"><i
 																		class="icon-info"></i></a></li>
@@ -161,8 +162,9 @@
 														<div class="overlay">
 															<ul class="expand">
 																<li class="cbp-l-caption-title">${curso.titulo }</li>
-																<li class="cbp-l-caption-desc">by
+																<<!-- <li class="cbp-l-caption-desc">by
 																	${curso.profesor_titular }</li>
+																 -->
 																<li class="cbp-l-icon"><a
 																	href="cursos?idcurso=${curso.idcurso }"><i
 																		class="icon-info"></i></a></li>
@@ -186,7 +188,8 @@
 													</div>
 												</div>
 												<div class="member-info wow fadeInUp">
-													<h4 style="color: white;">${curso.profesor_titular }</h4>
+													<<!-- <h4 style="color: white;">${curso.profesor_titular }</h4>
+													 -->
 													<p>${curso.descripcion }</p>
 												</div>
 											</div>
@@ -225,8 +228,9 @@
 														<div class="overlay">
 															<ul class="expand">
 																<li class="cbp-l-caption-title">${curso.titulo }</li>
-																<li class="cbp-l-caption-desc">by
+																<<!-- <li class="cbp-l-caption-desc">by
 																	${curso.profesor_titular }</li>
+																 -->
 																<li class="cbp-l-icon"><a
 																	href="cursos?idcurso=${curso.idcurso }"><i
 																		class="icon-info"></i></a></li>
@@ -250,7 +254,8 @@
 													</div>
 												</div>
 												<div class="member-info wow fadeInUp">
-													<h4>${curso.profesor_titular }</h4>
+													<<!-- <h4>${curso.profesor_titular }</h4>
+													 -->
 													<p>${curso.descripcion }</p>
 												</div>
 											</div>
@@ -289,8 +294,9 @@
 														<div class="overlay">
 															<ul class="expand">
 																<li class="cbp-l-caption-title">${curso.titulo }</li>
-																<li class="cbp-l-caption-desc">by
+																<<!-- <li class="cbp-l-caption-desc">by
 																	${curso.profesor_titular }</li>
+																 -->
 																<li class="cbp-l-icon"><a
 																	href="cursos?idcurso=${curso.idcurso }"><i
 																		class="icon-info"></i></a></li>
@@ -314,7 +320,8 @@
 													</div>
 												</div>
 												<div class="member-info wow fadeInUp">
-													<h4 style="color: white;">${curso.profesor_titular }</h4>
+													<<!-- <h4 style="color: white;">${curso.profesor_titular }</h4>
+													 -->
 													<p>${curso.descripcion }</p>
 												</div>
 											</div>
@@ -353,8 +360,9 @@
 														<div class="overlay">
 															<ul class="expand">
 																<li class="cbp-l-caption-title">${curso.titulo }</li>
-																<li class="cbp-l-caption-desc">by
+															<<!-- 	<li class="cbp-l-caption-desc">by
 																	${curso.profesor_titular }</li>
+																 -->
 																<li class="cbp-l-icon"><a
 																	href="cursos?idcurso=${curso.idcurso }"><i
 																		class="icon-info"></i></a></li>
@@ -378,7 +386,8 @@
 													</div>
 												</div>
 												<div class="member-info wow fadeInUp">
-													<h4>${curso.profesor_titular }</h4>
+													<<!-- <h4>${curso.profesor_titular }</h4>
+													 -->
 													<p>${curso.descripcion }</p>
 												</div>
 											</div>
@@ -417,8 +426,9 @@
 														<div class="overlay">
 															<ul class="expand">
 																<li class="cbp-l-caption-title">${curso.titulo }</li>
-																<li class="cbp-l-caption-desc">by
+														<<!-- 		<li class="cbp-l-caption-desc">by
 																	${curso.profesor_titular }</li>
+																 -->
 																<li class="cbp-l-icon"><a
 																	href="cursos?idcurso=${curso.idcurso }"><i
 																		class="icon-info"></i></a></li>
@@ -442,7 +452,8 @@
 													</div>
 												</div>
 												<div class="member-info wow fadeInUp">
-													<h4 style="color: white;">${curso.profesor_titular }</h4>
+													<<!-- <h4 style="color: white;">${curso.profesor_titular }</h4>
+													 -->
 													<p>${curso.descripcion }</p>
 												</div>
 											</div>
@@ -481,8 +492,9 @@
 														<div class="overlay">
 															<ul class="expand">
 																<li class="cbp-l-caption-title">${curso.titulo }</li>
-																<li class="cbp-l-caption-desc">by
+																<<!-- <li class="cbp-l-caption-desc">by
 																	${curso.profesor_titular }</li>
+																 -->
 																<li class="cbp-l-icon"><a
 																	href="cursos?idcurso=${curso.idcurso }"><i
 																		class="icon-info"></i></a></li>
@@ -506,7 +518,8 @@
 													</div>
 												</div>
 												<div class="member-info wow fadeInUp">
-													<h4>${curso.profesor_titular }</h4>
+										<<!-- 			<h4>${curso.profesor_titular }</h4>
+												 -->
 													<p>${curso.descripcion }</p>
 												</div>
 											</div>

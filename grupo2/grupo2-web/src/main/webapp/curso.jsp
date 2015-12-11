@@ -75,10 +75,10 @@
 								<li class="active"><a
 									href="usuarios?username=${sessionScope.usuario.username }">Mi
 										perfil</a></li>
-								<c:if
+								<%-- <c:if
 									test="${sessionScope.usuario.tipoUsuario.idtipoUsuario == 2 || sessionScope.usuario.tipoUsuario.idtipoUsuario == 3}">
 									<li><a href="nuevoCurso">Añadir curso</a></li>
-								</c:if>
+								</c:if> --%>
 								<li><a href="login?accion=salir">Logout</a></li>
 							</ul></li>
 					</c:when>
@@ -175,14 +175,14 @@
 												<a href="#" class="btn btn-primary btn-scroll">MATRICULATE</a>
 											</div>
 										</c:when>
-										<c:when
+										<%-- <c:when
 											test="${sessionScope.usuario.tipoUsuario.idtipoUsuario == 2}">
 											<div class="op-1">
 												<div class="error">${mensaje }</div>
 												<a href="#" class="btn btn-primary btn-scroll">AÑADIR UN
 													ALUMNO</a>
 											</div>
-										</c:when>
+										</c:when> --%>
 										<c:otherwise>
 											<div class="op-1">
 												<a href="#" class="btn btn-primary btn-scroll">MATRICULATE</a>
@@ -325,11 +325,11 @@
 														class="icon-eye"></i></a></li>
 												<c:if
 													test="${sessionScope.usuario.username == sessionScope.curso.profesor_titular  }">
-													<c:if test="${sessionScope.usuario.tipoUsuario ==3 }">
+													<%-- <c:if test="${sessionScope.usuario.tipoUsuario ==3 }">
 													<li class="social-icon"><a
 														href="cursos?idcurso=${sessionScope.curso.idcurso }&accion=modifyAlumno&target=${alumno.username.username }"><i
 															class="ion-edit"></i></a></li>
-													</c:if>
+													</c:if> --%>
 													<li class="social-icon"><a
 														href="cursos?idcurso=${sessionScope.curso.idcurso }&accion=deleteAlumno&target=${alumno.username.username }"><i
 															class="ion-trash-a"></i></a></li>
@@ -407,11 +407,11 @@
 														class="icon-eye"></i></a></li>
 												<c:if
 													test="${sessionScope.usuario.username == sessionScope.curso.profesor_titular  }">
-													<c:if test="${sessionScope.usuario.tipoUsuario ==3 }">
+													<%-- <c:if test="${sessionScope.usuario.tipoUsuario ==3 }">
 													<li class="social-icon"><a
 														href="cursos?idcurso=${sessionScope.curso.idcurso }&accion=modifyAlumno&target=${alumno.username.username }"><i
 															class="ion-edit"></i></a></li>
-													</c:if>
+													</c:if> --%>
 													<li class="social-icon"><a
 														href="cursos?idcurso=${sessionScope.curso.idcurso }&accion=deleteAlumno&target=${alumno.username.username }"><i
 															class="ion-trash-a"></i></a></li>

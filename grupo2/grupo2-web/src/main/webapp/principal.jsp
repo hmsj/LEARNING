@@ -139,14 +139,14 @@
 				</div>
 
 				<div class="clients">
-					<c:if test="${not empty cursos }">
-						<c:forEach items="${cursos }" var="curso">
-							<c:if test="${curso.validado == 1 }">
-								<c:if test="${curso.destacado == 1 }">
+					<c:if test="${not empty listadoCursos }">
+						<c:forEach items="${listadoCursos }" var="curso">
+							<c:if test="${curso.validado }">
+								<c:if test="${curso.destacado }">
 									<div class="col-md-2 col-sm-3 col-xs-6 client wow fadeInUp">
 										<c:choose>
 											<c:when test="${not empty curso.imagen }">
-												<a href="cursos?idcurso=${curso.idcurso }">
+												<a href="cursos?idCurso=${curso.idCurso }">
 													<div class="logo-dark">
 														<img src="${curso.imagen }" class="img-responsive"
 															alt="client">
@@ -154,22 +154,22 @@
 													<div class="logo-light">
 														<p class="text-center">${curso.titulo }</p>
 														<p class="text-center">Precio inicial:
-															${curso.precio_inicial } €</p>
-														<c:if test="${curso.oferta.tipoOferta.idtipoOferta == 1}">
+															${curso.precioInicial } €</p>
+														<%-- <c:if test="${curso.oferta.tipoOferta.idtipoOferta == 1}">
 															<p class="text-center">Descuento:
 																${curso.oferta.valor} €</p>
 														</c:if>
 														<c:if test="${curso.oferta.tipoOferta.idtipoOferta == 2}">
 															<p class="text-center">Descuento:
 																${curso.oferta.valor} %</p>
-														</c:if>
-														<p class="text-center">Precio final:
-															${curso.precio_final } €</p>
+														</c:if> --%>
+														<%-- <p class="text-center">Precio final:
+															${curso.precio_final } €</p> --%>
 													</div>
 												</a>
 											</c:when>
 											<c:otherwise>
-												<a href="cursos?idcurso=${curso.idcurso }">
+												<a href="cursos?idCurso=${curso.idCurso }">
 													<div class="logo-dark">
 														<img src="img/portfolio/1.jpg" class="img-responsive"
 															alt="client">
@@ -177,17 +177,17 @@
 													<div class="logo-light">
 														<p class="text-center">${curso.titulo }</p>
 														<p class="text-center">Precio inicial:
-															${curso.precio_inicial } €</p>
-														<c:if test="${curso.oferta.tipoOferta.idtipoOferta == 1}">
+															${curso.precioInicial } €</p>
+														<%-- <c:if test="${curso.oferta.tipoOferta.idtipoOferta == 1}">
 															<p class="text-center">Descuento:
 																${curso.oferta.valor} €</p>
 														</c:if>
 														<c:if test="${curso.oferta.tipoOferta.idtipoOferta == 2}">
 															<p class="text-center">Descuento:
 																${curso.oferta.valor} %</p>
-														</c:if>
-														<p class="text-center">Precio final:
-															${curso.precio_final } €</p>
+														</c:if> --%>
+														<%-- <p class="text-center">Precio final:
+															${curso.precio_final } €</p> --%>
 													</div>
 												</a>
 											</c:otherwise>
@@ -216,15 +216,15 @@
 			<div id="filters-container-fullwidth"
 				class="cbp-l-filters-alignCenter wow fadeInUp">
 				<c:choose>
-					<c:when test="${not empty categorias }">
+					<c:when test="${not empty listadoCategorias }">
 						<div data-filter="*"
 							class="cbp-filter-item-active cbp-filter-item">
 							Todos
 							<div class="cbp-filter-counter"></div>
 						</div>
-						<c:forEach items="${categorias }" var="categoria">
-							<div data-filter=".${categoria.descripcion_categoria }"
-								class="cbp-filter-item">${categoria.descripcion_categoria }<div
+						<c:forEach items="${listadoCategorias }" var="categoria">
+							<div data-filter="${categoria.descripcionCategoria }"
+								class="cbp-filter-item">${categoria.descripcionCategoria }<div
 									class="cbp-filter-counter"></div>
 							</div>
 						</c:forEach>
@@ -241,12 +241,12 @@
 
 			<div id="grid-container-fullwidth" class="cbp-l-grid-fullScreen">
 				<ul>
-					<c:if test="${not empty cursos }">
-						<c:forEach items="${cursos }" begin="0" end="2" var="curso">
+					<c:if test="${not empty listadoCursos }">
+						<c:forEach items="${listadoCursos }" begin="0" end="2" var="curso">
 							<c:choose>
-								<c:when test="${curso.validado ==  1}">
+								<c:when test="${curso.validado}">
 									<li
-										class="cbp-item effect effects ${curso.categoria.descripcion_categoria }">
+										class="cbp-item effect effects ${curso.idCategoria.descripcionCategoria }">
 										<c:choose>
 											<c:when test="${not empty curso.imagen }">
 												<div class="img">
@@ -255,23 +255,27 @@
 													<div class="overlay">
 														<ul class="expand">
 															<li class="cbp-l-caption-title">${curso.titulo }</li>
-															<li class="cbp-l-caption-desc">by
-																${curso.profesor_titular }</li>
+															<c:forEach items="listadoProfesoresTitulares" var="profeTitular">
+																<c:if test="${profeTitular.idCurso.idCurso == curso.idCurso }">
+																	<li class="cbp-l-caption-desc">by
+																		${profeTitular.idUsuario.username}</li>
+																</c:if>
+															</c:forEach>
 															<li class="cbp-l-icon"><a
-																href="cursos?idcurso=${curso.idcurso }"><i
+																href="cursos?idCurso=${curso.idCurso }"><i
 																	class="icon-info"></i></a></li>
 															<li class="cbp-l-caption-desc">Precio inicial:
-																${curso.precio_inicial } €</li>
-															<c:if test="${curso.oferta.tipoOferta.idtipoOferta == 1}">
+																${curso.precioInicial } €</li>
+															<%-- <c:if test="${curso.oferta.tipoOferta.idtipoOferta == 1}">
 																<li class="cbp-l-caption-desc">Descuento:
 																	${curso.oferta.valor} €</li>
 															</c:if>
 															<c:if test="${curso.oferta.tipoOferta.idtipoOferta == 2}">
 																<li class="cbp-l-caption-desc">Descuento:
 																	${curso.oferta.valor} %</li>
-															</c:if>
-															<li class="cbp-l-caption-desc">Precio final:
-																${curso.precio_final } €</li>
+															</c:if> --%>
+															<%-- <li class="cbp-l-caption-desc">Precio final:
+																${curso.precio_final } €</li> --%>
 
 														</ul>
 													</div>
@@ -284,23 +288,27 @@
 													<div class="overlay">
 														<ul class="expand">
 															<li class="cbp-l-caption-title">${curso.titulo }</li>
-															<li class="cbp-l-caption-desc">by
-																${curso.profesor_titular }</li>
+															<c:forEach items="listadoProfesoresTitulares" var="profeTitular">
+																<c:if test="${profeTitular.idCurso.idCurso == curso.idCurso }">
+																	<li class="cbp-l-caption-desc">by
+																		${profeTitular.idUsuario.username}</li>
+																</c:if>
+															</c:forEach>
 															<li class="cbp-l-icon"><a
-																href="cursos?idcurso=${curso.idcurso }"><i
+																href="cursos?idCurso=${curso.idCurso }"><i
 																	class="icon-info"></i></a></li>
 															<li class="cbp-l-caption-desc">Precio inicial:
-																${curso.precio_inicial } €</li>
-															<c:if test="${curso.oferta.tipoOferta.idtipoOferta == 1}">
+																${curso.precioInicial } €</li>
+															<%-- <c:if test="${curso.oferta.tipoOferta.idtipoOferta == 1}">
 																<li class="cbp-l-caption-desc">Descuento:
 																	${curso.oferta.valor} €</li>
 															</c:if>
 															<c:if test="${curso.oferta.tipoOferta.idtipoOferta == 2}">
 																<li class="cbp-l-caption-desc">Descuento:
 																	${curso.oferta.valor} %</li>
-															</c:if>
-															<li class="cbp-l-caption-desc">Precio final:
-																${curso.precio_final } €</li>
+															</c:if> --%>
+															<%-- <li class="cbp-l-caption-desc">Precio final:
+																${curso.precio_final } €</li> --%>
 
 														</ul>
 													</div>

@@ -32,10 +32,10 @@
 								<li class="active"><a
 									href="usuarios?username=${sessionScope.usuario.username }">Mi
 										perfil</a></li>
-								<c:if
+								<%-- <c:if
 									test="${sessionScope.usuario.tipoUsuario.idtipoUsuario == 2 || sessionScope.usuario.tipoUsuario.idtipoUsuario == 3}">
 									<li><a href="nuevoCurso">Añadir curso</a></li>
-								</c:if>
+								</c:if> --%>
 								<li><a href="login?accion=salir">Logout</a></li>
 							</ul></li>
 					</c:when>
